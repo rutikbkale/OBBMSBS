@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     console.log("loaded...")
     $('#patientForm').on('submit', function (event) {
@@ -8,7 +9,7 @@ $(document).ready(function () {
         $('#loader').show();
 
         $.ajax({
-            url: "patientSignup",
+            url: "patientLogin",
             type: 'POST',
             data: form,
             success: function (data, textStatus, jqXHR) {
@@ -21,7 +22,7 @@ $(document).ready(function () {
                         title: "Successfully Register !",
                         icon: "success",
                     }).then((value) => {
-                        window.location = "patientLogin.jsp";
+                        window.location = "patientDashboard.jsp";
                     });
                 } else {
                     swal({

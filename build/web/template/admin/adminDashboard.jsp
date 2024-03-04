@@ -15,10 +15,10 @@
         <link href="../../static/css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <div class="container">
+        <div class="container" style="margin-left: 200px; margin-top: 75px;">
 
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-3 my-3">
                     <div class="card bg-light">
                         <div class="card-body">
                             <div class="blood">
@@ -30,7 +30,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3 my-3">
                     <div class="card bg-light">
                         <div class="card-body">
                             <div class="blood">
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3 my-3">
                     <div class="card bg-light">
                         <div class="card-body">
                             <div class="blood">
@@ -54,7 +54,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3 my-3">
                     <div class="card bg-light">
                         <div class="card-body">
                             <div class="blood">
@@ -69,7 +69,7 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-3 my-3">
                     <div class="card bg-light">
                         <div class="card-body">
                             <div class="blood">
@@ -81,7 +81,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3 my-3">
                     <div class="card bg-light">
                         <div class="card-body">
                             <div class="blood">
@@ -93,7 +93,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3 my-3">
                     <div class="card bg-light">
                         <div class="card-body">
                             <div class="blood">
@@ -105,7 +105,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3 my-3">
                     <div class="card bg-light">
                         <div class="card-body">
                             <div class="blood">
@@ -120,11 +120,11 @@
             </div>
             <hr>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-3 my-3">
                     <div class="card bg-light">
                         <div class="card-body">
                             <div class="blood">
-                                <i class="fas fa-users"></i>
+                                <i class="fas fa-users text-primary"></i>
                             </div><br>
                             <div>
                                 Total Donors <br>
@@ -133,11 +133,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3 my-3">
                     <div class="card bg-light">
                         <div class="card-body">
                             <div class="blood">
-                                <i class="fas fa-spinner"></i>
+                                <i class="fas fa-spinner text-primary"></i>
                             </div><br>
                             <div>
                                 Total Requests <br>
@@ -146,11 +146,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3 my-3">
                     <div class="card bg-light">
                         <div class="card-body">
                             <div class="blood">
-                                <i class="far fa-check-circle"></i>
+                                <i class="far fa-check-circle text-primary"></i>
                             </div><br>
                             <div>
                                 Approved Requests <br>
@@ -159,11 +159,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3 my-3">
                     <div class="card bg-light">
                         <div class="card-body">
                             <div class="blood">
-                                <i class="fas fa-tint xyz"></i>
+                                <i class="fas fa-tint xyz text-primary"></i>
                             </div><br>
                             <div>
                                 Total Blood Unit (in ml) <br>

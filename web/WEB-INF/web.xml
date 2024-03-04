@@ -8,6 +8,18 @@
         <servlet-name>donarSignup</servlet-name>
         <servlet-class>com.controller.donarSignup</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>patientLogin</servlet-name>
+        <servlet-class>com.controller.patientLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>adminLogin</servlet-name>
+        <servlet-class>com.controller.adminLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>donarLogin</servlet-name>
+        <servlet-class>com.controller.donarLogin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>patientSignup</servlet-name>
         <url-pattern>/patientSignup</url-pattern>
@@ -15,6 +27,18 @@
     <servlet-mapping>
         <servlet-name>donarSignup</servlet-name>
         <url-pattern>/donarSignup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>patientLogin</servlet-name>
+        <url-pattern>/patientLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adminLogin</servlet-name>
+        <url-pattern>/adminLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>donarLogin</servlet-name>
+        <url-pattern>/donarLogin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

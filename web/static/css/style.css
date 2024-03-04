@@ -5,4 +5,9 @@
 .t-white{
     color: white;
 }
-
+.asider{
+    position: absolute;
+    top: 8%;
+    height: 92vh;
+    width: 150px;
+}
