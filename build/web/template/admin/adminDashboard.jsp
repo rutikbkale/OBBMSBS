@@ -15,6 +15,7 @@
         <link href="../../static/css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <%@include file="adminBase.jsp" %>
         <div class="container" style="margin-left: 200px; margin-top: 75px;">
 
             <div class="row">

@@ -8,32 +8,33 @@ import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+@MultipartConfig
 public class patientLogin extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             Thread.sleep(3000);
             String mobno = request.getParameter("mobno");
             String password = request.getParameter("password");
-            
+
             PatientDao dao = new PatientDao(DBClass.getConnection());
-            
+
             Patient patient = dao.getVerifiedPatient(mobno, password);
-            
-            if(patient == null){
-//                response.sendRedirect("errorPage.jsp");
-                out.print("done");
-            }
-            else{
+
+            if (patient == null) {
+                response.sendRedirect("errorPage.jsp");
+            } else {
                 HttpSession session = request.getSession();
                 session.setAttribute("currentPatient", patient);
+                out.print("done");
             }
         } catch (InterruptedException ex) {
             Logger.getLogger(patientLogin.class.getName()).log(Level.SEVERE, null, ex);

@@ -14,20 +14,20 @@ public class PatientDao {
     public PatientDao(Connection con) {
         this.con = con;
     }
-    
+
     //patient authentication
-    public Patient getVerifiedPatient(String mobno, String password){
-        
+    public Patient getVerifiedPatient(String mobno, String password) {
+
         try {
             // creating query to authenticate patient
             query = "select * from patient_info_tb where mobno = ? and password = ?";
-            
+
             psmt = con.prepareStatement(query);
             psmt.setString(1, mobno);
             psmt.setString(2, password);
-            set=psmt.executeQuery();
-            
-            if(set.next()){
+            set = psmt.executeQuery();
+
+            if (set.next()) {
                 patient = new Patient();
                 patient.setfName(set.getString("fName"));
                 patient.setlName(set.getString("lName"));
@@ -40,9 +40,9 @@ public class PatientDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         return patient;
-        
+
     }
 
     // inserting patient information into the database

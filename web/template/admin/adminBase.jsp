@@ -13,19 +13,6 @@
         <!--Bootstrap cdn-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <link href="../../static/css/style.css" rel="stylesheet" type="text/css"/>
-        <style>
-            .asider{
-                position: absolute;
-                top: 7%;
-                height: 93vh;
-                width: 200px;
-                background-color: #4d4747;
-            }
-            .asider ul li a{
-                text-decoration: none;
-                color:white;
-            }
-        </style>
     </head>
     <body>
         <nav style="background-color: #FF0018;" class="navbar navbar-expand-md navbar-dark fixed-top">
@@ -35,23 +22,44 @@
                 <!-- Navbar Links -->
                 <ul class="navbar-nav">
                     <li class="nav-item ms-5">
-                        <a class="nav-link fs-5 me-5" href="../../adminLogin.jsp"><i class="fas fa-sign-out-alt"></i>&nbsp; Logout</a>
+                        <a class="nav-link fs-5 me-5" onclick="logout()" href="#"><i class="fas fa-sign-out-alt"></i>&nbsp; Logout</a>
                     </li>
                 </ul>
             </div>
         </nav>
         <div class="asider">
             <ul class="list-group list-unstyled">
-                <li class="px-3 pt-5 fs-5"><a href="/"><i class="fas fa-home"></i>&nbsp;Home</a></li>
-                <li class="px-3 pt-5 fs-5"><a href="/admin-donor"><i class="fas fa-user"></i>&nbsp;Donor</a></li>
-                <li class="px-3 pt-5 fs-5"><a href="/admin-patient"><i class="fas fa-user-injured"></i>&nbsp;Patient</a></li>
-                <li class="px-3 pt-5 fs-5"><a href="/admin-donation"><i class="fas fa-hand-holding-medical"></i>&nbsp;Donations</a></li>
-                <li class="px-3 pt-5 fs-5"><a href="/admin-request"><i class="fas fa-sync-alt"></i>&nbsp;Blood Requests</a></li>
-                <li class="px-3 pt-5 fs-5"><a href="/admin-request-history"><i class="fas fa-history"></i>&nbsp;Request History</a></li>
-                <li class="px-3 pt-5 fs-5"><a href="/admin-blood"><i class="fas fa-hand-holding-water"></i>&nbsp;Blood Stock</a></li>
+                <li class="px-3 d-block py-4 fs-5"><a href="adminDashboard.jsp"><i class="fas fa-home"></i>&nbsp;Home</a></li>
+                <li class="px-3 d-block py-4 fs-5"><a href="adminDonarList.jsp"><i class="fas fa-user"></i>&nbsp;Donor</a></li>
+                <li class="px-3 d-block py-4 fs-5"><a href="adminPatientList.jsp"><i class="fas fa-user-injured"></i>&nbsp;Patient</a></li>
+                <li class="px-3 d-block py-4 fs-5"><a href="adminDonationReq.jsp"><i class="fas fa-hand-holding-medical"></i>&nbsp;Donations</a></li>
+                <li class="px-3 d-block py-4 fs-5"><a href="adminBloodReq.jsp"><i class="fas fa-sync-alt"></i>&nbsp;Blood Requests</a></li>
+                <li class="px-3 d-block py-4 fs-5"><a href="adminBloodReqHistory.jsp"><i class="fas fa-history"></i>&nbsp;Request History</a></li>
+                <li class="px-3 d-block py-4 fs-5"><a href="adminBloodStock.jsp"><i class="fas fa-hand-holding-water"></i>&nbsp;Blood Stock</a></li>
             </ul> 
         </div>
-        <%@include file="adminDashboard.jsp" %>
+        <script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script>
+
+        <script>
+                            function logout() {
+                                swal({
+                                    title: 'Log out?',
+                                    text: 'Are you sure you want to log out?',
+                                    type: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'OK',
+                                    closeOnConfirm: true,
+                                    closeOnCancel: true
+                                }).then((result) => {
+                                    if (result.value === true) {
+                                        window.location.href = '../../adminLogin.jsp'; // Replace with your logout URL
+                                    }
+                                });
+                            }
+        </script>
+
 
     </body>
 </html>

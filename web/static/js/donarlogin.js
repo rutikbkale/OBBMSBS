@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#patientForm').on('submit', function (event) {
+    $('#donarForm').on('submit', function (event) {
         event.preventDefault();
         let form = new FormData(this);
         $('#login-btn').hide();
@@ -7,7 +7,7 @@ $(document).ready(function () {
         $('#loader').show();
 
         $.ajax({
-            url: "patientLogin",
+            url: "donarLogin",
             type: 'POST',
             data: form,
             success: function (data, textStatus, jqXHR) {
@@ -18,14 +18,14 @@ $(document).ready(function () {
 
                 if (data.trim() == 'done') {
                     swal({
-                        title: " Login Successfully ! ",
+                        title: "Login Successfully ! ",
                         icon: "success",
                     }).then((value) => {
-                        window.location = "template/patient/patientDashboard.jsp";
+                        window.location = "template/donar/donarDashboard.jsp";
                     });
                 } else {
                     swal({
-                        title: "Login Failed",
+                        title: "Login Failed ! ",
                         text: "Please try again later.",
                         icon: "error"
                     });
@@ -36,6 +36,7 @@ $(document).ready(function () {
                 $('#login-btn').show();
                 $('#sign-btn').show();
                 $('#loader').hide();
+                console.log("falied" + textStatus);
                 swal({
                     title: "Error Occurred1!",
                     text: "Please try again later.",

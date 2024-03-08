@@ -1,13 +1,23 @@
+*{
+    font-family: monospace;
+}
 .bg-red{
     background-color: rgb(233, 47, 47);
 }
-
 .t-white{
     color: white;
 }
 .asider{
     position: absolute;
-    top: 8%;
-    height: 92vh;
-    width: 150px;
+    top: 7%;
+    height: 93vh;
+    width: 200px;
+    background-color: #4d4747;
+}
+.asider ul li a{
+    text-decoration: none;
+    color:white;
+}
+.asider ul li:hover{
+    background-color: #594f8d;
 }

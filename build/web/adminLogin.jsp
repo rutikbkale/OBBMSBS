@@ -27,7 +27,7 @@
                                 <p>Admin Login</p>
                             </div>
                             <div class="card-body">
-                                <form action="adminLogin" method="post">
+                                <form action="adminLogin" method="post" id="adminForm">
                                     <div class="mb-3">
                                         <label for="username" class="form-label">Username</label>
                                         <input type="text" class="form-control" id="username" name="username" required >
@@ -36,8 +36,11 @@
                                         <label for="exampleInputPassword1" class="form-label">Password</label>
                                         <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
                                     </div>
+                                    <div class="container text-center my-3" style="display: none" id="loader">
+                                        <span class="fa fa-refresh fa-spin fa-3x" style="color: red"></span>
+                                    </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-danger">Login</button>
+                                        <button type="submit" class="btn btn-danger" id="login-btn">Login</button>
                                     </div>
                                 </form>
                             </div>
@@ -48,5 +51,10 @@
         </main>
 
         <%@include file="footer.html" %>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="static/js/adminLogin.js"></script>
     </body>
 </html>

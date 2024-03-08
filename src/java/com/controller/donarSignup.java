@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @MultipartConfig
 public class donarSignup extends HttpServlet {
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -40,7 +40,7 @@ public class donarSignup extends HttpServlet {
             } else {
                 out.print("Error");
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }

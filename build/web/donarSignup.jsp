@@ -28,60 +28,6 @@
                                 <p>Donar Signup</p>
                             </div>
                             <div class="card-body">
-                                <!--                                <form action="donarSignup" method="post" id="donarForm">
-                                                                    <div class="mb-1">
-                                                                        <label for="fName" class="form-label">First Name</label>
-                                                                        <input type="text" class="form-control" id="fName" name="fName">
-                                                                    </div>
-                                                                    <div class="mb-1">
-                                                                        <label for="lName" class="form-label">Last Name</label>
-                                                                        <input type="text" class="form-control" id="lName" name="lName">
-                                                                    </div>
-                                                                    <div class="mb-1">
-                                                                        <label for="username" class="form-label">UserName</label>
-                                                                        <input type="text" class="form-control" id="username" name="username">
-                                                                    </div>
-                                                                    <div class="mb-1">
-                                                                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                                                                        <input type="password" class="form-control" id="exampleInputPassword1" name="password">
-                                                                    </div>
-                                                                    <div class="mb-1">
-                                                                        <label for="mobno" class="form-label">Mobile No</label>
-                                                                        <input type="tel" class="form-control" id="mobno" name="mobno">
-                                                                    </div>
-                                                                    <div class="form-row">
-                                                                        <div class="name">Blood Group</div>
-                                                                        <div class="value">
-                                                                            <div class="input-group">
-                                                                                <div class="rs-select2 js-select-simple select--no-search">
-                                                                                    <select name="bloodgroup">
-                                                                                        <option disabled="disabled" selected="selected">Choose option</option>
-                                                                                        <option>O+</option>
-                                                                                        <option>O-</option>
-                                                                                        <option>A+</option>
-                                                                                        <option>A-</option>
-                                                                                        <option>B+</option>
-                                                                                        <option>B-</option>
-                                                                                        <option>AB+</option>
-                                                                                        <option>AB-</option>
-                                                                                    </select>
-                                                                                    <div class="select-dropdown"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="container text-center" style="display: none" id="loader">
-                                                                        <span class="fa fa-refresh fa-spin fa-3x" style="color: red"></span>
-                                                                    </div>
-                                                                    <div class="text-center" id="sign-btn">
-                                                                        <button type="submit" class="btn btn-danger">Signup</button>
-                                                                    </div>
-                                                                </form>
-                                                                <div class="text-center" id="login-btn">
-                                                                    <p>Already have an account ?
-                                                                        <a href="donarLogin.jsp" class="text-danger text-decoration-none">Click here to Login</a>
-                                                                    </p>
-                                                                </div>-->
 
                                 <form class="row g-3" action="donarSignup" method="post" id="donarForm">
                                     <div class="col-md-6">
@@ -146,6 +92,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script src="static/js/donar.js"></script>
+        <script src="static/js/donarSignup.js"></script>
     </body>
 </html>

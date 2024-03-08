@@ -27,7 +27,7 @@
                                 <p>Donar Login</p>
                             </div>
                             <div class="card-body">
-                                <form action="donarLogin" method="post">
+                                <form action="donarLogin" method="post" id="donarForm">
                                     <div class="mb-3">
                                         <label for="mobno" class="form-label">Mobile No</label>
                                         <input type="tel" class="form-control" id="mobno" name="mobno">
@@ -36,12 +36,15 @@
                                         <label for="exampleInputPassword1" class="form-label">Password</label>
                                         <input type="password" class="form-control" id="exampleInputPassword1" name="password">
                                     </div>
-                                    <div class="text-center">
+                                    <div class="container text-center my-3" style="display: none" id="loader">
+                                        <span class="fa fa-refresh fa-spin fa-3x" style="color: red"></span>
+                                    </div>
+                                    <div class="text-center" id="login-btn">
                                         <button type="submit" class="btn btn-danger">Login</button>
                                     </div>
                                 </form>
                                 <br>
-                                <div class="text-center">
+                                <div class="text-center" id="sign-btn">
                                     <p>Does not have an account ? 
                                         <a href="donarSignup.jsp" class="text-danger text-decoration-none">Click here to register</a>
                                     </p>
@@ -54,5 +57,10 @@
         </main>
 
         <%@include file="footer.html" %>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="static/js/donarlogin.js"></script>
     </body>
 </html>

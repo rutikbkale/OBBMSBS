@@ -13,11 +13,18 @@
         <!--Bootstrap cdn-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <link href="../../static/css/style.css" rel="stylesheet" type="text/css"/>
+        <style>
+            .xyz{
+
+                display: table;
+                margin-right: auto;
+                margin-left: auto;
+            }
+        </style>
     </head>
     <body>
         <%@include file="adminBase.jsp" %>
         <div class="container" style="margin-left: 200px; margin-top: 75px;">
-
             <div class="row">
                 <div class="col-sm-3 my-3">
                     <div class="card bg-light">
@@ -120,56 +127,38 @@
                 </div>
             </div>
             <hr>
-            <div class="row">
-                <div class="col-sm-3 my-3">
-                    <div class="card bg-light">
-                        <div class="card-body">
-                            <div class="blood">
-                                <i class="fas fa-users text-primary"></i>
-                            </div><br>
-                            <div>
-                                Total Donors <br>
-                                <!--{{totaldonors}}-->
-                            </div>                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3 my-3">
-                    <div class="card bg-light">
-                        <div class="card-body">
-                            <div class="blood">
-                                <i class="fas fa-spinner text-primary"></i>
-                            </div><br>
-                            <div>
-                                Total Requests <br>
-                                <!--{{totalrequest}}-->
-                            </div>                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3 my-3">
-                    <div class="card bg-light">
-                        <div class="card-body">
-                            <div class="blood">
-                                <i class="far fa-check-circle text-primary"></i>
-                            </div><br>
-                            <div>
-                                Approved Requests <br>
-                                <!--{{totalapprovedrequest}}-->
-                            </div>                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3 my-3">
-                    <div class="card bg-light">
-                        <div class="card-body">
-                            <div class="blood">
-                                <i class="fas fa-tint xyz text-primary"></i>
-                            </div><br>
-                            <div>
-                                Total Blood Unit (in ml) <br>
-                                <!--{{totalbloodunit}}-->
-                            </div>                            
+            <br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-4 offset-4">
+                        <div class="card">
+                            <div class="card-header bg-red">
+                                <h3 class="text-center t-white">Update Blood Unit</h3>
+                            </div>
+                            <div class="card-body">
+                                <form class="form-inline" method="POST">
+                                    <!--{% csrf_token %}-->
+                                    <div class="form-group my-3">
+                                        <select name="bloodgroup" class="form-control">
+                                            <option disabled="disabled" selected="selected">Choose Blood Group</option>
+                                            <option>O+</option>
+                                            <option>O-</option>
+                                            <option>A+</option>
+                                            <option>A-</option>
+                                            <option>B+</option>
+                                            <option>B-</option>
+                                            <option>AB+</option>
+                                            <option>AB-</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group  my-3">
+                                        <input type="number" class="form-control" name="unit" placeholder="Unit">
+                                    </div>
+                                    <div class="form-group my-3 text-center">
+                                        <button type="submit" class="btn btn-danger">Update</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>

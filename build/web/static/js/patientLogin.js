@@ -1,6 +1,4 @@
-
 $(document).ready(function () {
-    console.log("loaded...")
     $('#patientForm').on('submit', function (event) {
         event.preventDefault();
         let form = new FormData(this);
@@ -17,32 +15,34 @@ $(document).ready(function () {
                 $('#login-btn').show();
                 $('#sign-btn').show();
                 $('#loader').hide();
-                if (data.trim() === 'done') {
+
+                if (data.trim() == 'done') {
                     swal({
-                        title: "Successfully Register !",
+                        title: " Login Successfully ! ",
                         icon: "success",
                     }).then((value) => {
-                        window.location = "patientDashboard.jsp";
+                        window.location = "template/patient/patientDashboard.jsp";
                     });
                 } else {
                     swal({
-                        title: "Error Occurred!",
+                        title: "Login Failed",
                         text: "Please try again later.",
                         icon: "error"
                     });
-
+                    $('#exampleInputPassword1').val("");
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                console.log(jqXHR)
                 $('#login-btn').show();
                 $('#sign-btn').show();
                 $('#loader').hide();
-                    swal({
-                        title: "Error Occurred!",
-                        text: "Please try again later.",
-                        icon: "error"
-                    });
+                swal({
+                    title: "Error Occurred1!",
+                    text: "Please try again later.",
+                    icon: "error"
+                }).then((value) => {
+                    window.location = "errorPage.jsp"
+                });
             },
             processData: false,
             contentType: false

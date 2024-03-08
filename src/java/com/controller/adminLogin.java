@@ -5,33 +5,40 @@ import com.entities.Admin;
 import com.helper.DBClass;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+@MultipartConfig
 public class adminLogin extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            Thread.sleep(3000);
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-            
+
             AdminDao dao = new AdminDao(DBClass.getConnection());
-            
+
             Admin admin = dao.getVerifiedAdmin(username, password);
-            
-            if(admin == null){
+
+            if (admin == null) {
                 response.sendRedirect("errorPage.jsp");
-            }
-            else{
+            } else {
                 HttpSession session = request.getSession();
                 session.setAttribute("currentAdmin", admin);
-                response.sendRedirect("template/admin/adminBase.jsp");
+//                response.sendRedirect("template/admin/adminBase.jsp");
+                out.print("done");
             }
+        } catch (InterruptedException ex) {
+            Logger.getLogger(adminLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

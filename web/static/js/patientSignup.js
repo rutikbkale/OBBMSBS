@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    console.log("loaded...")
     $('#patientForm').on('submit', function (event) {
         event.preventDefault();
         let form = new FormData(this);
@@ -33,15 +32,14 @@ $(document).ready(function () {
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                console.log(jqXHR)
                 $('#login-btn').show();
                 $('#sign-btn').show();
                 $('#loader').hide();
-                    swal({
-                        title: "Error Occurred!",
-                        text: "Please try again later.",
-                        icon: "error"
-                    });
+                swal({
+                    title: "Error Occurred!",
+                    text: "Please try again later.",
+                    icon: "error"
+                });
             },
             processData: false,
             contentType: false

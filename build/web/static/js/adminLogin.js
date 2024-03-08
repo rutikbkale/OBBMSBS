@@ -1,49 +1,49 @@
 $(document).ready(function () {
-    console.log("loaded...");
-    $('#donarForm').on('submit', function (event) {
+    $('#adminForm').on('submit', function (event) {
         event.preventDefault();
         let form = new FormData(this);
         $('#login-btn').hide();
-        $('#sign-btn').hide();
         $('#loader').show();
+
         $.ajax({
-            url: "donarSignup",
+            url: "adminLogin",
             type: 'POST',
             data: form,
             success: function (data, textStatus, jqXHR) {
-                console.log(data);
+                console.log(data)
                 $('#login-btn').show();
-                $('#sign-btn').show();
                 $('#loader').hide();
-                if (data.trim() === 'done') {
+
+                if (data.trim() == 'done') {
                     swal({
-                        title: "Successfully Registered!",
-                        icon: "success"
+                        title: "Login Successfully ! ",
+                        icon: "success",
                     }).then((value) => {
-                        window.location = "donarLogin.jsp";
+                        window.location = "template/admin/adminDashboard.jsp";
                     });
                 } else {
                     swal({
-                        title: "Error Occurred!",
+                        title: "Login Failed ! ",
                         text: "Please try again later.",
                         icon: "error"
                     });
-
+                    $('#exampleInputPassword1').val("");
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                console.log(jqXHR);
                 $('#login-btn').show();
-                $('#sign-btn').show();
                 $('#loader').hide();
                 swal({
-                    title: "Error Occurred!",
+                    title: "Error Occurred1!",
                     text: "Please try again later.",
                     icon: "error"
+                }).then((value) => {
+                    window.location = "errorPage.jsp"
                 });
             },
             processData: false,
             contentType: false
+
         });
     });
 });
