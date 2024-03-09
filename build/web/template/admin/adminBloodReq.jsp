@@ -16,9 +16,9 @@
     </head>
     <body>
         <%@include file="adminBase.jsp" %>
-        <div class="container" style="margin-left: 200px; margin-top: 75px;">
+        <div class="container" style="margin-left: 210px; margin-top: 75px;">
             <!--{% if requests %}-->
-            <H4 class="text-center" style="margin-top: 6rem;">BLOOD REQUIREMNET REQUESTS</H4><br>
+            <H4 class="text-center" style="margin-top: 6rem;">BLOOD REQUIREMENT REQUESTS</H4><br>
             <!--{% if message %}-->
             <h5 class="text-center d-block" style="color: red;"><!-- {{message}}--></h5>
             <!--{% else %}-->

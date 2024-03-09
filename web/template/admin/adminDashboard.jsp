@@ -16,7 +16,7 @@
     </head>
     <body>
         <%@include file="adminBase.jsp" %>
-        <div class="container" style="margin-left: 200px; margin-top: 75px;">
+        <div class="container" style="margin-left: 210px; margin-top: 75px;">
 
             <div class="row">
                 <div class="col-sm-3 my-3">

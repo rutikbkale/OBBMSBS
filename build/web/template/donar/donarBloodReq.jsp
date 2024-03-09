@@ -22,7 +22,7 @@
                     <div class="card">
                         <div class="card-header bg-red text-light text-center fs-5">
                             <i class="fas fa-arrow-right fa-3x"></i>&nbsp; 
-                            <p>Blood Request</p>
+                            <p>BLOOD REQUEST</p>
                         </div>
                         <div class="card-body">
 

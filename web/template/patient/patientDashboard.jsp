@@ -15,7 +15,7 @@
         <link href="../../static/css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <%@include file="donarBase.jsp" %>
+        <%@include file="patientBase.jsp" %>
         <div class="container"  style="margin-left: 210px; margin-top: 75px;">
             <div class="row">
                 <div class="col-sm-3">
