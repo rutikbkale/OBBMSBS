@@ -29,13 +29,11 @@
         </nav>
         <div class="asider">
             <ul class="list-group list-unstyled">
-                <li class="px-3 d-block py-4 fs-5"><a href="adminDashboard.jsp"><i class="fas fa-home"></i>&nbsp;Home</a></li>
-                <li class="px-3 d-block py-4 fs-5"><a href="adminDonarList.jsp"><i class="fas fa-user"></i>&nbsp;Donor</a></li>
-                <li class="px-3 d-block py-4 fs-5"><a href="adminPatientList.jsp"><i class="fas fa-user-injured"></i>&nbsp;Patient</a></li>
-                <li class="px-3 d-block py-4 fs-5"><a href="adminDonationReq.jsp"><i class="fas fa-hand-holding-medical"></i>&nbsp;Donations</a></li>
-                <li class="px-3 d-block py-4 fs-5"><a href="adminBloodReq.jsp"><i class="fas fa-sync-alt"></i>&nbsp;Blood Requests</a></li>
-                <li class="px-3 d-block py-4 fs-5"><a href="adminBloodReqHistory.jsp"><i class="fas fa-history"></i>&nbsp;Request History</a></li>
-                <li class="px-3 d-block py-4 fs-5"><a href="adminBloodStock.jsp"><i class="fas fa-hand-holding-water"></i>&nbsp;Blood Stock</a></li>
+                <li class="px-3 d-block py-4 fs-5"><a href="donarDashboard.jsp"><i class="fas fa-home"></i> Home</a></li>
+                <li class="px-3 d-block py-4 fs-5"><a href="donarBloodDonation.jsp"><i class="fas fa-hand-holding-medical"></i> Donate Blood</a></li>
+                <li class="px-3 d-block py-4 fs-5"><a href="donarBloodDonationHistory.jsp"><i class="fas fa-history"></i> Donation History</a></li>
+                <li class="px-3 d-block py-4 fs-5"><a href="donarBloodReq.jsp"><i class="fas fa-sync-alt"></i> Blood Request</a></li>
+                <li class="px-3 d-block py-4 fs-5"><a href="donarBloodReqHistory.jsp"><i class="fas fa-history"></i> Request History</a></li>
             </ul> 
         </div>
         <script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script>
@@ -54,12 +52,10 @@
                                     closeOnCancel: true
                                 }).then((result) => {
                                     if (result.value === true) {
-                                        window.location.href = '../../adminLogin.jsp'; 
+                                        window.location.href = '../../donarLogin.jsp';
                                     }
                                 });
                             }
         </script>
-
-
     </body>
 </html>

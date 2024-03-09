@@ -54,7 +54,7 @@
                                     closeOnCancel: true
                                 }).then((result) => {
                                     if (result.value === true) {
-                                        window.location.href = '../../adminLogin.jsp'; // Replace with your logout URL
+                                        window.location.href = '../../adminLogin.jsp'; 
                                     }
                                 });
                             }
