@@ -16,7 +16,7 @@
     </head>
     <body>
         <%@include file="donarBase.jsp" %>
-        <div class="container"  style="margin-left: 210px; margin-top: 75px;">
+        <div class="container"  style="margin-left: 220px; margin-top: 75px;">
             <div class="row">
                 <div class="col-sm-3">
                     <div class="card bg-light">

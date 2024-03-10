@@ -1,4 +1,6 @@
+<%@page import="com.helper.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,33 +24,31 @@
                 <thead class="bg-info t-white">
                     <tr>
                         <th scope="col">Name</th>
-                        <th scope="col">Profile</th>
-                        <th scope="col">Blood Group</th>
+                        <th scope="col">Address</th>
                         <th scope="col">Age</th>
-                        <th scope="col">Disease</th>
+                        <th scope="col">Blood Group</th>
                         <th scope="col">Mobile</th>
-                        <th class="text-right">Action</th>
                     </tr>
                 </thead>
-                <!--                <tbody>
-                                    {% for t in patients %}
-                                    <tr>
-                                        <td> {{t.get_name}}</td>
-                                        <td> <img src="{% static t.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
-                                        <td>{{t.bloodgroup}}</td>
-                                        <td>{{t.age}}</td>
-                                        <td>{{t.disease}}</td>
-                                        <td>{{t.mobile}}</td>
-                
-                                        <td class="text-right">
-                                            <button class="btn btn-primary badge-pill" style="width: 80px;"><a  style="text-decoration: none;color: white;" href="{% url 'update-patient' t.id  %}">EDIT</a> </button>
-                                            <button class="btn btn-danger badge-pill" style="width: 80px;"><a  style="text-decoration: none;color: white;" href="{% url 'delete-patient' t.id  %}">DELETE</a> </button>
-                                        </td>
-                                    </tr>
-                                    {% endfor %}
-                
-                                </tbody>-->
-
+                <tbody>
+                    <%
+                        Connection con = DBClass.getConnection();
+                        String query = "select fName, lName, address, dob, bloodgroup,mobno from patient_info_tb";
+                        Statement smt = con.createStatement();
+                        ResultSet set = smt.executeQuery(query);
+                        while (set.next()) {
+                            out.println("<tr>");
+                            String fName = set.getString("fName") + " " + set.getString("lName");
+                            out.println("<td>" + fName + "</td>");
+                            out.println("<td>" + set.getString("address") + "</td>");
+                            String dob = set.getString("dob");
+                            out.println("<td>" + AgeCalculator.getAge(dob) + "</td>");
+                            out.println("<td>" + set.getString("bloodgroup") + "</td>");
+                            out.println("<td>" + set.getString("mobno") + "</td>");
+                            out.println("</tr>");
+                        }
+                    %>
+                </tbody>
             </table>
         </div>
     </body>

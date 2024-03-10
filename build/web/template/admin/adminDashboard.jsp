@@ -1,4 +1,9 @@
+<%@page import="com.dao.BloodStock"%>
+<%@page import="com.helper.DBClass"%>
+<%@page import="java.sql.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%--<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>--%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,48 +26,48 @@
             <div class="row">
                 <div class="col-sm-3 my-3">
                     <div class="card bg-light">
-                        <div class="card-body">
+                        <div class="card-body d-flex justify-content-between mb-5">
                             <div class="blood">
                                 <h2>A+ <i class="fas fa-tint text-danger"></i></h2>
-                            </div><br><br>
+                            </div>
                             <div>
-                                <!--{{A1.unit}}-->
+                                <h4><%=BloodStock.getUnit("A+") + " ml"%></h4>
                             </div>                            
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-3 my-3">
                     <div class="card bg-light">
-                        <div class="card-body">
+                        <div class="card-body d-flex justify-content-between mb-5">
                             <div class="blood">
                                 <h2>B+ <i class="fas fa-tint text-danger"></i></h2>
-                            </div><br><br>
+                            </div>
                             <div>
-                                <!--{{B1.unit}}-->
+                                <h4><%=BloodStock.getUnit("B+") + " ml"%></h4>
                             </div>                            
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-3 my-3">
                     <div class="card bg-light">
-                        <div class="card-body">
+                        <div class="card-body d-flex justify-content-between mb-5">
                             <div class="blood">
                                 <h2>O+ <i class="fas fa-tint text-danger"></i></h2>
-                            </div><br><br>
+                            </div>
                             <div>
-                                <!--{{O1.unit}}-->
+                                <h4><%=BloodStock.getUnit("O+") + " ml"%></h4>
                             </div>                            
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-3 my-3">
                     <div class="card bg-light">
-                        <div class="card-body">
+                        <div class="card-body d-flex justify-content-between mb-5">
                             <div class="blood">
                                 <h2>AB+ <i class="fas fa-tint text-danger"></i></h2>
-                            </div><br><br>
+                            </div>
                             <div>
-                                <!--{{AB1.unit}}-->
+                                <h4><%=BloodStock.getUnit("AB+") + " ml"%></h4>
                             </div>                            
                         </div>
                     </div>
@@ -72,48 +77,48 @@
             <div class="row">
                 <div class="col-sm-3 my-3">
                     <div class="card bg-light">
-                        <div class="card-body">
+                        <div class="card-body d-flex justify-content-between mb-5">
                             <div class="blood">
                                 <h2>A- <i class="fas fa-tint text-danger"></i></h2>
-                            </div><br><br>
+                            </div>
                             <div>
-                                <!--{{A2.unit}}-->
+                                <h4><%=BloodStock.getUnit("A-") + " ml"%></h4>
                             </div>                            
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-3 my-3">
                     <div class="card bg-light">
-                        <div class="card-body">
+                        <div class="card-body d-flex justify-content-between mb-5">
                             <div class="blood">
                                 <h2>B- <i class="fas fa-tint text-danger"></i></h2>
-                            </div><br><br>
+                            </div>
                             <div>
-                                <!--{{B2.unit}}-->
+                                <h4><%=BloodStock.getUnit("B-") + " ml"%></h4>
                             </div>                            
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-3 my-3">
                     <div class="card bg-light">
-                        <div class="card-body">
+                        <div class="card-body d-flex justify-content-between mb-5">
                             <div class="blood">
                                 <h2>O- <i class="fas fa-tint text-danger"></i></h2>
-                            </div><br><br>
+                            </div>
                             <div>
-                                <!--{{O2.unit}}-->
+                                <h4><%=BloodStock.getUnit("O-") + " ml"%></h4>
                             </div>                            
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-3 my-3">
                     <div class="card bg-light">
-                        <div class="card-body">
+                        <div class="card-body d-flex justify-content-between mb-5">
                             <div class="blood">
                                 <h2>AB- <i class="fas fa-tint text-danger"></i></h2>
-                            </div><br><br>
+                            </div>
                             <div>
-                                <!--{{AB2.unit}}-->
+                                <h4><%=BloodStock.getUnit("AB-") + " ml"%></h4>
                             </div>                            
                         </div>
                     </div>
@@ -123,52 +128,60 @@
             <div class="row">
                 <div class="col-sm-3 my-3">
                     <div class="card bg-light">
-                        <div class="card-body">
+                        <div class="card-body d-flex justify-content-between mb-3">
                             <div class="blood">
                                 <i class="fas fa-users text-primary"></i>
-                            </div><br>
-                            <div>
-                                Total Donors <br>
-                                <!--{{totaldonors}}-->
-                            </div>                            
+                                <div class="mt-5">
+                                    Total Donors
+                                </div>
+                            </div>
+                            <div class="position-relative" style="top: 10px; right: 30px;">
+                                <h4>5</h4>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-3 my-3">
                     <div class="card bg-light">
-                        <div class="card-body">
+                        <div class="card-body d-flex justify-content-between mb-3">
                             <div class="blood">
                                 <i class="fas fa-spinner text-primary"></i>
-                            </div><br>
-                            <div>
-                                Total Requests <br>
-                                <!--{{totalrequest}}-->
-                            </div>                            
+                                <div class="mt-5">
+                                    Total Requests
+                                </div>
+                            </div> 
+                            <div class="position-relative" style="top: 10px; right: 30px;">
+                                <h4>5</h4>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-3 my-3">
                     <div class="card bg-light">
-                        <div class="card-body">
+                        <div class="card-body d-flex justify-content-between mb-3">
                             <div class="blood">
                                 <i class="far fa-check-circle text-primary"></i>
-                            </div><br>
-                            <div>
-                                Approved Requests <br>
-                                <!--{{totalapprovedrequest}}-->
-                            </div>                            
+                                <div class="mt-5">
+                                    Approved Requests
+                                </div>
+                            </div>    
+                            <div class="position-relative" style="top: 10px; right: 30px;">
+                                <h4>5</h4>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-3 my-3">
                     <div class="card bg-light">
-                        <div class="card-body">
+                        <div class="card-body d-flex justify-content-between mb-3">
                             <div class="blood">
                                 <i class="fas fa-tint xyz text-primary"></i>
-                            </div><br>
-                            <div>
-                                Total Blood Unit (in ml) <br>
-                                <!--{{totalbloodunit}}-->
+                                <div class="mt-5">
+                                    Total Blood Unit (in ml)
+                                </div>
+                            </div>
+                            <div class="position-relative" style="top: 10px; right: 30px;">
+                                <h4><%= BloodStock.getTotalUnit()%></h4>
                             </div>                            
                         </div>
                     </div>

@@ -34,6 +34,7 @@
                 <li class="px-3 d-block py-4 fs-5"><a href="patientBloodReqHistory.jsp"><i class="fas fa-history"></i> Request History</a></li>
             </ul> 
         </div>
+        <%@include file="../../footer.html" %>
         <script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script>
 
         <script>
