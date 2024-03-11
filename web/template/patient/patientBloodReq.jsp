@@ -28,7 +28,7 @@
                         </div>
                         <%
                             Patient currentPatient = (Patient) session.getAttribute("currentPatient");
-                            String fName =currentPatient.getfName()+" "+currentPatient.getlName();
+                            String fName = currentPatient.getfName() + " " + currentPatient.getlName();
                             String dob = currentPatient.getDate();
                             String bloodgroup = currentPatient.getBloodgroup();
                         %>

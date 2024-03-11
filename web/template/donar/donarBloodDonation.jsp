@@ -1,3 +1,5 @@
+<%@page import="com.entities.Donar"%>
+<%@page import="com.helper.AgeCalculator"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,30 +26,34 @@
                             <i class="fas fa-hand-holding-medical fa-3x"></i>&nbsp; 
                             <p>Blood Donation</p>
                         </div>
+                        <%
+                            Donar currentDonar = (Donar) session.getAttribute("currentDonar");
+                            String fName = currentDonar.getfName() + " " + currentDonar.getlName();
+                            String dob = currentDonar.getDate();
+                            String bloodgroup = currentDonar.getBloodgroup();
+                            int age = AgeCalculator.getAge(dob);
+                        %>
                         <div class="card-body">
 
-                            <form class="row g-3" action="donarSignup" method="post" id="donarForm">
+                            <form class="row g-3" action="../../donarBloodDonation" method="POST" id="donarForm">
+                                <input type="hidden" name="dName" value="<%=fName%>">
+                                <input type="hidden" name="bloodgroup" value="<%= bloodgroup%>">
+                                <input type="hidden" name="age" value="<%=age%>">
                                 <div class="col-12">
-                                    <label for="inputState" class="form-label">Blood Group</label>
-                                    <select name="bloodgroup" class="form-select form-control">
-                                        <option selected="selected">Choose option</option>
-                                        <option>O+</option>
-                                        <option>O-</option>
-                                        <option>A+</option>
-                                        <option>A-</option>
-                                        <option>B+</option>
-                                        <option>B-</option>
-                                        <option>AB+</option>
-                                        <option>AB-</option>
-                                    </select>
+                                    <label for="dName" class="form-label">Donar Name</label>
+                                    <input type="text" class="form-control" id="dName" name="dName" value="<%=fName%>" disabled="disabled">
                                 </div>
                                 <div class="col-12">
+                                    <label for="bloodgroup" class="form-label">Blood Group</label>
+                                    <input type="text" class="form-control" id="bloodgroup" name="bloodgroup" value="<%= bloodgroup%>" disabled="disabled">
+                                </div>  
+                                <div class="col-12">
                                     <label for="unit" class="form-label">Unit (in ml)</label>
-                                    <input type="text" class="form-control" id="unit" name="unit">
+                                    <input type="number" class="form-control" id="unit" name="unit">
                                 </div>
                                 <div class="col-12">
                                     <label for="age" class="form-label">Donar Age</label>
-                                    <input type="text" class="form-control" id="age" name="age" disabled="disabled">
+                                    <input type="text" class="form-control" id="age" name="age" value="<%=age%>" disabled="disabled">
                                 </div>
                                 <div class="col-12">
                                     <label for="disease" class="form-label">Disease (if any)</label>
@@ -65,5 +71,10 @@
                 </div>
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <!--<script src="../../static/js/donarDonation.js"></script>-->
     </body>
 </html>

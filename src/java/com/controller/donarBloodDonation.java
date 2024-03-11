@@ -1,7 +1,7 @@
 package com.controller;
 
-import com.dao.DonarDao;
-import com.entities.Donar;
+import com.dao.DonarDonationDao;
+import com.entities.DonarDonation;
 import com.helper.DBClass;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,33 +12,37 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-@MultipartConfig
-public class donarLogin extends HttpServlet {
+//@MultipartConfig
+public class donarBloodDonation extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            Thread.sleep(3000);
-            String mobno = request.getParameter("mobno");
-            String password = request.getParameter("password");
+//            Thread.sleep(2000);
+            // fetching information from donar
 
-            DonarDao dao = new DonarDao(DBClass.getConnection());
+            String dName = request.getParameter("dName");
+            String bloodgroup = request.getParameter("bloodgroup");
+            int unit = Integer.parseInt(request.getParameter("unit"));
+            int age = Integer.parseInt(request.getParameter("age"));
+            String disease = request.getParameter("disease");
 
-            Donar donar = dao.getVerifiedDonar(mobno, password);
+            DonarDonation donation = new DonarDonation(dName, bloodgroup, unit, age, disease);
 
-            if (donar == null) {
-                response.sendRedirect("errorPage.jsp");
-            } else {
-                HttpSession session = request.getSession();
-                session.setAttribute("currentDonar", donar);
+            DonarDonationDao dao = new DonarDonationDao(DBClass.getConnection());
+
+            if (dao.insertDonarDonation(donation)) {
                 out.print("done");
+            } else {
+                out.print("Error");
             }
-        } catch (InterruptedException ex) {
-            Logger.getLogger(donarLogin.class.getName()).log(Level.SEVERE, null, ex);
+
         }
+//catch (InterruptedException ex) {
+//            Logger.getLogger(donarBloodDonation.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

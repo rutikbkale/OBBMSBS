@@ -1,3 +1,5 @@
+<%@page import="com.helper.AgeCalculator"%>
+<%@page import="com.entities.Donar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,35 +26,31 @@
                             <i class="fas fa-arrow-right fa-3x"></i>&nbsp; 
                             <p>BLOOD REQUEST</p>
                         </div>
+                        <%
+                            Donar currentDonar = (Donar) session.getAttribute("currentDonar");
+                            String fName = currentDonar.getfName() + " " + currentDonar.getlName();
+                            String dob = currentDonar.getDate();
+                            String bloodgroup = currentDonar.getBloodgroup();
+                        %>
                         <div class="card-body">
 
                             <form class="row g-3" action="donarSignup" method="post" id="donarForm">
                                 <div class="col-12">
                                     <label for="pName" class="form-label">Patient Name</label>
-                                    <input type="text" class="form-control" id="pName" name="pName">
+                                    <input type="text" class="form-control" id="pName" name="pName" value="<%=fName%>" disabled="disabled">
                                 </div>
                                 <div class="col-12">
-                                    <label for="dob" class="form-label">Date of Birth</label>
-                                    <input type="date" class="form-control" id="dob" name="dob">
+                                    <label for="age" class="form-label">Age</label>
+                                    <input type="text" class="form-control" id="age" name="age" value="<%= AgeCalculator.getAge(dob)%>" disabled="disabled">
                                 </div>
                                 <div class="col-12">
                                     <label for="reason" class="form-label">Reason</label>
                                     <input type="text" class="form-control" id="reason" name="reason">
                                 </div>
                                 <div class="col-12">
-                                    <label for="inputState" class="form-label">Blood Group</label>
-                                    <select name="bloodgroup" class="form-select form-control">
-                                        <option selected="selected">Choose option</option>
-                                        <option>O+</option>
-                                        <option>O-</option>
-                                        <option>A+</option>
-                                        <option>A-</option>
-                                        <option>B+</option>
-                                        <option>B-</option>
-                                        <option>AB+</option>
-                                        <option>AB-</option>
-                                    </select>
-                                </div>
+                                    <label for="bloodgroup" class="form-label">Blood Group</label>
+                                    <input type="text" class="form-control" id="bloodgroup" name="bloodgroup" value="<%= bloodgroup%>" disabled="disabled">
+                                </div>    
                                 <div class="col-12">
                                     <label for="unit" class="form-label">Unit (in ml)</label>
                                     <input type="text" class="form-control" id="unit" name="unit">

@@ -25,7 +25,7 @@
                         <th scope="col">Patient Age</th>
                         <th scope="col">Reason</th>
                         <th scope="col">Blood Group</th>
-                        <th scope="col">Unit</th>
+                        <th scope="col">Unit(in ml)</th>
                         <th scope="col">Date</th>
                         <th scope="col">Status</th>
 

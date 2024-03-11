@@ -22,10 +22,10 @@
                 <thead class="bg-info t-white">
                     <tr>
                         <th scope="col">Donor Name</th>
-                        <th scope="col">Disease</th>
-                        <th scope="col">Age</th>
                         <th scope="col">Blood Group</th>
                         <th scope="col">Unit (in ml)</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Disease</th>
                         <th scope="col">Request Date</th>
                         <th scope="col">Status</th>
                         <th class="text-right">Action</th>

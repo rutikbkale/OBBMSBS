@@ -21,10 +21,11 @@
             <table class="table table-hover table-bordered table-striped">
                 <thead class="bg-info t-white">
                     <tr>
+                        <th scope="col">Donar Name</th>
+                        <th scope="col">Blood Group</th>
+                        <th scope="col">Unit (in ml)</th>
                         <th scope="col">Donor Age</th>
                         <th scope="col">Disease (if any)</th>
-                        <th scope="col">Blood Group</th>
-                        <th scope="col">Unit</th>
                         <th scope="col">Date</th>
                         <th scope="col">Status</th>
 

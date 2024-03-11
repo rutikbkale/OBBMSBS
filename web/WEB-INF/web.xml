@@ -24,6 +24,10 @@
         <servlet-name>bloodStockUpdater</servlet-name>
         <servlet-class>com.controller.bloodStockUpdater</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>donarBloodDonation</servlet-name>
+        <servlet-class>com.controller.donarBloodDonation</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>patientSignup</servlet-name>
         <url-pattern>/patientSignup</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>bloodStockUpdater</servlet-name>
         <url-pattern>/bloodStockUpdater</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>donarBloodDonation</servlet-name>
+        <url-pattern>/donarBloodDonation</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
