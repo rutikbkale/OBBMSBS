@@ -13,23 +13,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//@MultipartConfig
+@MultipartConfig
 public class donarBloodDonation extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-//            Thread.sleep(2000);
+            Thread.sleep(2000);
             // fetching information from donar
 
+            int id = Integer.parseInt(request.getParameter("id"));
             String dName = request.getParameter("dName");
             String bloodgroup = request.getParameter("bloodgroup");
             int unit = Integer.parseInt(request.getParameter("unit"));
             int age = Integer.parseInt(request.getParameter("age"));
             String disease = request.getParameter("disease");
-
-            DonarDonation donation = new DonarDonation(dName, bloodgroup, unit, age, disease);
+            out.print(id);
+            DonarDonation donation = new DonarDonation(id, dName, bloodgroup, unit, age, disease);
 
             DonarDonationDao dao = new DonarDonationDao(DBClass.getConnection());
 
@@ -39,10 +40,9 @@ public class donarBloodDonation extends HttpServlet {
                 out.print("Error");
             }
 
+        } catch (InterruptedException ex) {
+            Logger.getLogger(donarBloodDonation.class.getName()).log(Level.SEVERE, null, ex);
         }
-//catch (InterruptedException ex) {
-//            Logger.getLogger(donarBloodDonation.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

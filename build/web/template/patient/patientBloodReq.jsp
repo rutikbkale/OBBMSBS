@@ -1,5 +1,6 @@
 <%@page import="com.entities.Patient"%>
 <%@page import="com.helper.*"%>
+<%@page import="java.sql.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -31,10 +32,15 @@
                             String fName = currentPatient.getfName() + " " + currentPatient.getlName();
                             String dob = currentPatient.getDate();
                             String bloodgroup = currentPatient.getBloodgroup();
+                            int patient_id = IdProvider.getPatientId(currentPatient);
                         %>
                         <div class="card-body">
 
-                            <form class="row g-3" action="donarSignup" method="post" id="donarForm">
+                            <form class="row g-3" action="../../patientBloodRequest" method="post" id="patientForm">
+                                <input type="hidden" name="pName" value="<%=fName%>">
+                                <input type="hidden" name="age" value="<%= AgeCalculator.getAge(dob)%>">
+                                <input type="hidden" name="bloodgroup" value="<%= bloodgroup%>">
+                                <input type="hidden" name="patient_id" value="<%= patient_id%>">
                                 <div class="col-12">
                                     <label for="pName" class="form-label">Patient Name</label>
                                     <input type="text" class="form-control" id="pName" name="pName" value="<%=fName%>" disabled="disabled">
@@ -68,5 +74,10 @@
                 </div>
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="../../static/js/patientRequest.js"></script>
     </body>
 </html>

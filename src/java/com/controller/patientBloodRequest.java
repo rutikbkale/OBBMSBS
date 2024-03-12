@@ -1,41 +1,46 @@
 package com.controller;
 
-import com.dao.BloodStock;
+import com.dao.PatientDao;
+import com.dao.PatientRequestDao;
+import com.entities.PatientRequest;
 import com.helper.DBClass;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.annotation.MultipartConfig;
 
 @MultipartConfig
-public class bloodStockUpdater extends HttpServlet {
+public class patientBloodRequest extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             Thread.sleep(2000);
+            String pName = request.getParameter("pName");
+            int age = Integer.parseInt(request.getParameter("age"));
+            String reason = request.getParameter("reason");
             String bloodgroup = request.getParameter("bloodgroup");
             int unit = Integer.parseInt(request.getParameter("unit"));
+            int patient_id = Integer.parseInt(request.getParameter("patient_id"));
 
-            Connection con = DBClass.getConnection();
-            int total_unit = unit + BloodStock.getUnit(bloodgroup);
-            String query = "update blood_stock_tb set unit='" + total_unit + "' where bloodgroup ='" + bloodgroup + "'";
-            Statement smt = con.createStatement();
-            int c=smt.executeUpdate(query);
-            if(c>0){
+            PatientRequest prequest = new PatientRequest(pName, age, reason, bloodgroup, unit, patient_id);
+
+            PatientRequestDao dao = new PatientRequestDao(DBClass.getConnection());
+
+            if (dao.insertPatientReq(prequest)) {
                 out.print("done");
+            } else {
+                out.print("Error");
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(bloodStockUpdater.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(bloodStockUpdater.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        catch (InterruptedException ex) {
+            Logger.getLogger(patientBloodRequest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

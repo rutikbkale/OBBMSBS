@@ -28,6 +28,10 @@
         <servlet-name>donarBloodDonation</servlet-name>
         <servlet-class>com.controller.donarBloodDonation</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>patientBloodRequest</servlet-name>
+        <servlet-class>com.controller.patientBloodRequest</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>patientSignup</servlet-name>
         <url-pattern>/patientSignup</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>donarBloodDonation</servlet-name>
         <url-pattern>/donarBloodDonation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>patientBloodRequest</servlet-name>
+        <url-pattern>/patientBloodRequest</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

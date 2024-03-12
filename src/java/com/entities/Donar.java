@@ -2,6 +2,7 @@ package com.entities;
 
 public class Donar {
 
+    private int id;
     private String fName;
     private String lName;
     private String address;
@@ -25,7 +26,15 @@ public class Donar {
         this.password = password;
     }
 
+    public int getId() {
+        return id;
+    }
+
     // getters & setters
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getfName() {
         return fName;
     }

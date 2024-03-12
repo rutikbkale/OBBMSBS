@@ -1,3 +1,6 @@
+<%@page import="com.helper.*"%>
+<%@page import="com.entities.Patient"%>
+<%@page import="java.sql.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -31,31 +34,35 @@
 
                     </tr>
                 </thead>
-                <!--                <tbody>
-                                    {% for t in blood_request %}
-                                    <tr>
-                                        <td> {{t.patient_name}}</td>
-                
-                                        <td>{{t.patient_age}}</td>
-                                        <td>{{t.reason}}</td>
-                                        <td>{{t.bloodgroup}}</td>
-                                        <td>{{t.unit}}</td>
-                                        <td>{{t.date}}</td>
-                                        {% if t.status == 'Approved' %}
-                                        <td><span class="label warning"> Approved</span></td>
-                
-                                        {% elif t.status == 'Rejected' %}
-                                        <td><span class="label success">Rejected</span></td>
-                                        {% else %}
-                                        <td><span style="color: white;margin-left: 0px;" class="label info">Pending</span></td>
-                                        {% endif %}
-                
-                
-                                    </tr>
-                                    {% endfor %}
-                
-                                </tbody>-->
-
+                <%
+                    Patient currentPatient = (Patient) session.getAttribute("currentPatient");
+                    int id = IdProvider.getPatientId(currentPatient);
+                    String query = "select name, age, reason, bloodgroup, unit, reqdate, status from blood_request_list_tb where patient_id ='" + id + "'";
+                    Connection con = DBClass.getConnection();
+                    Statement smt = con.createStatement();
+                    ResultSet set = smt.executeQuery(query);
+                %>
+                <tbody>
+                    <%
+                        while (set.next()) {
+                            out.println("<tr>");
+                            out.println("<td>" + set.getString("name") + "</td>");
+                            out.println("<td>" + set.getInt("age") + "</td>");
+                            out.println("<td>" + set.getString("reason") + "</td>");
+                            out.println("<td>" + set.getString("bloodgroup") + "</td>");
+                            out.println("<td>" + set.getInt("unit") + "</td>");
+                            out.println("<td>" + set.getDate("reqdate") + "</td>");
+                            if (set.getString("status") == "Approved") {
+                                out.println("<td><span class='badge bg-success fs-5'>Approved</span></td>");
+                            } else if (set.getString("status") == "Rejected") {
+                                out.println("<td><span class='badge bg-danger fs-5'>Rejected</span></td>");
+                            } else {
+                                out.println("<td><span class='badge bg-warning fs-5'>Pending</span></td>");
+                            }
+                            out.println("</tr>");
+                        }
+                    %>
+                </tbody>
             </table>
         </div>
     </body>

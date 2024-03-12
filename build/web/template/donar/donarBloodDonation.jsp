@@ -28,6 +28,7 @@
                         </div>
                         <%
                             Donar currentDonar = (Donar) session.getAttribute("currentDonar");
+                            int id = currentDonar.getId();
                             String fName = currentDonar.getfName() + " " + currentDonar.getlName();
                             String dob = currentDonar.getDate();
                             String bloodgroup = currentDonar.getBloodgroup();
@@ -36,6 +37,7 @@
                         <div class="card-body">
 
                             <form class="row g-3" action="../../donarBloodDonation" method="POST" id="donarForm">
+                                <input type="hidden" name="id" value="<%=id%>">
                                 <input type="hidden" name="dName" value="<%=fName%>">
                                 <input type="hidden" name="bloodgroup" value="<%= bloodgroup%>">
                                 <input type="hidden" name="age" value="<%=age%>">
@@ -75,6 +77,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <!--<script src="../../static/js/donarDonation.js"></script>-->
+        <script src="../../static/js/donarDonation.js"></script>
     </body>
 </html>
