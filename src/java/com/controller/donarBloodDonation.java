@@ -21,15 +21,15 @@ public class donarBloodDonation extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             Thread.sleep(2000);
-            // fetching information from donar
 
+            // fetching information from donar
             int id = Integer.parseInt(request.getParameter("id"));
             String dName = request.getParameter("dName");
             String bloodgroup = request.getParameter("bloodgroup");
             int unit = Integer.parseInt(request.getParameter("unit"));
             int age = Integer.parseInt(request.getParameter("age"));
             String disease = request.getParameter("disease");
-            out.print(id);
+
             DonarDonation donation = new DonarDonation(id, dName, bloodgroup, unit, age, disease);
 
             DonarDonationDao dao = new DonarDonationDao(DBClass.getConnection());

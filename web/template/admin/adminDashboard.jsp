@@ -28,10 +28,10 @@
                     <div class="card bg-light">
                         <div class="card-body d-flex justify-content-between mb-5">
                             <div class="blood">
-                                <h2>A+ <i class="fas fa-tint text-danger"></i></h2>
+                                <h4>A+ <i class="fas fa-tint text-danger"></i></h4>
                             </div>
                             <div>
-                                <h4><%=BloodStock.getUnit("A+") + " ml"%></h4>
+                                <h2><%=BloodStock.getUnit("A+") + " ml"%></h2>
                             </div>                            
                         </div>
                     </div>
@@ -40,10 +40,10 @@
                     <div class="card bg-light">
                         <div class="card-body d-flex justify-content-between mb-5">
                             <div class="blood">
-                                <h2>B+ <i class="fas fa-tint text-danger"></i></h2>
+                                <h4>B+ <i class="fas fa-tint text-danger"></i></h4>
                             </div>
                             <div>
-                                <h4><%=BloodStock.getUnit("B+") + " ml"%></h4>
+                                <h2><%=BloodStock.getUnit("B+") + " ml"%></h2>
                             </div>                            
                         </div>
                     </div>
@@ -52,10 +52,10 @@
                     <div class="card bg-light">
                         <div class="card-body d-flex justify-content-between mb-5">
                             <div class="blood">
-                                <h2>O+ <i class="fas fa-tint text-danger"></i></h2>
+                                <h4>O+ <i class="fas fa-tint text-danger"></i></h4>
                             </div>
                             <div>
-                                <h4><%=BloodStock.getUnit("O+") + " ml"%></h4>
+                                <h2><%=BloodStock.getUnit("O+") + " ml"%></h2>
                             </div>                            
                         </div>
                     </div>
@@ -64,10 +64,10 @@
                     <div class="card bg-light">
                         <div class="card-body d-flex justify-content-between mb-5">
                             <div class="blood">
-                                <h2>AB+ <i class="fas fa-tint text-danger"></i></h2>
+                                <h4>AB+ <i class="fas fa-tint text-danger"></i></h4>
                             </div>
                             <div>
-                                <h4><%=BloodStock.getUnit("AB+") + " ml"%></h4>
+                                <h2><%=BloodStock.getUnit("AB+") + " ml"%></h2>
                             </div>                            
                         </div>
                     </div>
@@ -79,10 +79,10 @@
                     <div class="card bg-light">
                         <div class="card-body d-flex justify-content-between mb-5">
                             <div class="blood">
-                                <h2>A- <i class="fas fa-tint text-danger"></i></h2>
+                                <h4>A- <i class="fas fa-tint text-danger"></i></h4>
                             </div>
                             <div>
-                                <h4><%=BloodStock.getUnit("A-") + " ml"%></h4>
+                                <h2><%=BloodStock.getUnit("A-") + " ml"%></h2>
                             </div>                            
                         </div>
                     </div>
@@ -91,10 +91,10 @@
                     <div class="card bg-light">
                         <div class="card-body d-flex justify-content-between mb-5">
                             <div class="blood">
-                                <h2>B- <i class="fas fa-tint text-danger"></i></h2>
+                                <h4>B- <i class="fas fa-tint text-danger"></i></h4>
                             </div>
                             <div>
-                                <h4><%=BloodStock.getUnit("B-") + " ml"%></h4>
+                                <h2><%=BloodStock.getUnit("B-") + " ml"%></h2>
                             </div>                            
                         </div>
                     </div>
@@ -103,10 +103,10 @@
                     <div class="card bg-light">
                         <div class="card-body d-flex justify-content-between mb-5">
                             <div class="blood">
-                                <h2>O- <i class="fas fa-tint text-danger"></i></h2>
+                                <h4>O- <i class="fas fa-tint text-danger"></i></h4>
                             </div>
                             <div>
-                                <h4><%=BloodStock.getUnit("O-") + " ml"%></h4>
+                                <h2><%=BloodStock.getUnit("O-") + " ml"%></h2>
                             </div>                            
                         </div>
                     </div>
@@ -115,10 +115,10 @@
                     <div class="card bg-light">
                         <div class="card-body d-flex justify-content-between mb-5">
                             <div class="blood">
-                                <h2>AB- <i class="fas fa-tint text-danger"></i></h2>
+                                <h4>AB- <i class="fas fa-tint text-danger"></i></h4>
                             </div>
                             <div>
-                                <h4><%=BloodStock.getUnit("AB-") + " ml"%></h4>
+                                <h2><%=BloodStock.getUnit("AB-") + " ml"%></h2>
                             </div>                            
                         </div>
                     </div>

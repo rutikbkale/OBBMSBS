@@ -1,3 +1,4 @@
+<%@page import="com.helper.IdProvider"%>
 <%@page import="com.entities.Donar"%>
 <%@page import="com.helper.AgeCalculator"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -28,7 +29,7 @@
                         </div>
                         <%
                             Donar currentDonar = (Donar) session.getAttribute("currentDonar");
-                            int id = currentDonar.getId();
+                            int id = IdProvider.getDonarId(currentDonar);
                             String fName = currentDonar.getfName() + " " + currentDonar.getlName();
                             String dob = currentDonar.getDate();
                             String bloodgroup = currentDonar.getBloodgroup();

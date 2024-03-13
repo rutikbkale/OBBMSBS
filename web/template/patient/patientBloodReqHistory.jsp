@@ -31,7 +31,6 @@
                         <th scope="col">Unit</th>
                         <th scope="col">Date</th>
                         <th scope="col">Status</th>
-
                     </tr>
                 </thead>
                 <%
