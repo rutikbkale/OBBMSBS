@@ -26,15 +26,13 @@
             <table class="table table-hover table-bordered table-striped">
                 <thead class="bg-info t-white">
                     <tr>
-                        <th scope="col">Patient Name</th>
-                        <th scope="col">Age</th>
-
-                        <th scope="col">Reason</th>
-                        <th scope="col">Blood Group</th>
-                        <th scope="col">Unit (in ml)</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Stock Status</th>
+                        <th scope="col" class="text-center">Patient Name</th>
+                        <th scope="col" class="text-center">Age</th>
+                        <th scope="col" class="text-center">Reason</th>
+                        <th scope="col" class="text-center">Blood Group</th>
+                        <th scope="col" class="text-center">Unit (in ml)</th>
+                        <th scope="col" class="text-center">Date</th>
+                        <th scope="col" class="text-center">Stock Status</th>
 
                     </tr>
                 </thead>

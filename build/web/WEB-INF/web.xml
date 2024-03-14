@@ -32,6 +32,14 @@
         <servlet-name>patientBloodRequest</servlet-name>
         <servlet-class>com.controller.patientBloodRequest</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>bloodDonationStatus</servlet-name>
+        <servlet-class>com.controller.bloodDonationStatus</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>bloodRequestStatus</servlet-name>
+        <servlet-class>com.controller.bloodRequestStatus</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>patientSignup</servlet-name>
         <url-pattern>/patientSignup</url-pattern>
@@ -63,6 +71,14 @@
     <servlet-mapping>
         <servlet-name>patientBloodRequest</servlet-name>
         <url-pattern>/patientBloodRequest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>bloodDonationStatus</servlet-name>
+        <url-pattern>/bloodDonationStatus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>bloodRequestStatus</servlet-name>
+        <url-pattern>/bloodRequestStatus</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

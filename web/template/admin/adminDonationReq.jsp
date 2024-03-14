@@ -1,4 +1,6 @@
+<%@page import="com.helper.DBClass"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,42 +23,36 @@
             <table class="table table-hover table-bordered table-striped">
                 <thead class="bg-info t-white">
                     <tr>
-                        <th scope="col">Donor Name</th>
-                        <th scope="col">Blood Group</th>
-                        <th scope="col">Unit (in ml)</th>
-                        <th scope="col">Age</th>
-                        <th scope="col">Disease</th>
-                        <th scope="col">Request Date</th>
-                        <th scope="col">Status</th>
-                        <th class="text-right">Action</th>
+                        <th scope="col" class="text-center">Donor Name</th>
+                        <th scope="col" class="text-center">Blood Group</th>
+                        <th scope="col" class="text-center">Unit (in ml)</th>
+                        <th scope="col" class="text-center">Age</th>
+                        <th scope="col" class="text-center">Disease</th>
+                        <th scope="col" class="text-center">Request Date</th>
+                        <th class="text-center">Action</th>
                     </tr>
                 </thead>
-                <!--                <tbody>
-                                    {% for t in donations %}
-                                    <tr>
-                                                                <td> {{t.donor}}</td>
-                                                                <td> {{t.disease}}</td>
-                                                                <td> {{t.age}}</td>
-                                                                <td>{{t.bloodgroup}}</td>
-                                                                <td>{{t.unit}}</td>
-                                                                <td>{{t.date}}</td>
-                                                                <td>{{t.status}}</td>
-                                        {% if t.status == 'Pending' %}
-                                        <td class="text-right">
-                                            <button class="btn btn-primary badge-pill" style="width: 100px;"><a  style="text-decoration: none;color: white;" href="{% url 'approve-donation' t.id  %}">APPROVE</a> </button>
-                                            <button class="btn btn-danger badge-pill" style="width: 80px;"><a  style="text-decoration: none;color: white;" href="{% url 'reject-donation' t.id  %}">REJECT</a> </button>
-                                        </td>
-                                        {% elif  t.status == 'Approved' %}
-                                        <td><span class="label warning">{{t.unit}} Unit Added To Stock</span></td>
-                
-                                        {% else %}
-                                        <td><span class="label danger">0 Unit Added To Stock</span></td> 
-                                        {% endif %}
-                                    </tr>
-                                    {% endfor %}
-                
-                                </tbody>-->
+                <tbody>
+                    <%
+                        Connection con = DBClass.getConnection();
+                        Statement smt = con.createStatement();
+                        String query = "select id, name, bloodgroup, unit, age, disease, reqdate from blood_donation_list_tb where status='Pending'";
+                        ResultSet set = smt.executeQuery(query);
 
+                        while (set.next()) {
+                            out.println("<tr>");
+                            int id = set.getInt("id");
+                            out.println("<td class='text-center'>" + set.getString("name") + "</td>");
+                            out.println("<td class='text-center'>" + set.getString("bloodgroup") + "</td>");
+                            out.println("<td class='text-center'>" + set.getInt("unit") + "</td>");
+                            out.println("<td class='text-center'>" + set.getInt("age") + "</td>");
+                            out.println("<td class='text-center'>" + set.getString("disease") + "</td>");
+                            out.println("<td class='text-center'>" + set.getDate("reqdate") + "</td>");
+                            out.println("<td class='d-flex justify-content-evenly'><a class='btn btn-success badge-pill' href='../../bloodDonationStatus?id=" + id + "&status=Approved'>Approve</a><a class='btn btn-danger badge-pill' href='../../bloodDonationStatus?id=" + id + "&status=Rejected'>Reject</a></td>");
+                            out.println("</tr>");
+                        }
+                    %>
+                </tbody>
             </table>
         </div>
     </body>

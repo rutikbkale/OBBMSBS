@@ -1,4 +1,6 @@
+<%@page import="com.helper.DBClass"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,56 +19,43 @@
     <body>
         <%@include file="adminBase.jsp" %>
         <div class="container" style="margin-left: 210px; margin-top: 75px;">
-            <!--{% if requests %}-->
             <H4 class="text-center" style="margin-top: 6rem;">BLOOD REQUIREMENT REQUESTS</H4><br>
-            <!--{% if message %}-->
-            <h5 class="text-center d-block" style="color: red;"><!-- {{message}}--></h5>
-            <!--{% else %}-->
+            <h5 class="text-center d-block" style="color: red;"></h5>
 
-            <!--{% endif %}-->
             <table class="table table-hover table-bordered table-striped">
                 <thead class="bg-info t-white">
                     <tr>
-                        <th scope="col">Patient Name</th>
-                        <th scope="col">Age</th>
-                        <th scope="col">Reason</th>
-                        <th scope="col">Blood Group</th>
-                        <th scope="col">Unit (in ml)</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Status</th>
-                        <th class="text-right">Action</th>
+                        <th scope="col" class="text-center">Patient Name</th>
+                        <th scope="col" class="text-center">Age</th>
+                        <th scope="col" class="text-center">Reason</th>
+                        <th scope="col" class="text-center">Blood Group</th>
+                        <th scope="col" class="text-center">Unit (in ml)</th>
+                        <th scope="col" class="text-center">Date</th>
+                        <th class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!--                    {% for t in requests %}
-                                        <tr>
-                                            <td> {{t.patient_name}}</td>
-                                            <td>{{t.patient_age}}</td>
-                    
-                    
-                                            <td>{{t.reason}}</td>
-                                            <td>{{t.bloodgroup}}</td>
-                                            <td>{{t.unit}}</td>
-                                            <td>{{t.date}}</td>
-                                            <td>{{t.status}}</td>
-                    
-                    
-                                            <td class="text-right">
-                    
-                                                <button class="btn btn-primary badge-pill" style="width: 100px;"><a  style="text-decoration: none;color: white;" href="{% url 'update-approve-status' t.id  %}">Approve</a> </button>
-                                                <button class="btn btn-danger badge-pill" style="width: 80px;"><a  style="text-decoration: none;color: white;" href="{% url 'update-reject-status' t.id  %}">Reject</a> </button>
-                    
-                                            </td>
-                                        </tr>
-                                        {% endfor %}
-                    
-                                    </tbody>-->
+                    <%
+                        Connection con = DBClass.getConnection();
+                        Statement smt = con.createStatement();
+                        String query = "select id, name, age, reason, bloodgroup, unit, reqdate from blood_request_list_tb where status='Pending'";
+                        ResultSet set = smt.executeQuery(query);
 
+                        while (set.next()) {
+                            out.println("<tr>");
+                            int id = set.getInt("id");
+                            out.println("<td class='text-center'>" + set.getString("name") + "</td>");
+                            out.println("<td class='text-center'>" + set.getInt("age") + "</td>");
+                            out.println("<td class='text-center'>" + set.getString("reason") + "</td>");
+                            out.println("<td class='text-center'>" + set.getString("bloodgroup") + "</td>");
+                            out.println("<td class='text-center'>" + set.getInt("unit") + "</td>");
+                            out.println("<td class='text-center'>" + set.getDate("reqdate") + "</td>");
+                            out.println("<td class='d-flex justify-content-evenly'><a class='btn btn-success badge-pill' href='../../bloodRequestStatus?id=" + id + "&status=Approved'>Approve</a><a class='btn btn-danger badge-pill' href='../../bloodRequestStatus?id=" + id + "&status=Rejected'>Reject</a></td>");
+                            out.println("</tr>");
+                        }
+                    %>
+                </tbody>
             </table>
-            <!--            {% else %}
-                        <h5>No Blood Request By Patient / Donor !</h5>
-                        {% endif %}-->
-
         </div>
     </body>
 </html>

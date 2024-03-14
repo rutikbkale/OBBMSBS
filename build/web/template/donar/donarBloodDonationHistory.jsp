@@ -24,40 +24,40 @@
             <table class="table table-hover table-bordered table-striped">
                 <thead class="bg-info t-white">
                     <tr>
-                        <th scope="col">Donar Name</th>
-                        <th scope="col">Blood Group</th>
-                        <th scope="col">Unit (in ml)</th>
-                        <th scope="col">Donor Age</th>
-                        <th scope="col">Disease (if any)</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Status</th>
+                        <th scope="col" class ='text-center'>Donar Name</th>
+                        <th scope="col" class ='text-center'>Blood Group</th>
+                        <th scope="col" class ='text-center'>Unit (in ml)</th>
+                        <th scope="col" class ='text-center'>Donor Age</th>
+                        <th scope="col" class ='text-center'>Disease (if any)</th>
+                        <th scope="col" class ='text-center'>Date</th>
+                        <th scope="col" class ='text-center'>Status</th>
 
                     </tr>
                 </thead>
-                <%
-                    Donar currentDonar = (Donar) session.getAttribute("currentDonar");
-                    int id = IdProvider.getDonarId(currentDonar);
-                    String query = "select name, bloodgroup, unit, age, disease, reqdate, status from blood_donation_list_tb where donar_id ='" + id + "'";
-                    Connection con = DBClass.getConnection();
-                    Statement smt = con.createStatement();
-                    ResultSet set = smt.executeQuery(query);
-                %>
                 <tbody>
                     <%
+                        Donar currentDonar = (Donar) session.getAttribute("currentDonar");
+                        int id = IdProvider.getDonarId(currentDonar);
+                        String query = "select name, bloodgroup, unit, age, disease, reqdate, status from blood_donation_list_tb where donar_id ='" + id + "'";
+                        Connection con = DBClass.getConnection();
+                        Statement smt = con.createStatement();
+                        ResultSet set = smt.executeQuery(query);
+
                         while (set.next()) {
-                            out.println("<tr>");
-                            out.println("<td>" + set.getString("name") + "</td>");
-                            out.println("<td>" + set.getString("bloodgroup") + "</td>");
-                            out.println("<td>" + set.getInt("unit") + "</td>");
-                            out.println("<td>" + set.getInt("age") + "</td>");
-                            out.println("<td>" + set.getString("disease") + "</td>");
-                            out.println("<td>" + set.getDate("reqdate") + "</td>");
-                            if (set.getString("status") == "Approved") {
-                                out.println("<td><span class='badge bg-success fs-5'>Approved</span></td>");
-                            } else if (set.getString("status") == "Rejected") {
-                                out.println("<td><span class='badge bg-danger fs-5'>Rejected</span></td>");
+                            out.println("<tr class ='text-center'>");
+                            out.println("<td class ='text-center'>" + set.getString("name") + "</td>");
+                            out.println("<td class ='text-center'>" + set.getString("bloodgroup") + "</td>");
+                            out.println("<td class ='text-center'>" + set.getInt("unit") + "</td>");
+                            out.println("<td class ='text-center'>" + set.getInt("age") + "</td>");
+                            out.println("<td class ='text-center'>" + set.getString("disease") + "</td>");
+                            out.println("<td class ='text-center'>" + set.getDate("reqdate") + "</td>");
+                            String status = set.getString("status");
+                            if (status.equals("Approved")) {
+                                out.println("<td class ='text-center'><span class='badge bg-success fs-5'>Approved</span></td>");
+                            } else if (status.equals("Rejected")) {
+                                out.println("<td class ='text-center'><span class='badge bg-danger fs-5'>Rejected</span></td>");
                             } else {
-                                out.println("<td><span class='badge bg-warning fs-5'>Pending</span></td>");
+                                out.println("<td class ='text-center'><span class='badge bg-warning fs-5'>Pending</span></td>");
                             }
                             out.println("</tr>");
                         }

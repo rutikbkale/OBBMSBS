@@ -1,5 +1,5 @@
 <%@page import="com.dao.BloodStock"%>
-<%@page import="com.helper.DBClass"%>
+<%@page import="com.helper.*"%>
 <%@page import="java.sql.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%--<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -132,11 +132,11 @@
                             <div class="blood">
                                 <i class="fas fa-users text-primary"></i>
                                 <div class="mt-5">
-                                    Total Donors
+                                    Total Donation Requests
                                 </div>
                             </div>
                             <div class="position-relative" style="top: 10px; right: 30px;">
-                                <h4>5</h4>
+                                <h4><%=CountProvider.getCount("blood_donation_list_tb", "id") %></h4>
                             </div>
                         </div>
                     </div>
@@ -147,11 +147,11 @@
                             <div class="blood">
                                 <i class="fas fa-spinner text-primary"></i>
                                 <div class="mt-5">
-                                    Total Requests
+                                    Total Blood Requests
                                 </div>
                             </div> 
                             <div class="position-relative" style="top: 10px; right: 30px;">
-                                <h4>5</h4>
+                                <h4><%=CountProvider.getCount("blood_request_list_tb", "id") %></h4>
                             </div>
                         </div>
                     </div>
@@ -166,7 +166,7 @@
                                 </div>
                             </div>    
                             <div class="position-relative" style="top: 10px; right: 30px;">
-                                <h4>5</h4>
+                                <h4><%=CountProvider.getCount("blood_donation_list_tb", "id") %></h4>
                             </div>
                         </div>
                     </div>

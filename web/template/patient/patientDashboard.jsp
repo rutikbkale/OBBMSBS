@@ -1,3 +1,6 @@
+<%@page import="com.helper.IdProvider"%>
+<%@page import="com.entities.Patient"%>
+<%@page import="com.helper.CountProvider"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,6 +20,10 @@
     <body>
         <%@include file="patientBase.jsp" %>
         <div class="container"  style="margin-left: 210px; margin-top: 75px;">
+            <%
+                Patient currentPatient = (Patient) session.getAttribute("currentPatient");
+                int id = IdProvider.getPatientId(currentPatient);
+            %>
             <div class="row">
                 <div class="col-sm-3">
                     <div class="card bg-light">
@@ -26,7 +33,7 @@
                             </div><br>
                             <div>
                                 Request Made <br>
-                                <!--{{requestmade}}-->
+                                <%=CountProvider.getTotalCount("blood_request_list_tb", "id", "patient_id", id)%>
                             </div>                            
                         </div>
                     </div>
@@ -40,12 +47,11 @@
                             </div><br>
                             <div>
                                 Pending Request <br>
-                                <!--{{requestpending}}-->
+                                <%=CountProvider.getCondCount("blood_request_list_tb", "id", "Pending", "patient_id", id)%>
                             </div>                            
                         </div>
                     </div>
                 </div>
-
                 <div class="col-sm-3">
                     <div class="card bg-light">
                         <div class="card-body">
@@ -54,7 +60,7 @@
                             </div><br>
                             <div>
                                 Approved Request<br>
-                                <!--{{requestapproved}}-->
+                                <%=CountProvider.getCondCount("blood_request_list_tb", "id", "Approved", "patient_id", id)%>
                             </div>                            
                         </div>
                     </div>
@@ -67,7 +73,7 @@
                             </div><br>
                             <div>
                                 Rejected Request <br>
-                                <!--{{requestrejected}}-->
+                                <%=CountProvider.getCondCount("blood_request_list_tb", "id", "Rejected", "patient_id", id)%>
                             </div>                            
                         </div>
                     </div>

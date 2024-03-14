@@ -1,3 +1,6 @@
+<%@page import="com.helper.CountProvider"%>
+<%@page import="com.helper.IdProvider"%>
+<%@page import="com.entities.Donar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,6 +20,10 @@
     <body>
         <%@include file="donarBase.jsp" %>
         <div class="container"  style="margin-left: 220px; margin-top: 75px;">
+            <%
+                Donar currentDonar = (Donar) session.getAttribute("currentDonar");
+                int id = IdProvider.getDonarId(currentDonar);
+            %>
             <div class="row">
                 <div class="col-sm-3">
                     <div class="card bg-light">
@@ -26,12 +33,11 @@
                             </div><br>
                             <div>
                                 Request Made <br>
-                                <!--{{requestmade}}-->
+                                <%=CountProvider.getTotalCount("blood_donation_list_tb", "id", "donar_id", id)%>
                             </div>                            
                         </div>
                     </div>
                 </div>
-
                 <div class="col-sm-3">
                     <div class="card bg-light">
                         <div class="card-body">
@@ -40,7 +46,7 @@
                             </div><br>
                             <div>
                                 Pending Request <br>
-                                <!--{{requestpending}}-->
+                                <%=CountProvider.getCondCount("blood_donation_list_tb", "id", "Pending", "donar_id", id)%>
                             </div>                            
                         </div>
                     </div>
@@ -54,7 +60,7 @@
                             </div><br>
                             <div>
                                 Approved Request<br>
-                                <!--{{requestapproved}}-->
+                                <%=CountProvider.getCondCount("blood_donation_list_tb", "id", "Approved", "donar_id", id)%>
                             </div>                            
                         </div>
                     </div>
@@ -67,7 +73,7 @@
                             </div><br>
                             <div>
                                 Rejected Request <br>
-                                <!--{{requestrejected}}-->
+                                <%=CountProvider.getCondCount("blood_donation_list_tb", "id", "Rejected", "donar_id", id)%>
                             </div>                            
                         </div>
                     </div>

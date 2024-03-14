@@ -24,13 +24,13 @@
             <table class="table table-hover table-bordered table-striped">
                 <thead class="bg-info t-white">
                     <tr>
-                        <th scope="col">Patient Name</th>
-                        <th scope="col">Patient Age</th>
-                        <th scope="col">Reason</th>
-                        <th scope="col">Blood Group</th>
-                        <th scope="col">Unit</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Status</th>
+                        <th scope="col" class='text-center'>Patient Name</th>
+                        <th scope="col" class='text-center'>Patient Age</th>
+                        <th scope="col" class='text-center'>Reason</th>
+                        <th scope="col" class='text-center'>Blood Group</th>
+                        <th scope="col" class='text-center'>Unit (in ml)</th>
+                        <th scope="col" class='text-center'>Date</th>
+                        <th scope="col" class='text-center'>Status</th>
                     </tr>
                 </thead>
                 <%
@@ -45,18 +45,18 @@
                     <%
                         while (set.next()) {
                             out.println("<tr>");
-                            out.println("<td>" + set.getString("name") + "</td>");
-                            out.println("<td>" + set.getInt("age") + "</td>");
-                            out.println("<td>" + set.getString("reason") + "</td>");
-                            out.println("<td>" + set.getString("bloodgroup") + "</td>");
-                            out.println("<td>" + set.getInt("unit") + "</td>");
-                            out.println("<td>" + set.getDate("reqdate") + "</td>");
-                            if (set.getString("status") == "Approved") {
-                                out.println("<td><span class='badge bg-success fs-5'>Approved</span></td>");
-                            } else if (set.getString("status") == "Rejected") {
-                                out.println("<td><span class='badge bg-danger fs-5'>Rejected</span></td>");
+                            out.println("<td class='text-center'>" + set.getString("name") + "</td>");
+                            out.println("<td class='text-center'>" + set.getInt("age") + "</td>");
+                            out.println("<td class='text-center'>" + set.getString("reason") + "</td>");
+                            out.println("<td class='text-center'>" + set.getString("bloodgroup") + "</td>");
+                            out.println("<td class='text-center'>" + set.getInt("unit") + "</td>");
+                            out.println("<td class='text-center'>" + set.getDate("reqdate") + "</td>");
+                            if (set.getString("status").equals("Approved")) {
+                                out.println("<td class='text-center'><span class='badge bg-success fs-5'>Approved</span></td>");
+                            } else if (set.getString("status").equals("Rejected")) {
+                                out.println("<td class='text-center'><span class='badge bg-danger fs-5'>Rejected</span></td>");
                             } else {
-                                out.println("<td><span class='badge bg-warning fs-5'>Pending</span></td>");
+                                out.println("<td class='text-center'><span class='badge bg-warning fs-5'>Pending</span></td>");
                             }
                             out.println("</tr>");
                         }
