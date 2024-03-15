@@ -1,3 +1,4 @@
+<%@page import="com.helper.IdProvider"%>
 <%@page import="com.helper.AgeCalculator"%>
 <%@page import="com.entities.Donar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -31,17 +32,23 @@
                             String fName = currentDonar.getfName() + " " + currentDonar.getlName();
                             String dob = currentDonar.getDate();
                             String bloodgroup = currentDonar.getBloodgroup();
+                            int id = IdProvider.getDonarId(currentDonar);
+                            int age = AgeCalculator.getAge(dob);
                         %>
                         <div class="card-body">
 
-                            <form class="row g-3" action="donarSignup" method="post" id="donarForm">
+                            <form class="row g-3" action="../../donarBloodRequest" method="post" id="donarForm">
+                                <input type="hidden" name="pName" value="<%=fName%>">
+                                <input type="hidden" name="age" value="<%= age%>">
+                                <input type="hidden" name="bloodgroup" value="<%= bloodgroup%>">
+                                <input type="hidden" name="patient_id" value="<%= id%>">
                                 <div class="col-12">
                                     <label for="pName" class="form-label">Patient Name</label>
                                     <input type="text" class="form-control" id="pName" name="pName" value="<%=fName%>" disabled="disabled">
                                 </div>
                                 <div class="col-12">
                                     <label for="age" class="form-label">Age</label>
-                                    <input type="text" class="form-control" id="age" name="age" value="<%= AgeCalculator.getAge(dob)%>" disabled="disabled">
+                                    <input type="text" class="form-control" id="age" value="<%= age%>" disabled="disabled">
                                 </div>
                                 <div class="col-12">
                                     <label for="reason" class="form-label">Reason</label>
@@ -68,6 +75,10 @@
                 </div>
             </div>
         </div>
-
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="../../static/js/donarRequest.js"></script>
     </body>
 </html>

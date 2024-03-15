@@ -6,12 +6,14 @@ import java.sql.*;
 public class PatientRequestDao {
 
     private Connection con;
+    private String tableName;
     private String query;
     private PreparedStatement psmt;
     private ResultSet set;
 
-    public PatientRequestDao(Connection con) {
+    public PatientRequestDao(Connection con, String tableName) {
         this.con = con;
+        this.tableName = tableName;
     }
 
     public boolean insertPatientReq(PatientRequest request) {
@@ -20,7 +22,7 @@ public class PatientRequestDao {
 
         try {
 
-            query = "insert into blood_request_list_tb(name, age, reason, bloodgroup, unit, patient_id) values(?,?,?,?,?,?)";
+            query = "insert into " + tableName + "(name, age, reason, bloodgroup, unit, patient_id) values(?,?,?,?,?,?)";
 
             psmt = con.prepareStatement(query);
             psmt.setString(1, request.getName());

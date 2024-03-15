@@ -1,6 +1,5 @@
 package com.controller;
 
-import com.dao.PatientDao;
 import com.dao.PatientRequestDao;
 import com.entities.PatientRequest;
 import com.helper.DBClass;
@@ -9,13 +8,11 @@ import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@MultipartConfig
-public class patientBloodRequest extends HttpServlet {
+public class donarBloodRequest extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -23,15 +20,23 @@ public class patientBloodRequest extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             Thread.sleep(2000);
             String pName = request.getParameter("pName");
-            int age = Integer.parseInt(request.getParameter("age"));
+//            out.println(pName);
+//            int age = Integer.parseInt(request.getParameter("age"));
+            int age = 21;
+//            out.println(age);
             String reason = request.getParameter("reason");
+//            out.println(reason);
             String bloodgroup = request.getParameter("bloodgroup");
-            int unit = Integer.parseInt(request.getParameter("unit"));
+//            out.println(bloodgroup);
+//            int unit = Integer.parseInt(request.getParameter("unit"));
+            int unit = 20;
+//            out.println(unit);
             int patient_id = Integer.parseInt(request.getParameter("patient_id"));
+//            out.println(patient_id);
 
             PatientRequest prequest = new PatientRequest(pName, age, reason, bloodgroup, unit, patient_id);
 
-            PatientRequestDao dao = new PatientRequestDao(DBClass.getConnection(), "blood_request_list_tb");
+            PatientRequestDao dao = new PatientRequestDao(DBClass.getConnection(), "donar_blood_request_list_tb");
 
             if (dao.insertPatientReq(prequest)) {
                 out.print("done");
@@ -39,7 +44,7 @@ public class patientBloodRequest extends HttpServlet {
                 out.print("Error");
             }
         } catch (InterruptedException ex) {
-            Logger.getLogger(patientBloodRequest.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(donarBloodRequest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

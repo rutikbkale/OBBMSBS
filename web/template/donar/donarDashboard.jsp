@@ -27,12 +27,14 @@
             <div class="row">
                 <div class="col-sm-3">
                     <div class="card bg-light">
-                        <div class="card-body">
+                        <div class="card-body d-flex justify-content-between mb-3">
                             <div class="blood">
                                 <i class="fas fa-sync-alt xyz text-primary"></i>
-                            </div><br>
-                            <div>
-                                Request Made <br>
+                                <div class="mt-5 fs-5">
+                                    Request Made 
+                                </div>
+                            </div>
+                            <div class="position-relative fs-5" style="top: 10px; right: 30px;">
                                 <%=CountProvider.getTotalCount("blood_donation_list_tb", "id", "donar_id", id)%>
                             </div>                            
                         </div>
@@ -40,12 +42,14 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="card bg-light">
-                        <div class="card-body">
+                        <div class="card-body d-flex justify-content-between mb-3">
                             <div class="blood">
                                 <i class="fas fa-sync xyz text-primary"></i>
-                            </div><br>
-                            <div>
-                                Pending Request <br>
+                                <div class="mt-5 fs-5">
+                                    Pending Request
+                                </div>
+                            </div>
+                            <div class="position-relative fs-5" style="top: 10px; right: 30px;">
                                 <%=CountProvider.getCondCount("blood_donation_list_tb", "id", "Pending", "donar_id", id)%>
                             </div>                            
                         </div>
@@ -54,12 +58,14 @@
 
                 <div class="col-sm-3">
                     <div class="card bg-light">
-                        <div class="card-body">
+                        <div class="card-body d-flex justify-content-between mb-3">
                             <div class="blood">
                                 <i class="fas fa-check-circle xyz text-success"></i>
-                            </div><br>
-                            <div>
-                                Approved Request<br>
+                                <div class="mt-5 fs-5">
+                                    Approved Request
+                                </div>
+                            </div>
+                            <div class="position-relative fs-5" style="top: 10px; right: 30px;">
                                 <%=CountProvider.getCondCount("blood_donation_list_tb", "id", "Approved", "donar_id", id)%>
                             </div>                            
                         </div>
@@ -67,12 +73,14 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="card bg-light">
-                        <div class="card-body">
+                        <div class="card-body d-flex justify-content-between mb-3">
                             <div class="blood">
                                 <i class="fas fa-times-circle xyz text-danger"></i>
-                            </div><br>
-                            <div>
-                                Rejected Request <br>
+                                <div class="mt-5 fs-5">
+                                    Rejected Request 
+                                </div>
+                            </div>
+                            <div class="position-relative fs-5" style="top: 10px; right: 30px;">
                                 <%=CountProvider.getCondCount("blood_donation_list_tb", "id", "Rejected", "donar_id", id)%>
                             </div>                            
                         </div>
