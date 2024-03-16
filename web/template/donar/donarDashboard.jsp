@@ -1,5 +1,4 @@
-<%@page import="com.helper.CountProvider"%>
-<%@page import="com.helper.IdProvider"%>
+<%@page import="com.helper.*"%>
 <%@page import="com.entities.Donar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -29,13 +28,18 @@
                     <div class="card bg-light">
                         <div class="card-body d-flex justify-content-between mb-3">
                             <div class="blood">
-                                <i class="fas fa-sync-alt xyz text-primary"></i>
+                                <i class="fas fa-sync-alt xyz text-primary fs-4"></i>
                                 <div class="mt-5 fs-5">
                                     Request Made 
                                 </div>
                             </div>
                             <div class="position-relative fs-5" style="top: 10px; right: 30px;">
-                                <%=CountProvider.getTotalCount("blood_donation_list_tb", "id", "donar_id", id)%>
+                                <%
+                                    int count1 = CountProvider.getTotalCount("blood_donation_list_tb", "id", "donar_id", id);
+                                    int count2 = CountProvider.getTotalCount("donar_blood_request_list_tb", "id", "patient_id", id);
+                                    int totalCount = count1 + count2;
+                                %>
+                                <%=totalCount%>
                             </div>                            
                         </div>
                     </div>
@@ -44,13 +48,18 @@
                     <div class="card bg-light">
                         <div class="card-body d-flex justify-content-between mb-3">
                             <div class="blood">
-                                <i class="fas fa-sync xyz text-primary"></i>
+                                <i class="fas fa-sync xyz text-warning fs-4"></i>
                                 <div class="mt-5 fs-5">
                                     Pending Request
                                 </div>
                             </div>
                             <div class="position-relative fs-5" style="top: 10px; right: 30px;">
-                                <%=CountProvider.getCondCount("blood_donation_list_tb", "id", "Pending", "donar_id", id)%>
+                                <%
+                                    count1 = CountProvider.getCondCount("blood_donation_list_tb", "id", "Pending", "donar_id", id);
+                                    count2 = CountProvider.getCondCount("donar_blood_request_list_tb", "id", "Pending", "patient_id", id);
+                                    totalCount = count1 + count2;
+                                %>
+                                <%=totalCount%>
                             </div>                            
                         </div>
                     </div>
@@ -60,13 +69,18 @@
                     <div class="card bg-light">
                         <div class="card-body d-flex justify-content-between mb-3">
                             <div class="blood">
-                                <i class="fas fa-check-circle xyz text-success"></i>
+                                <i class="fas fa-check-circle text-success fs-4"></i>
                                 <div class="mt-5 fs-5">
                                     Approved Request
                                 </div>
                             </div>
                             <div class="position-relative fs-5" style="top: 10px; right: 30px;">
-                                <%=CountProvider.getCondCount("blood_donation_list_tb", "id", "Approved", "donar_id", id)%>
+                                <%
+                                    count1 = CountProvider.getCondCount("blood_donation_list_tb", "id", "Approved", "donar_id", id);
+                                    count2 = CountProvider.getCondCount("donar_blood_request_list_tb", "id", "Approved", "patient_id", id);
+                                    totalCount = count1 + count2;
+                                %>
+                                <%=totalCount%> 
                             </div>                            
                         </div>
                     </div>
@@ -75,13 +89,18 @@
                     <div class="card bg-light">
                         <div class="card-body d-flex justify-content-between mb-3">
                             <div class="blood">
-                                <i class="fas fa-times-circle xyz text-danger"></i>
+                                <i class="fas fa-times-circle xyz text-danger fs-4"></i>
                                 <div class="mt-5 fs-5">
                                     Rejected Request 
                                 </div>
                             </div>
                             <div class="position-relative fs-5" style="top: 10px; right: 30px;">
-                                <%=CountProvider.getCondCount("blood_donation_list_tb", "id", "Rejected", "donar_id", id)%>
+                                <%
+                                    count1 = CountProvider.getCondCount("blood_donation_list_tb", "id", "Rejected", "donar_id", id);
+                                    count2 = CountProvider.getCondCount("donar_blood_request_list_tb", "id", "Rejected", "patient_id", id);
+                                    totalCount = count1 + count2;
+                                %>
+                                <%=totalCount%>
                             </div>                            
                         </div>
                     </div>

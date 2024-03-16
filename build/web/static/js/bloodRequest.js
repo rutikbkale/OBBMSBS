@@ -5,7 +5,7 @@ $(document).ready(function () {
         $('#sign-btn').hide();
         $('#loader').show();
         $.ajax({
-            url: "../../patientBloodRequest",
+            url: "../../bloodRequest",
             type: 'POST',
             data: form,
             success: function (data, textStatus, jqXHR) {
@@ -17,7 +17,13 @@ $(document).ready(function () {
                         title: "Request sent Successfully!",
                         icon: "success"
                     }).then((value) => {
-                        window.location = "patientDashboard.jsp";
+                        let isPatient = document.querySelector(#isPatient).value;
+                        console.log(isPatient)
+                        if (isPatient=="true")
+                            window.location = "patientDashboard.jsp";
+                        else
+                            window.location = "donarDashboard.jsp";
+
                     });
                 } else {
                     swal({

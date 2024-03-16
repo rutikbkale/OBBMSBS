@@ -37,18 +37,16 @@
                         %>
                         <div class="card-body">
 
-                            <form class="row g-3" action="../../donarBloodRequest" method="post" id="donarForm">
-                                <input type="hidden" name="pName" value="<%=fName%>">
-                                <input type="hidden" name="age" value="<%= age%>">
-                                <input type="hidden" name="bloodgroup" value="<%= bloodgroup%>">
-                                <input type="hidden" name="patient_id" value="<%= id%>">
+                            <form class="row g-3" action="../../bloodRequest" method="post" id="patientForm">
+                                <input type="hidden" name="donar_id" value="<%= id%>">
+                                <input type="hidden" name="isPatient" value="false" id="isPatient">
                                 <div class="col-12">
                                     <label for="pName" class="form-label">Patient Name</label>
-                                    <input type="text" class="form-control" id="pName" name="pName" value="<%=fName%>" disabled="disabled">
+                                    <input type="text" class="form-control" id="pName" name="pName" value="<%=fName%>" readonly="readonly">
                                 </div>
                                 <div class="col-12">
                                     <label for="age" class="form-label">Age</label>
-                                    <input type="text" class="form-control" id="age" value="<%= age%>" disabled="disabled">
+                                    <input type="text" class="form-control" id="age" name="age" value="<%= age%>" readonly="readonly">
                                 </div>
                                 <div class="col-12">
                                     <label for="reason" class="form-label">Reason</label>
@@ -56,7 +54,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label for="bloodgroup" class="form-label">Blood Group</label>
-                                    <input type="text" class="form-control" id="bloodgroup" name="bloodgroup" value="<%= bloodgroup%>" disabled="disabled">
+                                    <input type="text" class="form-control" id="bloodgroup" name="bloodgroup" value="<%= bloodgroup%>" readonly="readonly">
                                 </div>    
                                 <div class="col-12">
                                     <label for="unit" class="form-label">Unit (in ml)</label>
@@ -79,6 +77,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script src="../../static/js/donarRequest.js"></script>
+        <script src="../../static/js/patientRequest.js"></script>
     </body>
 </html>

@@ -29,8 +29,8 @@
         <servlet-class>com.controller.donarBloodDonation</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>patientBloodRequest</servlet-name>
-        <servlet-class>com.controller.patientBloodRequest</servlet-class>
+        <servlet-name>BloodRequest</servlet-name>
+        <servlet-class>com.controller.bloodRequest</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>bloodDonationStatus</servlet-name>
@@ -39,10 +39,6 @@
     <servlet>
         <servlet-name>bloodRequestStatus</servlet-name>
         <servlet-class>com.controller.bloodRequestStatus</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>donarBloodRequest</servlet-name>
-        <servlet-class>com.controller.donarBloodRequest</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>patientSignup</servlet-name>
@@ -73,8 +69,8 @@
         <url-pattern>/donarBloodDonation</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>patientBloodRequest</servlet-name>
-        <url-pattern>/patientBloodRequest</url-pattern>
+        <servlet-name>BloodRequest</servlet-name>
+        <url-pattern>/bloodRequest</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>bloodDonationStatus</servlet-name>
@@ -83,10 +79,6 @@
     <servlet-mapping>
         <servlet-name>bloodRequestStatus</servlet-name>
         <url-pattern>/bloodRequestStatus</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>donarBloodRequest</servlet-name>
-        <url-pattern>/donarBloodRequest</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

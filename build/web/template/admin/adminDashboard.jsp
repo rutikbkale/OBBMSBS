@@ -130,7 +130,7 @@
                     <div class="card bg-light">
                         <div class="card-body d-flex justify-content-between mb-3">
                             <div class="blood">
-                                <i class="fas fa-users text-primary"></i>
+                                <i class="fas fa-users text-primary fs-4"></i>
                                 <div class="mt-5">
                                     Total Donation Requests
                                 </div>
@@ -145,7 +145,7 @@
                     <div class="card bg-light">
                         <div class="card-body d-flex justify-content-between mb-3">
                             <div class="blood">
-                                <i class="fas fa-spinner text-primary"></i>
+                                <i class="fas fa-spinner text-warning fs-4"></i>
                                 <div class="mt-5">
                                     Total Blood Requests
                                 </div>
@@ -160,7 +160,7 @@
                     <div class="card bg-light">
                         <div class="card-body d-flex justify-content-between mb-3">
                             <div class="blood">
-                                <i class="far fa-check-circle text-primary"></i>
+                                <i class="fas fa-check-circle text-success fs-4"></i>
                                 <div class="mt-5">
                                     Approved Requests
                                 </div>
@@ -175,7 +175,7 @@
                     <div class="card bg-light">
                         <div class="card-body d-flex justify-content-between mb-3">
                             <div class="blood">
-                                <i class="fas fa-tint xyz text-primary"></i>
+                                <i class="fas fa-tint text-danger fs-4"></i>
                                 <div class="mt-5">
                                     Total Blood Unit (in ml)
                                 </div>

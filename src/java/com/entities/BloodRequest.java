@@ -1,6 +1,6 @@
 package com.entities;
 
-public class PatientRequest {
+public class BloodRequest {
 
     private String name;
     private int age;
@@ -9,7 +9,7 @@ public class PatientRequest {
     private int unit;
     private int patient_id;
 
-    public PatientRequest(String name, int age, String reason, String bloodgroup, int unit, int patient_id) {
+    public BloodRequest(String name, int age, String reason, String bloodgroup, int unit, int patient_id) {
         this.name = name;
         this.age = age;
         this.reason = reason;

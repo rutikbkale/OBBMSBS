@@ -33,16 +33,15 @@
                         <th scope="col" class='text-center'>Status</th>
                     </tr>
                 </thead>
-                <%
-                    Patient currentPatient = (Patient) session.getAttribute("currentPatient");
-                    int id = IdProvider.getPatientId(currentPatient);
-                    String query = "select name, age, reason, bloodgroup, unit, reqdate, status from blood_request_list_tb where patient_id ='" + id + "'";
-                    Connection con = DBClass.getConnection();
-                    Statement smt = con.createStatement();
-                    ResultSet set = smt.executeQuery(query);
-                %>
                 <tbody>
                     <%
+                        Patient currentPatient = (Patient) session.getAttribute("currentPatient");
+                        int id = IdProvider.getPatientId(currentPatient);
+                        String query = "select name, age, reason, bloodgroup, unit, reqdate, status from blood_request_list_tb where patient_id ='" + id + "'";
+                        Connection con = DBClass.getConnection();
+                        Statement smt = con.createStatement();
+                        ResultSet set = smt.executeQuery(query);
+
                         while (set.next()) {
                             out.println("<tr>");
                             out.println("<td class='text-center'>" + set.getString("name") + "</td>");

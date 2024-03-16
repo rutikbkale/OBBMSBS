@@ -1,8 +1,8 @@
 package com.controller;
 
 import com.dao.PatientDao;
-import com.dao.PatientRequestDao;
-import com.entities.PatientRequest;
+import com.dao.BloodRequestDao;
+import com.entities.BloodRequest;
 import com.helper.DBClass;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @MultipartConfig
-public class patientBloodRequest extends HttpServlet {
+public class bloodRequest extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -27,19 +27,30 @@ public class patientBloodRequest extends HttpServlet {
             String reason = request.getParameter("reason");
             String bloodgroup = request.getParameter("bloodgroup");
             int unit = Integer.parseInt(request.getParameter("unit"));
-            int patient_id = Integer.parseInt(request.getParameter("patient_id"));
+            boolean isPatient = Boolean.parseBoolean(request.getParameter("isPatient"));
+            int patient_id = 0;
+            if (isPatient) {
+                patient_id = Integer.parseInt(request.getParameter("patient_id"));
+            } else {
+                patient_id = Integer.parseInt(request.getParameter("donar_id"));
+            }
 
-            PatientRequest prequest = new PatientRequest(pName, age, reason, bloodgroup, unit, patient_id);
+            BloodRequest prequest = new BloodRequest(pName, age, reason, bloodgroup, unit, patient_id);
 
-            PatientRequestDao dao = new PatientRequestDao(DBClass.getConnection(), "blood_request_list_tb");
+            BloodRequestDao dao = null;
+            if (isPatient) {
+                dao = new BloodRequestDao(DBClass.getConnection(), "patient_id");
+            } else {
+                dao = new BloodRequestDao(DBClass.getConnection(), "donar_id");
+            }
 
-            if (dao.insertPatientReq(prequest)) {
+            if (dao.insertBloodReq(prequest)) {
                 out.print("done");
             } else {
                 out.print("Error");
             }
         } catch (InterruptedException ex) {
-            Logger.getLogger(patientBloodRequest.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(bloodRequest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

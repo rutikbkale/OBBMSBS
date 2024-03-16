@@ -1,3 +1,6 @@
+<%@page import="com.helper.*"%>
+<%@page import="java.sql.*" %>
+<%@page import="com.entities.Donar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,41 +24,67 @@
             <table class="table table-hover table-bordered table-striped">
                 <thead class="bg-info t-white">
                     <tr>
-                        <th scope="col">Patient Name</th>
-                        <th scope="col">Patient Age</th>
-                        <th scope="col">Reason</th>
-                        <th scope="col">Blood Group</th>
-                        <th scope="col">Unit(in ml)</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Status</th>
-
+                        <th scope="col" class='text-center'>Patient Name</th>
+                        <th scope="col" class='text-center'>Patient Age</th>
+                        <th scope="col" class='text-center'>Reason</th>
+                        <th scope="col" class='text-center'>Blood Group</th>
+                        <th scope="col" class='text-center'>Unit (in ml)</th>
+                        <th scope="col" class='text-center'>Date</th>
+                        <th scope="col" class='text-center'>Status</th>
                     </tr>
                 </thead>
-                <!--                <tbody>
-                                    {% for t in blood_request %}
-                                    <tr>
-                                        <td> {{t.patient_name}}</td>
-                
-                                        <td>{{t.patient_age}}</td>
-                                        <td>{{t.reason}}</td>
-                                        <td>{{t.bloodgroup}}</td>
-                                        <td>{{t.unit}}</td>
-                                        <td>{{t.date}}</td>
-                                        {% if t.status == 'Approved' %}
-                                        <td><span class="label warning"> Approved</span></td>
-                
-                                        {% elif t.status == 'Rejected' %}
-                                        <td><span class="label success">Rejected</span></td>
-                                        {% else %}
-                                        <td><span style="color: white;margin-left: 0px;" class="label info">Pending</span></td>
-                                        {% endif %}
-                
-                
-                                    </tr>
-                                    {% endfor %}
-                
-                                </tbody>-->
+                <tbody>
+                    <%
+                        Donar currentDonar = (Donar) session.getAttribute("currentDonar");
+                        int id = IdProvider.getDonarId(currentDonar);
+                        String query = "select name, age, reason, bloodgroup, unit, reqdate, status from donar_blood_request_list_tb where patient_id ='" + id + "'";
+                        Connection con = DBClass.getConnection();
+                        Statement smt = con.createStatement();
+                        ResultSet set = smt.executeQuery(query);
 
+                        while (set.next()) {
+                            out.println("<tr>");
+                            out.println("<td class='text-center'>" + set.getString("name") + "</td>");
+                            out.println("<td class='text-center'>" + set.getInt("age") + "</td>");
+                            out.println("<td class='text-center'>" + set.getString("reason") + "</td>");
+                            out.println("<td class='text-center'>" + set.getString("bloodgroup") + "</td>");
+                            out.println("<td class='text-center'>" + set.getInt("unit") + "</td>");
+                            out.println("<td class='text-center'>" + set.getDate("reqdate") + "</td>");
+                            if (set.getString("status").equals("Approved")) {
+                                out.println("<td class='text-center'><span class='badge bg-success fs-5'>Approved</span></td>");
+                            } else if (set.getString("status").equals("Rejected")) {
+                                out.println("<td class='text-center'><span class='badge bg-danger fs-5'>Rejected</span></td>");
+                            } else {
+                                out.println("<td class='text-center'><span class='badge bg-warning fs-5'>Pending</span></td>");
+                            }
+                            out.println("</tr>");
+                        }
+                    %>
+                    <!--                <tbody>
+                                        {% for t in blood_request %}
+                                        <tr>
+                                            <td> {{t.patient_name}}</td>
+                    
+                                            <td>{{t.patient_age}}</td>
+                                            <td>{{t.reason}}</td>
+                                            <td>{{t.bloodgroup}}</td>
+                                            <td>{{t.unit}}</td>
+                                            <td>{{t.date}}</td>
+                                            {% if t.status == 'Approved' %}
+                                            <td><span class="label warning"> Approved</span></td>
+                    
+                                            {% elif t.status == 'Rejected' %}
+                                            <td><span class="label success">Rejected</span></td>
+                                            {% else %}
+                                            <td><span style="color: white;margin-left: 0px;" class="label info">Pending</span></td>
+                                            {% endif %}
+                    
+                    
+                                        </tr>
+                                        {% endfor %}
+                    
+                                    </tbody>-->
+                </tbody>
             </table>
         </div>
     </body>

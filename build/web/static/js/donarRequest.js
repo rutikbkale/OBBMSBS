@@ -5,7 +5,7 @@ $(document).ready(function () {
         $('#sign-btn').hide();
         $('#loader').show();
         $.ajax({
-            url: "../../donarBloodRequest",
+            url: "../../patientBloodRequest",
             type: 'POST',
             data: form,
             success: function (data, textStatus, jqXHR) {

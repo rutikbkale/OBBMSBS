@@ -1,28 +1,28 @@
 package com.dao;
 
-import com.entities.PatientRequest;
+import com.entities.BloodRequest;
 import java.sql.*;
 
-public class PatientRequestDao {
+public class BloodRequestDao {
 
     private Connection con;
-    private String tableName;
+    private String colName;
     private String query;
     private PreparedStatement psmt;
     private ResultSet set;
 
-    public PatientRequestDao(Connection con, String tableName) {
+    public BloodRequestDao(Connection con, String colName) {
         this.con = con;
-        this.tableName = tableName;
+        this.colName = colName;
     }
 
-    public boolean insertPatientReq(PatientRequest request) {
+    public boolean insertBloodReq(BloodRequest request) {
 
         boolean flag = false;
 
         try {
 
-            query = "insert into " + tableName + "(name, age, reason, bloodgroup, unit, patient_id) values(?,?,?,?,?,?)";
+            query = "insert into blood_request_list_tb(name, age, reason, bloodgroup, unit, " + colName + ") values(?,?,?,?,?,?)";
 
             psmt = con.prepareStatement(query);
             psmt.setString(1, request.getName());

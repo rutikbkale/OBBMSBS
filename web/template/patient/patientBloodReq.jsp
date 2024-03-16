@@ -36,11 +36,12 @@
                         %>
                         <div class="card-body">
 
-                            <form class="row g-3" action="../../patientBloodRequest" method="post" id="patientForm">
+                            <form class="row g-3" action="../../bloodRequest" method="post" id="patientForm">
                                 <input type="hidden" name="pName" value="<%=fName%>">
                                 <input type="hidden" name="age" value="<%= AgeCalculator.getAge(dob)%>">
                                 <input type="hidden" name="bloodgroup" value="<%= bloodgroup%>">
                                 <input type="hidden" name="patient_id" value="<%= patient_id%>">
+                                <input type="hidden" name="isPatient" value="true" id="isPatient">
                                 <div class="col-12">
                                     <label for="pName" class="form-label">Patient Name</label>
                                     <input type="text" class="form-control" id="pName" name="pName" value="<%=fName%>" disabled="disabled">
