@@ -18,11 +18,11 @@
         <nav style="background-color: #FF0018;" class="navbar navbar-expand-md navbar-dark fixed-top">
             <div class="container-fluid d-flex justify-content-evenly">
                 <!-- Title -->
-                <div class="navbar-brand fs-3 me-auto"><i class="fas fa-heartbeat fa-spin"></i>&nbsp; Online Blood Bank Management System &nbsp;<i class="fas fa-heartbeat fa-spin"></i></div>
+                <div class="navbar-brand fs-3 me-auto"><i class="fas fa-heartbeat"></i>&nbsp; Online Blood Bank Management System &nbsp;<i class="fas fa-heartbeat"></i></div>
                 <!-- Navbar Links -->
                 <ul class="navbar-nav">
                     <li class="nav-item ms-5">
-                        <a class="nav-link fs-5 me-5" onclick="logout()" href="#"><i class="fas fa-sign-out-alt"></i>&nbsp; Logout</a>
+                        <a class="nav-link fs-5 me-5" style="color: white;" onclick="logout()" href="#"><i class="fas fa-sign-out-alt"></i>&nbsp; Logout</a>
                     </li>
                 </ul>
             </div>

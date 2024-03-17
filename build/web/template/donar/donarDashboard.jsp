@@ -36,7 +36,7 @@
                             <div class="position-relative fs-5" style="top: 10px; right: 30px;">
                                 <%
                                     int count1 = CountProvider.getTotalCount("blood_donation_list_tb", "id", "donar_id", id);
-                                    int count2 = CountProvider.getTotalCount("donar_blood_request_list_tb", "id", "patient_id", id);
+                                    int count2 = CountProvider.getTotalCount("blood_request_list_tb", "id", "donar_id", id);
                                     int totalCount = count1 + count2;
                                 %>
                                 <%=totalCount%>
@@ -56,7 +56,7 @@
                             <div class="position-relative fs-5" style="top: 10px; right: 30px;">
                                 <%
                                     count1 = CountProvider.getCondCount("blood_donation_list_tb", "id", "Pending", "donar_id", id);
-                                    count2 = CountProvider.getCondCount("donar_blood_request_list_tb", "id", "Pending", "patient_id", id);
+                                    count2 = CountProvider.getCondCount("blood_request_list_tb", "id", "Pending", "donar_id", id);
                                     totalCount = count1 + count2;
                                 %>
                                 <%=totalCount%>
@@ -77,7 +77,7 @@
                             <div class="position-relative fs-5" style="top: 10px; right: 30px;">
                                 <%
                                     count1 = CountProvider.getCondCount("blood_donation_list_tb", "id", "Approved", "donar_id", id);
-                                    count2 = CountProvider.getCondCount("donar_blood_request_list_tb", "id", "Approved", "patient_id", id);
+                                    count2 = CountProvider.getCondCount("blood_request_list_tb", "id", "Approved", "donar_id", id);
                                     totalCount = count1 + count2;
                                 %>
                                 <%=totalCount%> 
@@ -97,7 +97,7 @@
                             <div class="position-relative fs-5" style="top: 10px; right: 30px;">
                                 <%
                                     count1 = CountProvider.getCondCount("blood_donation_list_tb", "id", "Rejected", "donar_id", id);
-                                    count2 = CountProvider.getCondCount("donar_blood_request_list_tb", "id", "Rejected", "patient_id", id);
+                                    count2 = CountProvider.getCondCount("blood_request_list_tb", "id", "Rejected", "donar_id", id);
                                     totalCount = count1 + count2;
                                 %>
                                 <%=totalCount%>

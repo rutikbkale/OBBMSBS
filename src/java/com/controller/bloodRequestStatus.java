@@ -23,7 +23,7 @@ public class bloodRequestStatus extends HttpServlet {
             Statement smt = con.createStatement();
             String query = "update blood_request_list_tb set status = '" + status + "' where id = '" + id + "'";
             smt.executeUpdate(query);
-            response.sendRedirect("template/admin/adminDashboard.jsp");
+            response.sendRedirect("template/admin/adminBloodReq.jsp");
         } catch (SQLException ex) {
             Logger.getLogger(bloodRequestStatus.class.getName()).log(Level.SEVERE, null, ex);
         }

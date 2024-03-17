@@ -17,9 +17,11 @@ $(document).ready(function () {
                         title: "Request sent Successfully!",
                         icon: "success"
                     }).then((value) => {
-                        let isPatient = document.querySelector(#isPatient).value;
-                        console.log(isPatient)
-                        if (isPatient=="true")
+//                        let isPatient = document.querySelector('#isPatient').value;
+                        let isPatient = $('#isPatient').val();
+
+                        console.log(isPatient);
+                        if (isPatient === "true")
                             window.location = "patientDashboard.jsp";
                         else
                             window.location = "donarDashboard.jsp";

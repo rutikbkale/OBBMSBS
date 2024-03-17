@@ -37,7 +37,7 @@
                     <%
                         Donar currentDonar = (Donar) session.getAttribute("currentDonar");
                         int id = IdProvider.getDonarId(currentDonar);
-                        String query = "select name, age, reason, bloodgroup, unit, reqdate, status from donar_blood_request_list_tb where patient_id ='" + id + "'";
+                        String query = "select name, age, reason, bloodgroup, unit, reqdate, status from blood_request_list_tb where donar_id ='" + id + "'";
                         Connection con = DBClass.getConnection();
                         Statement smt = con.createStatement();
                         ResultSet set = smt.executeQuery(query);

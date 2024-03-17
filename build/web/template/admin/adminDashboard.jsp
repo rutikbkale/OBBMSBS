@@ -21,7 +21,7 @@
     </head>
     <body>
         <%@include file="adminBase.jsp" %>
-        <div class="container" style="margin-left: 210px; margin-top: 75px;">
+        <div class="container" style="margin-left: 225px; margin-top: 75px;">
 
             <div class="row">
                 <div class="col-sm-3 my-3">
@@ -136,7 +136,7 @@
                                 </div>
                             </div>
                             <div class="position-relative" style="top: 10px; right: 30px;">
-                                <h4><%=CountProvider.getCount("blood_donation_list_tb", "id") %></h4>
+                                <h4><%=CountProvider.getCount("blood_donation_list_tb", "id")%></h4>
                             </div>
                         </div>
                     </div>
@@ -151,7 +151,7 @@
                                 </div>
                             </div> 
                             <div class="position-relative" style="top: 10px; right: 30px;">
-                                <h4><%=CountProvider.getCount("blood_request_list_tb", "id") %></h4>
+                                <h4><%=CountProvider.getCount("blood_request_list_tb", "id")%></h4>
                             </div>
                         </div>
                     </div>
@@ -166,7 +166,14 @@
                                 </div>
                             </div>    
                             <div class="position-relative" style="top: 10px; right: 30px;">
-                                <h4><%=CountProvider.getCount("blood_donation_list_tb", "id") %></h4>
+                                <h4>
+                                    <%
+                                        int count1 = CountProvider.getCond1Count("blood_donation_list_tb", "id", "Approved");
+                                        int count2 = CountProvider.getCond1Count("blood_request_list_tb", "id", "Approved");
+                                        int totalCount = count1 + count2;
+                                    %>
+                                    <%=totalCount%> 
+                                </h4>
                             </div>
                         </div>
                     </div>
