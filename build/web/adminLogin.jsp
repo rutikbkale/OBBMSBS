@@ -3,7 +3,6 @@
 <html>
     <body>
         <%@include file="navbar.jsp" %>
-        <img src="static/img/bg.png" alt="alt" class="position-absolute w-100 h-100 "/>
         <main class="d-flex align-items-center justify-content-center" style="height:80vh">
             <div class="container">
                 <div class="row">

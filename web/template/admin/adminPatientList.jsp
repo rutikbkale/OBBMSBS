@@ -24,17 +24,24 @@
                         String query = "select id, fName, lName, address, dob, bloodgroup,mobno from patient_info_tb";
                         Statement smt = con.createStatement();
                         ResultSet set = smt.executeQuery(query);
-                        while (set.next()) {
-                            out.println("<tr>");
-                            String fName = set.getString("fName") + " " + set.getString("lName");
-                            out.println("<td class='text-center'>" + set.getInt("id") + "</td>");
-                            out.println("<td class='text-center'>" + fName + "</td>");
-                            out.println("<td class='text-center'>" + set.getString("address") + "</td>");
-                            String dob = set.getString("dob");
-                            out.println("<td class='text-center'>" + AgeCalculator.getAge(dob) + "</td>");
-                            out.println("<td class='text-center'>" + set.getString("bloodgroup") + "</td>");
-                            out.println("<td class='text-center'>" + set.getString("mobno") + "</td>");
-                            out.println("</tr>");
+
+                        if (set.next()) {
+                            while (set.next()) {
+                                out.println("<tr>");
+                                String fName = set.getString("fName") + " " + set.getString("lName");
+                                out.println("<td class='text-center'>" + set.getInt("id") + "</td>");
+                                out.println("<td class='text-center'>" + fName + "</td>");
+                                out.println("<td class='text-center'>" + set.getString("address") + "</td>");
+                                String dob = set.getString("dob");
+                                out.println("<td class='text-center'>" + AgeCalculator.getAge(dob) + "</td>");
+                                out.println("<td class='text-center'>" + set.getString("bloodgroup") + "</td>");
+                                out.println("<td class='text-center'>" + set.getString("mobno") + "</td>");
+                                out.println("</tr>");
+                            }
+                        } else {
+                            out.println("</tbody>");
+                            out.println(" </table>");
+                            out.println("<h5 class='text-center'>No Patient Found !</h5>");
                         }
                     %>
                 </tbody>

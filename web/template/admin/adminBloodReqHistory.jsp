@@ -29,21 +29,27 @@
                         String query = "select id, name, age, reason, bloodgroup, unit, reqdate, status from blood_request_list_tb where status='Approved' or status='Rejected'";
                         ResultSet set = smt.executeQuery(query);
 
-                        while (set.next()) {
-                            out.println("<tr>");
-                            out.println("<td class='text-center'>" + set.getInt("id") + "</td>");
-                            out.println("<td class='text-center'>" + set.getString("name") + "</td>");
-                            out.println("<td class='text-center'>" + set.getInt("age") + "</td>");
-                            out.println("<td class='text-center'>" + set.getString("reason") + "</td>");
-                            out.println("<td class='text-center'>" + set.getString("bloodgroup") + "</td>");
-                            out.println("<td class='text-center'>" + set.getInt("unit") + "</td>");
-                            out.println("<td class='text-center'>" + set.getDate("reqdate") + "</td>");
-                            if (set.getString("status").equals("Approved")) {
-                                out.println("<td class='text-center'><span class='badge bg-success fs-5'>Approved</span></td>");
-                            } else {
-                                out.println("<td class='text-center'><span class='badge bg-danger fs-5'>Rejected</span></td>");
+                        if (set.next()) {
+                            while (set.next()) {
+                                out.println("<tr>");
+                                out.println("<td class='text-center'>" + set.getInt("id") + "</td>");
+                                out.println("<td class='text-center'>" + set.getString("name") + "</td>");
+                                out.println("<td class='text-center'>" + set.getInt("age") + "</td>");
+                                out.println("<td class='text-center'>" + set.getString("reason") + "</td>");
+                                out.println("<td class='text-center'>" + set.getString("bloodgroup") + "</td>");
+                                out.println("<td class='text-center'>" + set.getInt("unit") + "</td>");
+                                out.println("<td class='text-center'>" + set.getDate("reqdate") + "</td>");
+                                if (set.getString("status").equals("Approved")) {
+                                    out.println("<td class='text-center'><span class='badge bg-success fs-5'>Approved</span></td>");
+                                } else {
+                                    out.println("<td class='text-center'><span class='badge bg-danger fs-5'>Rejected</span></td>");
+                                }
+                                out.println("</tr>");
                             }
-                            out.println("</tr>");
+                        } else {
+                            out.println("</tbody>");
+                            out.println(" </table>");
+                            out.println("<h5 class='text-center'>No Blood Request History Found !</h5>");
                         }
                     %>
                 </tbody>

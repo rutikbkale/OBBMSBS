@@ -26,17 +26,23 @@
                         String query = "select id, name, bloodgroup, unit, age, disease, reqdate from blood_donation_list_tb where status='Pending'";
                         ResultSet set = smt.executeQuery(query);
 
-                        while (set.next()) {
-                            out.println("<tr>");
-                            int id = set.getInt("id");
-                            out.println("<td class='text-center'>" + set.getString("name") + "</td>");
-                            out.println("<td class='text-center'>" + set.getString("bloodgroup") + "</td>");
-                            out.println("<td class='text-center'>" + set.getInt("unit") + "</td>");
-                            out.println("<td class='text-center'>" + set.getInt("age") + "</td>");
-                            out.println("<td class='text-center'>" + set.getString("disease") + "</td>");
-                            out.println("<td class='text-center'>" + set.getDate("reqdate") + "</td>");
-                            out.println("<td class='d-flex justify-content-evenly'><a class='btn btn-success badge-pill' href='../../bloodDonationStatus?id=" + id + "&status=Approved'>Approve</a><a class='btn btn-danger badge-pill' href='../../bloodDonationStatus?id=" + id + "&status=Rejected'>Reject</a></td>");
-                            out.println("</tr>");
+                        if (set.next()) {
+                            while (set.next()) {
+                                out.println("<tr>");
+                                int id = set.getInt("id");
+                                out.println("<td class='text-center'>" + set.getString("name") + "</td>");
+                                out.println("<td class='text-center'>" + set.getString("bloodgroup") + "</td>");
+                                out.println("<td class='text-center'>" + set.getInt("unit") + "</td>");
+                                out.println("<td class='text-center'>" + set.getInt("age") + "</td>");
+                                out.println("<td class='text-center'>" + set.getString("disease") + "</td>");
+                                out.println("<td class='text-center'>" + set.getDate("reqdate") + "</td>");
+                                out.println("<td class='d-flex justify-content-evenly'><a class='btn btn-success badge-pill' href='../../bloodDonationStatus?id=" + id + "&status=Approved'>Approve</a><a class='btn btn-danger badge-pill' href='../../bloodDonationStatus?id=" + id + "&status=Rejected'>Reject</a></td>");
+                                out.println("</tr>");
+                            }
+                        } else {
+                            out.println("</tbody>");
+                            out.println(" </table>");
+                            out.println("<h5 class='text-center'>No Blood Donation Request Found !</h5>");
                         }
                     %>
                 </tbody>
