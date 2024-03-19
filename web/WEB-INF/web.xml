@@ -91,4 +91,10 @@
             index.jsp
         </welcome-file>
     </welcome-file-list>
+    <!--Error Page 404-->
+    <error-page>
+        <!-- Handle 404 errors (Page Not Found) -->
+        <error-code>404</error-code>
+        <location>/error404.jsp</location>
+    </error-page>
 </web-app>

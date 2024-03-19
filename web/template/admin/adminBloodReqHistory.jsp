@@ -30,7 +30,7 @@
                         ResultSet set = smt.executeQuery(query);
 
                         if (set.next()) {
-                            while (set.next()) {
+                            do {
                                 out.println("<tr>");
                                 out.println("<td class='text-center'>" + set.getInt("id") + "</td>");
                                 out.println("<td class='text-center'>" + set.getString("name") + "</td>");
@@ -45,11 +45,9 @@
                                     out.println("<td class='text-center'><span class='badge bg-danger fs-5'>Rejected</span></td>");
                                 }
                                 out.println("</tr>");
-                            }
+                            } while (set.next());
                         } else {
-                            out.println("</tbody>");
-                            out.println(" </table>");
-                            out.println("<h5 class='text-center'>No Blood Request History Found !</h5>");
+                            out.println("<tr><td colspan='7' class='text-center'>No Blood Request History Found !</td></tr>");
                         }
                     %>
                 </tbody>

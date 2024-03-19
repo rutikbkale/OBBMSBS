@@ -18,8 +18,9 @@
     </head>
     <body>
         <div class="container text-center">
-            <img src="static/img/errorPage.png" class="img-fluid" >
-            <h1 class="display-5">Sorry ! Something went wrong ...</h1>
+            <img src="static/img/404Page.jpg" class="img-fluid" >
+            <%=exception %>
+            <h1 class="display-5">Sorry ! Page Not Found ...</h1>
             <a href="index.jsp" class="btn btn-danger btn-lg mt-2" >Home Page</a>
         </div>
     </body>
