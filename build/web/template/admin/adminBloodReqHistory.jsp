@@ -3,8 +3,8 @@
 <%@page import="com.helper.*" %>
 <!DOCTYPE html>
 <html>
+    <%@include file="adminBase.jsp" %>
     <body>
-        <%@include file="adminBase.jsp" %>
         <div class="container" style="margin-left: 225px; margin-top: 75px;">
             <H4 class="text-center" style="margin-top: 6rem;">BLOOD REQUEST HISTORY</H4><br>
 

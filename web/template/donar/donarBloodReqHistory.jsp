@@ -4,8 +4,8 @@
 <%@page import="com.entities.Donar"%>
 <!DOCTYPE html>
 <html>
+    <%@include file="donarBase.jsp" %>
     <body>
-        <%@include file="donarBase.jsp" %>
         <div class="container" style="margin-left: 220px; margin-top: 75px;">
             <H4 class="text-center" style="margin-top: 6rem;">MY BLOOD REQUEST HISTORY</H4><br>
             <table class="table table-hover table-bordered table-striped">

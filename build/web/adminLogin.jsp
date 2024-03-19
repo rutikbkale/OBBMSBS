@@ -1,8 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <%@include file="navbar.jsp" %>
     <body>
-        <%@include file="navbar.jsp" %>
         <main class="d-flex align-items-center justify-content-center" style="height:80vh">
             <div class="container">
                 <div class="row">

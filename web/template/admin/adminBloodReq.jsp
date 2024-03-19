@@ -3,8 +3,8 @@
 <%@page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
+    <%@include file="adminBase.jsp" %>
     <body>
-        <%@include file="adminBase.jsp" %>
         <div class="container" style="margin-left: 225px; margin-top: 75px;">
             <H4 class="text-center" style="margin-top: 6rem;">BLOOD REQUIREMENT REQUESTS</H4><br>
             <h5 class="text-center d-block" style="color: red;"></h5>

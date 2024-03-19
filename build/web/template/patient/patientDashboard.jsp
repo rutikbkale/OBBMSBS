@@ -3,8 +3,8 @@
 <%@page import="com.entities.Patient"%>
 <!DOCTYPE html>
 <html>
+    <%@include file="patientBase.jsp" %>
     <body>
-        <%@include file="patientBase.jsp" %>
         <div class="container"  style="margin-left: 210px; margin-top: 75px;">
             <%
                 Patient currentPatient = (Patient) session.getAttribute("currentPatient");

@@ -3,8 +3,8 @@
 <%@page import="com.entities.Donar"%>
 <!DOCTYPE html>
 <html>
+    <%@include file="donarBase.jsp" %>
     <body>
-        <%@include file="donarBase.jsp" %>
         <div class="container" style="margin-top: 75px;">
             <div class="row">
                 <div class="col-md-4 offset-md-4">

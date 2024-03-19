@@ -3,8 +3,8 @@
 <%@page import="com.entities.Donar"%>
 <!DOCTYPE html>
 <html>
+    <%@include file="donarBase.jsp" %>
     <body>
-        <%@include file="donarBase.jsp" %>
         <div class="container"  style="margin-left: 220px; margin-top: 75px;">
             <%
                 Donar currentDonar = (Donar) session.getAttribute("currentDonar");

@@ -4,8 +4,8 @@
 <%@page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
+    <%@include file="adminBase.jsp" %>
     <body>
-        <%@include file="adminBase.jsp" %>
         <div class="container" style="margin-left: 225px; margin-top: 75px;">
 
             <div class="row">

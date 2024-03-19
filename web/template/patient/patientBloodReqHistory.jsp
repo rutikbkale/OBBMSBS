@@ -4,8 +4,8 @@
 <%@page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
+    <%@include file="patientBase.jsp" %>
     <body>
-        <%@include file="patientBase.jsp" %>
         <div class="container" style="margin-left: 210px; margin-top: 75px;">
             <H4 class="text-center" style="margin-top: 6rem;">MY BLOOD REQUEST HISTORY</H4><br>
             <table class="table table-hover table-bordered table-striped">

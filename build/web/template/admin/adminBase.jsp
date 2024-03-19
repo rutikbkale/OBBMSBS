@@ -1,7 +1,31 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <%@include file="../../header.jsp" %>
+<html><head>
+        <%@include file="../../header.jsp" %>
+        <style>
+            .dropdown {
+                position: relative;
+                display: inline-block;
+                cursor: pointer; /* Add cursor pointer for better UX */
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                min-width: 400px;
+                top: 50px; /* Position the dropdown content below the dropdown */
+                left: -100px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                padding: 12px 16px;
+                z-index: 1;
+            }
+
+            .dropdown:checked .dropdown-content {
+                display: block;
+            }
+
+        </style>
+    </head>
     <body>
         <nav style="background-color: #FF0018;" class="navbar navbar-expand-md navbar-dark fixed-top">
             <div class="container-fluid d-flex justify-content-evenly">
@@ -10,8 +34,8 @@
                 <!-- Navbar Links -->
                 <ul class="navbar-nav">
                     <li class="nav-item ms-5">
-                        <a class="nav-link fs-5 me-5" style="color: white;" onclick="logout()" href="#"><i class="fas fa-sign-out-alt"></i>&nbsp; Logout</a>
-                    </li>
+                        <a class="nav-link fs-5 me-5" style="color: white;" onclick="logout('adminLogin')" href="#"><i class="fas fa-sign-out-alt"></i>&nbsp; Logout</a>
+                    </li>            
                 </ul>
             </div>
         </nav>
@@ -32,26 +56,6 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script>
-                            function logout() {
-                                swal({
-                                    title: 'Log out?',
-                                    text: 'Are you sure you want to log out?',
-                                    type: 'warning',
-                                    showCancelButton: true,
-                                    confirmButtonColor: '#3085d6',
-                                    cancelButtonColor: '#d33',
-                                    confirmButtonText: 'OK',
-                                    closeOnConfirm: true,
-                                    closeOnCancel: true
-                                }).then((result) => {
-                                    if (result.value === true) {
-                                        window.location.href = '../../adminLogin.jsp';
-                                    }
-                                });
-                            }
-        </script>
-
-
+        <script src="../../static/js/logout.js"></script>
     </body>
 </html>

@@ -4,8 +4,8 @@
 <%@page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
+    <%@include file="patientBase.jsp" %>
     <body>
-        <%@include file="patientBase.jsp" %>
         <div class="container" style="margin-top: 75px;">
             <div class="row">
                 <div class="col-md-4 offset-md-4">

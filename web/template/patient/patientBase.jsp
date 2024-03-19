@@ -10,7 +10,7 @@
                 <!-- Navbar Links -->
                 <ul class="navbar-nav">
                     <li class="nav-item ms-5">
-                        <a class="nav-link fs-5 me-5" style="color: white;" onclick="logout()" href="#"><i class="fas fa-sign-out-alt"></i>&nbsp; Logout</a>
+                        <a class="nav-link fs-5 me-5" style="color: white;" onclick="logout('patientLogin')" href="#"><i class="fas fa-sign-out-alt"></i>&nbsp; Logout</a>
                     </li>
                 </ul>
             </div>
@@ -27,24 +27,6 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script>
-                            function logout() {
-                                swal({
-                                    title: 'Log out?',
-                                    text: 'Are you sure you want to log out?',
-                                    type: 'warning',
-                                    showCancelButton: true,
-                                    confirmButtonColor: '#3085d6',
-                                    cancelButtonColor: '#d33',
-                                    confirmButtonText: 'OK',
-                                    closeOnConfirm: true,
-                                    closeOnCancel: true
-                                }).then((result) => {
-                                    if (result.value === true) {
-                                        window.location.href = '../../patientLogin.jsp';
-                                    }
-                                });
-                            }
-        </script>
+        <script src="../../static/js/logout.js"></script>
     </body>
 </html>
