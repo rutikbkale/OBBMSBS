@@ -93,6 +93,22 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row mt-5">
+                <div class="col-6 offset-3">
+                    <div class="card bg-light">
+                        <div class="card-body text-center ">
+                            <div class="my-3 fs-4">
+                                You Have Not Yet Made Any Donation Request !
+                            </div>
+                            <div>
+                                <p>For Blood Request </p>
+                                <a class="btn btn-danger" href="donarBloodDonation.jsp">Made Request</a>
+                            </div>                          
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

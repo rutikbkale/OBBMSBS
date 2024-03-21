@@ -11,6 +11,7 @@
             <table class="table table-hover table-bordered table-striped">
                 <thead class="bg-info t-white">
                     <tr>
+                        <th scope="col" class="text-center">Req Id</th>
                         <th scope="col" class ='text-center'>Donar Name</th>
                         <th scope="col" class ='text-center'>Blood Group</th>
                         <th scope="col" class ='text-center'>Unit (in ml)</th>
@@ -24,14 +25,15 @@
                     <%
                         Donar currentDonar = (Donar) session.getAttribute("currentDonar");
                         int id = IdProvider.getDonarId(currentDonar);
-                        String query = "select name, bloodgroup, unit, age, disease, reqdate, status from blood_donation_list_tb where donar_id ='" + id + "'";
+                        String query = "select id,name, bloodgroup, unit, age, disease, reqdate, status from blood_donation_list_tb where donar_id ='" + id + "'";
                         Connection con = DBClass.getConnection();
                         Statement smt = con.createStatement();
                         ResultSet set = smt.executeQuery(query);
 
                         if (set.next()) {
                             do {
-                                out.println("<tr class ='text-center'>");
+                                out.println("<tr>");
+                                out.println("<td class ='text-center'>" + set.getInt("id") + "</td>");
                                 out.println("<td class ='text-center'>" + set.getString("name") + "</td>");
                                 out.println("<td class ='text-center'>" + set.getString("bloodgroup") + "</td>");
                                 out.println("<td class ='text-center'>" + set.getInt("unit") + "</td>");
@@ -49,7 +51,7 @@
                                 out.println("</tr>");
                             } while (set.next());
                         } else {
-                            out.println("<tr><td colspan='7' class='text-center'>No Blood Donation Request History Found !</td></tr>");
+                            out.println("<tr><td colspan='8' class='text-center'>No Blood Donation Request History Found !</td></tr>");
                         }
                     %>
                 </tbody>

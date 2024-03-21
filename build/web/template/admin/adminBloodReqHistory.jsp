@@ -47,7 +47,7 @@
                                 out.println("</tr>");
                             } while (set.next());
                         } else {
-                            out.println("<tr><td colspan='7' class='text-center'>No Blood Request History Found !</td></tr>");
+                            out.println("<tr><td colspan='8' class='text-center'>No Blood Request History Found !</td></tr>");
                         }
                     %>
                 </tbody>

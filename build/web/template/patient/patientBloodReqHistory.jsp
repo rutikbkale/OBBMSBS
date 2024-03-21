@@ -11,6 +11,7 @@
             <table class="table table-hover table-bordered table-striped">
                 <thead class="bg-info t-white">
                     <tr>
+                        <th scope="col" class="text-center">Req Id</th>
                         <th scope="col" class='text-center'>Patient Name</th>
                         <th scope="col" class='text-center'>Patient Age</th>
                         <th scope="col" class='text-center'>Reason</th>
@@ -24,7 +25,7 @@
                     <%
                         Patient currentPatient = (Patient) session.getAttribute("currentPatient");
                         int id = IdProvider.getPatientId(currentPatient);
-                        String query = "select name, age, reason, bloodgroup, unit, reqdate, status from blood_request_list_tb where patient_id ='" + id + "'";
+                        String query = "select id,name, age, reason, bloodgroup, unit, reqdate, status from blood_request_list_tb where patient_id ='" + id + "'";
                         Connection con = DBClass.getConnection();
                         Statement smt = con.createStatement();
                         ResultSet set = smt.executeQuery(query);
@@ -32,6 +33,7 @@
                         if (set.next()) {
                             do {
                                 out.println("<tr>");
+                                out.println("<td class='text-center'>" + set.getInt("id") + "</td>");
                                 out.println("<td class='text-center'>" + set.getString("name") + "</td>");
                                 out.println("<td class='text-center'>" + set.getInt("age") + "</td>");
                                 out.println("<td class='text-center'>" + set.getString("reason") + "</td>");
@@ -48,7 +50,7 @@
                                 out.println("</tr>");
                             } while (set.next());
                         } else {
-                            out.println("<tr><td colspan='7' class='text-center'>No Blood Request History Found !</td></tr>");
+                            out.println("<tr><td colspan='8' class='text-center'>No Blood Request History Found !</td></tr>");
                         }
                     %>
                 </tbody>

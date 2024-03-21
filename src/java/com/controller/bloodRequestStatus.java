@@ -8,21 +8,40 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class bloodRequestStatus extends HttpServlet {
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             int id = Integer.parseInt(request.getParameter("id"));
             String status = request.getParameter("status");
+            String reason = request.getParameter("rejectionReason");
             Connection con = DBClass.getConnection();
-            Statement smt = con.createStatement();
-            String query = "update blood_request_list_tb set status = '" + status + "' where id = '" + id + "'";
-            smt.executeUpdate(query);
+            PreparedStatement pstmt = null;
+            String query = null;
+            LocalDate currentDate = LocalDate.now();
+            Date cDate = Date.valueOf(currentDate);
+            if (status.equals("Approved")) {
+                query = "UPDATE blood_request_list_tb SET status = ?, approval_date = ? WHERE id = ?";
+                pstmt = con.prepareStatement(query);
+                pstmt.setString(1, status);
+                pstmt.setDate(2, cDate);
+                pstmt.setInt(3, id);
+            } else {
+                query = "UPDATE blood_request_list_tb SET status = ?, rejection_reason = ? WHERE id = ?";
+                pstmt = con.prepareStatement(query);
+                pstmt.setString(1, status);
+                pstmt.setString(2, reason);
+                pstmt.setInt(3, id);
+            }
+            pstmt.executeUpdate();
+            pstmt.close();
+            con.close();
             response.sendRedirect("template/admin/adminBloodReq.jsp");
         } catch (SQLException ex) {
             Logger.getLogger(bloodRequestStatus.class.getName()).log(Level.SEVERE, null, ex);

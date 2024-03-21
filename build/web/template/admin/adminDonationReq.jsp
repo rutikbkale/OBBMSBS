@@ -10,6 +10,7 @@
             <table class="table table-hover table-bordered table-striped">
                 <thead class="bg-info t-white">
                     <tr>
+                        <th scope="col" class="text-center">Req Id</th>
                         <th scope="col" class="text-center">Donor Name</th>
                         <th scope="col" class="text-center">Blood Group</th>
                         <th scope="col" class="text-center">Unit (in ml)</th>
@@ -30,6 +31,7 @@
                             do {
                                 out.println("<tr>");
                                 int id = set.getInt("id");
+                                out.println("<td class='text-center'>" + id + "</td>");
                                 out.println("<td class='text-center'>" + set.getString("name") + "</td>");
                                 out.println("<td class='text-center'>" + set.getString("bloodgroup") + "</td>");
                                 out.println("<td class='text-center'>" + set.getInt("unit") + "</td>");
@@ -40,7 +42,7 @@
                                 out.println("</tr>");
                             } while (set.next());
                         } else {
-                            out.println("<tr><td colspan='7' class='text-center'>No Blood Donation Request Found !</td></tr>");
+                            out.println("<tr><td colspan='8' class='text-center'>No Blood Donation Request Found !</td></tr>");
                         }
                     %>
                 </tbody>

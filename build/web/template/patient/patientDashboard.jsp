@@ -21,7 +21,11 @@
                                 </div> 
                             </div>
                             <div class="position-relative" style="top: 10px; right: 30px;">
-                                <h4><%=CountProvider.getTotalCount("blood_request_list_tb", "id", "patient_id", id)%></h4>
+                                <h4>
+                                    <%int count = CountProvider.getTotalCount("blood_request_list_tb", "id", "patient_id", id);
+                                        out.println(count);
+                                    %>
+                                </h4>
                             </div>                            
                         </div>
                     </div>
@@ -71,6 +75,46 @@
                     </div>
                 </div>
             </div>
+
+            <%
+                if (count == 1) {
+            %>
+            <div class="row mt-5">
+                <div class="col-6 offset-3">
+                    <div class="card bg-light">
+                        <div class="card-body text-center ">
+                            <div class="my-3 fs-4">
+                                You Have Not Yet Made Any Blood Request !
+                            </div>
+                            <div>
+                                <p>For Blood Request </p>
+                                <a class="btn btn-danger" href="patientBloodReq.jsp">Made Request</a>
+                            </div>                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%
+            } else {
+            %>
+            <div class="row mt-5">
+                <div class="col-6 offset-3">
+                    <div class="card bg-light">
+                        <div class="card-body text-center ">
+                            <div class="my-3 fs-4">
+                                Your Request For Blood Has Been Approved !
+                            </div>
+                            <div>
+                                <p>Testing </p>
+                                <a class="btn btn-danger" href="patientBloodReq.jsp">Made Request</a>
+                            </div>                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%
+                }
+            %>
         </div>
     </body>
 </html>
