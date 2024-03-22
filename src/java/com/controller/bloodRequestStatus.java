@@ -32,7 +32,8 @@ public class bloodRequestStatus extends HttpServlet {
                 pstmt.setString(1, status);
                 pstmt.setDate(2, cDate);
                 pstmt.setInt(3, id);
-            } else {
+            } 
+            else {
                 query = "UPDATE blood_request_list_tb SET status = ?, rejection_reason = ? WHERE id = ?";
                 pstmt = con.prepareStatement(query);
                 pstmt.setString(1, status);

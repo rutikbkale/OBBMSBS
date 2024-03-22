@@ -7,8 +7,8 @@ function logout(fileName) {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'OK',
-        closeOnConfirm: true,
-        closeOnCancel: true
+//        closeOnConfirm: true,
+//        closeOnCancel: true
     }).then((result) => {
         if (result.value === true) {
             window.location.href = '../../' + fileName + '.jsp';

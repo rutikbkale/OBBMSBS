@@ -31,22 +31,37 @@
                             do {
                                 out.println("<tr>");
                                 int id = set.getInt("id");
-                                out.println("<td class='text-center'>" + id + "</td>");
-                                out.println("<td class='text-center'>" + set.getString("name") + "</td>");
-                                out.println("<td class='text-center'>" + set.getString("bloodgroup") + "</td>");
-                                out.println("<td class='text-center'>" + set.getInt("unit") + "</td>");
-                                out.println("<td class='text-center'>" + set.getInt("age") + "</td>");
-                                out.println("<td class='text-center'>" + set.getString("disease") + "</td>");
-                                out.println("<td class='text-center'>" + set.getDate("reqdate") + "</td>");
-                                out.println("<td class='d-flex justify-content-evenly'><a class='btn btn-success badge-pill' href='../../bloodDonationStatus?id=" + id + "&status=Approved'>Approve</a><a class='btn btn-danger badge-pill' href='../../bloodDonationStatus?id=" + id + "&status=Rejected'>Reject</a></td>");
-                                out.println("</tr>");
+                    %>
+                    <tr>
+                        <td class='text-center'><%=id%></td>
+                        <td class='text-center'><%=set.getString("name")%></td>
+                        <td class='text-center'><%=set.getString("bloodgroup")%></td>
+                        <td class='text-center'><%=set.getInt("unit")%></td>
+                        <td class='text-center'><%=set.getInt("age")%></td>
+                        <td class='text-center'><%=set.getString("disease")%></td>
+                        <td class='text-center'><%=set.getDate("reqdate")%></td>
+                        <td class='d-flex justify-content-evenly'>
+                            <form id='approvalForm' action='../../bloodDonationStatus' method='post'>
+                                <input type='hidden' name='id' value='<%= id%>'>
+                                <input type='hidden' name='status' value='Approved'>
+                                <button type='submit' class='btn btn-success badge-pill'>Approve</button>
+                            </form>
+                            <form id='rejectionForm<%= id%>' action='../../bloodDonationStatus' method='post'>
+                                <input type='hidden' name='id' value='<%= id%>'>
+                                <input type='hidden' name='status' value='Rejected'>
+                                <button type='button' class='btn btn-danger badge-pill' onclick='rejectRequest(<%= id%>)'>Reject</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <%
                             } while (set.next());
                         } else {
-                            out.println("<tr><td colspan='8' class='text-center'>No Blood Donation Request Found !</td></tr>");
+                            out.println("<tr><td colspan='8' class='text-center'>No Blood Request Found !</td></tr>");
                         }
                     %>
                 </tbody>
             </table>
         </div>
+        <script src="../../static/js/rejectionRequest.js"></script>
     </body>
 </html>
