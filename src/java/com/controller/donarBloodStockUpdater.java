@@ -1,8 +1,6 @@
 package com.controller;
 
-import com.dao.BloodStock;
 import com.helper.BloodStockUpdater;
-import com.helper.DBClass;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,27 +10,20 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.annotation.MultipartConfig;
 
-@MultipartConfig
-public class bloodStockUpdater extends HttpServlet {
+public class donarBloodStockUpdater extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            Thread.sleep(2000);
-            String bloodgroup = request.getParameter("bloodgroup");
+            int id = Integer.parseInt(request.getParameter("id"));
             int unit = Integer.parseInt(request.getParameter("unit"));
-
-            int c = BloodStockUpdater.updateStock(bloodgroup, unit);
-            if (c > 0) {
-                out.print("done");
-            }
+            String bloodgroup = request.getParameter("bloodgroup");
+            BloodStockUpdater.updateStock(bloodgroup, unit);
+            response.sendRedirect("template/admin/adminDashboard.jsp");
         } catch (SQLException ex) {
-            Logger.getLogger(bloodStockUpdater.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(bloodStockUpdater.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(donarBloodStockUpdater.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

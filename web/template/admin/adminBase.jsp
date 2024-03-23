@@ -2,29 +2,6 @@
 <!DOCTYPE html>
 <html><head>
         <%@include file="../../header.jsp" %>
-        <style>
-            .dropdown {
-                position: relative;
-                display: inline-block;
-                cursor: pointer; /* Add cursor pointer for better UX */
-            }
-
-            .dropdown-content {
-                display: none;
-                position: absolute;
-                min-width: 400px;
-                top: 50px; /* Position the dropdown content below the dropdown */
-                left: -100px;
-                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-                padding: 12px 16px;
-                z-index: 1;
-            }
-
-            .dropdown:checked .dropdown-content {
-                display: block;
-            }
-
-        </style>
     </head>
     <body>
         <nav style="background-color: #FF0018;" class="navbar navbar-expand-md navbar-dark fixed-top">
@@ -39,16 +16,18 @@
                 </ul>
             </div>
         </nav>
-        <div class="asider" style="width: 222px;">
+        <div class="asider" style="width: 250px;">
             <ul class="list-group list-unstyled">
-                <li class="px-3 d-block py-4 fs-5"><a href="adminDashboard.jsp"><i class="fas fa-home"></i>&nbsp;Home</a></li>
-                <li class="px-3 d-block py-4 fs-5"><a href="adminDonarList.jsp"><i class="fas fa-user"></i>&nbsp;Donor</a></li>
-                <li class="px-3 d-block py-4 fs-5"><a href="adminPatientList.jsp"><i class="fas fa-user-injured"></i>&nbsp;Patient</a></li>
-                <li class="px-3 d-block py-4 fs-5"><a href="adminDonationReq.jsp"><i class="fas fa-hand-holding-medical"></i>&nbsp;Donations</a></li>
-                <li class="px-3 d-block py-4 fs-5"><a href="adminDonationReqHistory.jsp"><i class="fas fa-history"></i>&nbsp;Donation History</a></li>
-                <li class="px-3 d-block py-4 fs-5"><a href="adminBloodReq.jsp"><i class="fas fa-sync-alt"></i>&nbsp;Blood Requests</a></li>
-                <li class="px-3 d-block py-4 fs-5"><a href="adminBloodReqHistory.jsp"><i class="fas fa-history"></i>&nbsp;Request History</a></li>
-                <li class="px-3 d-block py-4 fs-5"><a href="adminBloodStock.jsp"><i class="fas fa-hand-holding-water"></i>&nbsp;Blood Stock</a></li>
+                <li class="p-3 pt-4 d-block fs-5"><a href="adminDashboard.jsp"><i class="fas fa-home"></i>&nbsp;Home</a></li>
+                <li class="p-3 d-block fs-5"><a href="adminDonarList.jsp"><i class="fas fa-user"></i>&nbsp;Donor</a></li>
+                <li class="p-3 d-block fs-5"><a href="adminPatientList.jsp"><i class="fas fa-user-injured"></i>&nbsp;Patient</a></li>
+                <li class="p-3 d-block fs-5"><a href="adminDonationReq.jsp"><i class="fas fa-hand-holding-medical"></i>&nbsp;Donations</a></li>
+                <li class="p-3 d-block fs-5"><a href="adminWaitingDonationReq.jsp"><i class="fas fa-regular fa-hourglass-half"></i>&nbsp;Waiting Donations</a></li>
+                <li class="p-3 d-block fs-5"><a href="adminDonationReqHistory.jsp"><i class="fas fa-history"></i>&nbsp;Donation History</a></li>
+                <li class="p-3 d-block fs-5"><a href="adminBloodReq.jsp"><i class="fas fa-sync-alt"></i>&nbsp;Blood Requests</a></li>
+                <li class="p-3 d-block fs-5"><a href="adminWaitingDonationReq.jsp"><i class="fas fa-regular fa-hourglass-half"></i>&nbsp;Waiting Withdrawal</a></li>
+                <li class="p-3 d-block fs-5"><a href="adminBloodReqHistory.jsp"><i class="fas fa-history"></i>&nbsp;Request History</a></li>
+                <li class="p-3 d-block fs-5"><a href="adminBloodStock.jsp"><i class="fas fa-hand-holding-water"></i>&nbsp;Blood Stock</a></li>
             </ul> 
         </div>
         <%@include file="../../footer.html" %>

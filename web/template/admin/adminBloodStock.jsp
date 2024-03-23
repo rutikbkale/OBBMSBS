@@ -4,7 +4,7 @@
 <html>
     <%@include file="adminBase.jsp" %>
     <body>
-        <div class="container" style="margin-left: 225px; margin-top: 75px;">
+        <div class="container" style="margin-left: 250px; margin-top: 75px;">
             <div class="row">
                 <div class="col-sm-3 my-3">
                     <div class="card bg-light">

@@ -5,7 +5,7 @@
 <html>
     <%@include file="adminBase.jsp" %>
     <body>
-        <div class="container" style="margin-left: 225px; margin-top: 75px;">
+        <div class="container" style="margin-left: 250px; margin-top: 75px;">
             <H4 class="text-center" style="margin-top: 6rem;">BLOOD REQUEST HISTORY</H4><br>
 
             <table class="table table-hover table-bordered table-striped">
