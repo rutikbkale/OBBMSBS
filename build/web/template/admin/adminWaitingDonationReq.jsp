@@ -45,11 +45,11 @@
                                 out.println("<input type='hidden' name='unit' value='" + set.getInt("unit") + "'>");
                                 out.println("<input type='hidden' name='bloodgroup' value='" + set.getString("bloodgroup") + "'>");
                                 out.println("<button type='submit' class='btn btn-success badge-pill'>Donate</button>");
-                                out.println("</form>");
+                                out.println("</form></td>");
                                 out.println("</tr>");
                             } while (set.next());
                         } else {
-                            out.println("<tr><td colspan='8' class='text-center'>No Blood Donation Request History Found !</td></tr>");
+                            out.println("<tr><td colspan='8' class='text-center'>No Blood Donation Request Found !</td></tr>");
                         }
                     %>
                 </tbody>

@@ -4,15 +4,17 @@ import com.helper.BloodStockUpdater;
 import com.helper.DBClass;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class donarBloodStockUpdater extends HttpServlet {
+public class patientBloodStockUpdater extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -21,18 +23,20 @@ public class donarBloodStockUpdater extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("id"));
             int unit = Integer.parseInt(request.getParameter("unit"));
             String bloodgroup = request.getParameter("bloodgroup");
-            int r = BloodStockUpdater.updateStock(bloodgroup, unit);
+            int r = BloodStockUpdater.updateStock1(bloodgroup, unit);
             if (r > 0) {
                 Connection con = DBClass.getConnection();
                 String query = "update blood_donation_list_tb set status = ? where id = ?";
                 PreparedStatement psmt = con.prepareStatement(query);
-                psmt.setString(1, "Donated");
+                psmt.setString(1, "Withdrawal");
                 psmt.setInt(2, id);
                 psmt.executeUpdate();
+                response.sendRedirect("template/admin/adminDashboard.jsp");
+            }else{
+                
             }
-            response.sendRedirect("template/admin/adminDashboard.jsp");
         } catch (SQLException ex) {
-            Logger.getLogger(donarBloodStockUpdater.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(patientBloodStockUpdater.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

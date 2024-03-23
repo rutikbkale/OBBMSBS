@@ -25,7 +25,7 @@
                 <li class="p-3 d-block fs-5"><a href="adminWaitingDonationReq.jsp"><i class="fas fa-regular fa-hourglass-half"></i>&nbsp;Waiting Donations</a></li>
                 <li class="p-3 d-block fs-5"><a href="adminDonationReqHistory.jsp"><i class="fas fa-history"></i>&nbsp;Donation History</a></li>
                 <li class="p-3 d-block fs-5"><a href="adminBloodReq.jsp"><i class="fas fa-sync-alt"></i>&nbsp;Blood Requests</a></li>
-                <li class="p-3 d-block fs-5"><a href="adminWaitingDonationReq.jsp"><i class="fas fa-regular fa-hourglass-half"></i>&nbsp;Waiting Withdrawal</a></li>
+                <li class="p-3 d-block fs-5"><a href="adminWaitingWithdrawReq.jsp"><i class="fas fa-regular fa-hourglass-half"></i>&nbsp;Waiting Withdrawal</a></li>
                 <li class="p-3 d-block fs-5"><a href="adminBloodReqHistory.jsp"><i class="fas fa-history"></i>&nbsp;Request History</a></li>
                 <li class="p-3 d-block fs-5"><a href="adminBloodStock.jsp"><i class="fas fa-hand-holding-water"></i>&nbsp;Blood Stock</a></li>
             </ul> 

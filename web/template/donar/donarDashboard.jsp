@@ -14,7 +14,7 @@
                 int id = IdProvider.getDonarId(currentDonar);
             %>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-4">
                     <div class="card bg-light">
                         <div class="card-body d-flex justify-content-between mb-3">
                             <div class="blood">
@@ -29,14 +29,13 @@
                                     int count2 = CountProvider.getTotalCount("blood_request_list_tb", "id", "donar_id", id);
                                     int totalCount = count1 + count2;
                                     int dc = count1;
-                                    int bc = count2;
                                 %>
                                 <%=totalCount%>
                             </div>                            
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-4">
                     <div class="card bg-light">
                         <div class="card-body d-flex justify-content-between mb-3">
                             <div class="blood">
@@ -57,11 +56,11 @@
                     </div>
                 </div>
 
-                <div class="col-sm-3">
+                <div class="col-4">
                     <div class="card bg-light">
                         <div class="card-body d-flex justify-content-between mb-3">
                             <div class="blood">
-                                <i class="fas fa-check-circle text-success fs-4"></i>
+                                <i class="fas fa-check-circle text-primary fs-4"></i>
                                 <div class="mt-5 fs-5">
                                     Approved Request
                                 </div>
@@ -77,7 +76,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+            </div>
+            <div class="row mt-2">
+                <div class="col-4">
                     <div class="card bg-light">
                         <div class="card-body d-flex justify-content-between mb-3">
                             <div class="blood">
@@ -97,11 +98,50 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-4">
+                    <div class="card bg-light">
+                        <div class="card-body d-flex justify-content-between mb-3">
+                            <div class="blood">
+                                <i class="fas fa-check-circle text-success fs-4"></i>
+                                <div class="mt-5 fs-5">
+                                    Donated Successfully
+                                </div>
+                            </div>
+                            <div class="position-relative fs-5" style="top: 10px; right: 30px;">
+                                <%
+                                    count1 = CountProvider.getCondCount("blood_donation_list_tb", "id", "Donated", "donar_id", id);
+                                %>
+                                <%=count1%> 
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="card bg-light">
+                        <div class="card-body d-flex justify-content-between mb-3">
+                            <div class="blood">
+                                <i class="fas fa-check-circle text-success fs-4"></i>
+                                <div class="mt-5 fs-5">
+                                    Withdrawal Successfully
+                                </div>
+                            </div>
+                            <div class="position-relative fs-5" style="top: 10px; right: 30px;">
+                                <%
+                                    count2 = CountProvider.getCondCount("blood_request_list_tb", "id", "Withdrawal", "donar_id", id);
+                                %>
+                                <%=count2%> 
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
             </div>
+            <hr>
 
             <%
                 if (dc == 0) {
-                    out.println("<div class='row mt-5'>");
+                    out.println("<div class='row mt-3'>");
                     out.println("<div class='col-6 offset-3'>");
                     out.println("<div class='card bg-light'>");
                     out.println("<div class='card-body text-center '>");
@@ -135,11 +175,11 @@
                                 LocalDate expireDate = localApprovalDate.plusDays(10);
                                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                                 String formattedExpireDate = expireDate.format(formatter);
-                                out.println("<div class='row mt-5'>");
+                                out.println("<div class='row mt-3'>");
                                 out.println("<div class='col-6 offset-3'>");
                                 out.println("<div class='card bg-light'>");
                                 out.println("<div class='card-body text-center '>");
-                                out.println("<div class='my-3 fs-4 text-success'>");
+                                out.println("<div class='my-3 fs-4 text-primary'>");
                                 out.println(" Your Request For Donation Has Been Approved !");
                                 out.println("</div>");
                                 out.println("<div>");
@@ -153,7 +193,7 @@
                                 out.println(" </div>");
                             } else if (status.equals("Rejected")) {
                                 rejectionReason = rs.getString("rejection_reason");
-                                out.println("<div class='row mt-5'>");
+                                out.println("<div class='row mt-3'>");
                                 out.println("<div class='col-6 offset-3'>");
                                 out.println("<div class='card bg-light'>");
                                 out.println("<div class='card-body text-center '>");
@@ -168,6 +208,22 @@
                                 out.println("</div>");
                                 out.println("</div>");
                                 out.println(" </div>");
+                            } else if (status.equals("Donated")) {
+                                out.println("<div class='row mt-3'>");
+                                out.println("<div class='col-6 offset-3'>");
+                                out.println("<div class='card bg-light'>");
+                                out.println("<div class='card-body text-center '>");
+                                out.println("<div class='my-3 fs-4 text-success'>");
+                                out.println("Thank you for your valuable blood !");
+                                out.println("</div>");
+                                out.println("<div>");
+                                out.println("<p>You can donate your blood 3 times in a year.</p>");
+                                out.println("<p class='text-primary'>Eat healthy and stay strong !</p>");
+                                out.println("</div>");
+                                out.println("</div>");
+                                out.println("</div>");
+                                out.println("</div>");
+                                out.println(" </div>");
                             }
                         }
                     } catch (SQLException ex) {
@@ -176,35 +232,35 @@
                 }
             %>
 
-            <%
-                if (bc == 0) {
-                    out.println("<div class='row mt-5'>");
-                    out.println("<div class='col-6 offset-3'>");
-                    out.println("<div class='card bg-light'>");
-                    out.println("<div class='card-body text-center '>");
-                    out.println("<div class='my-3 fs-4 text-primary'>");
-                    out.println(" You Have Not Yet Made Any Blood Request !");
-                    out.println("</div>");
-                    out.println("<div>");
-                    out.println("<p>For Blood Request </p>");
-                    out.println("<a class='btn btn-danger' href='donarBloodReq.jsp'>Made Request</a>");
-                    out.println("</div>");
-                    out.println("</div>");
-                    out.println("</div>");
-                    out.println("</div>");
-                    out.println(" </div>");
-                } else {
-                    try {
-                        String query = "SELECT status, approval_date, rejection_reason FROM blood_request_list_tb WHERE donar_id = ? ORDER BY approval_date LIMIT 1";
-                        String status = "";
-                        Date approvalDate;
-                        String rejectionReason;
-                        Connection con = DBClass.getConnection();
-                        PreparedStatement pstmt = con.prepareStatement(query);
-                        pstmt.setInt(1, id);
-                        ResultSet rs = pstmt.executeQuery();
-                        if (rs.next()) {
-                            status = rs.getString("status");
+            <%-- <%
+                 if (bc == 0) {
+                     out.println("<div class='row mt-3'>");
+                     out.println("<div class='col-6 offset-3'>");
+                     out.println("<div class='card bg-light'>");
+                     out.println("<div class='card-body text-center '>");
+                     out.println("<div class='my-3 fs-4 text-primary'>");
+                     out.println(" You Have Not Yet Made Any Blood Request !");
+                     out.println("</div>");
+                     out.println("<div>");
+                     out.println("<p>For Blood Request </p>");
+                     out.println("<a class='btn btn-danger' href='donarBloodReq.jsp'>Made Request</a>");
+                     out.println("</div>");
+                     out.println("</div>");
+                     out.println("</div>");
+                     out.println("</div>");
+                     out.println(" </div>");
+                 } else {
+                     try {
+                         String query = "SELECT status, approval_date, rejection_reason FROM blood_request_list_tb WHERE donar_id = ? ORDER BY approval_date LIMIT 1";
+                         String status = "";
+                         Date approvalDate;
+                         String rejectionReason;
+                         Connection con = DBClass.getConnection();
+                         PreparedStatement pstmt = con.prepareStatement(query);
+                         pstmt.setInt(1, id);
+                         ResultSet rs = pstmt.executeQuery();
+                         if (rs.next()) {
+                             status = rs.getString("status");
 
                             if (status.equals("Approved")) {
                                 approvalDate = rs.getDate("approval_date");
@@ -212,7 +268,7 @@
                                 LocalDate expireDate = localApprovalDate.plusDays(10);
                                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                                 String formattedExpireDate = expireDate.format(formatter);
-                                out.println("<div class='row mt-5'>");
+                                out.println("<div class='row mt-3'>");
                                 out.println("<div class='col-6 offset-3'>");
                                 out.println("<div class='card bg-light'>");
                                 out.println("<div class='card-body text-center '>");
@@ -230,7 +286,7 @@
                                 out.println(" </div>");
                             } else if (status.equals("Rejected")) {
                                 rejectionReason = rs.getString("rejection_reason");
-                                out.println("<div class='row mt-5'>");
+                                out.println("<div class='row mt-3'>");
                                 out.println("<div class='col-6 offset-3'>");
                                 out.println("<div class='card bg-light'>");
                                 out.println("<div class='card-body text-center '>");
@@ -251,7 +307,7 @@
                         ex.printStackTrace();
                     }
                 }
-            %>
+            %> --%>
         </div>
     </body>
 </html>

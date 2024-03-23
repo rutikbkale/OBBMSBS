@@ -42,9 +42,11 @@
                                 out.println("<td class ='text-center'>" + set.getDate("reqdate") + "</td>");
                                 String status = set.getString("status");
                                 if (status.equals("Approved")) {
-                                    out.println("<td class ='text-center'><span class='badge bg-success fs-5'>Approved</span></td>");
+                                    out.println("<td class ='text-center'><span class='badge bg-primary fs-5'>Approved</span></td>");
                                 } else if (status.equals("Rejected")) {
                                     out.println("<td class ='text-center'><span class='badge bg-danger fs-5'>Rejected</span></td>");
+                                } else if (status.equals("Donated")) {
+                                    out.println("<td class ='text-center'><span class='badge bg-success fs-5'>Donated</span></td>");
                                 } else {
                                     out.println("<td class ='text-center'><span class='badge bg-warning fs-5'>Pending</span></td>");
                                 }
