@@ -15,7 +15,15 @@ $(document).ready(function () {
                 if (data.trim() === 'done') {
                     swal({
                         title: "Request sent Successfully!",
-                        icon: "success"
+                        type: "success"
+                    }).then((value) => {
+                        window.location = "donarDashboard.jsp";
+                    });
+                } else if (data.trim() === 'warning') {
+                    swal({
+                        title: "Please wait",
+                        text: "Previous Request In Progress !",
+                        type: "warning"
                     }).then((value) => {
                         window.location = "donarDashboard.jsp";
                     });
@@ -23,7 +31,7 @@ $(document).ready(function () {
                     swal({
                         title: "Error Occurred!",
                         text: "Please try again later.",
-                        icon: "error"
+                        type: "error"
                     });
 
                 }
@@ -34,7 +42,7 @@ $(document).ready(function () {
                 swal({
                     title: "Error Occurred!",
                     text: "Please try again later.",
-                    icon: "error"
+                    type: "error"
                 });
             },
             processData: false,

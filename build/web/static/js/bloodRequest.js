@@ -18,42 +18,35 @@ $(document).ready(function () {
                         type: "success"
                     }).then((value) => {
                         let isPatient = $('#isPatient').val();
-
                         console.log(isPatient);
                         if (isPatient === "true")
                             window.location = "patientDashboard.jsp";
                         else
                             window.location = "donarDashboard.jsp";
-
+                    });
+                } else if (data.trim() === 'warning') {
+                    swal({
+                        title: "Please wait",
+                        text: "Previous Request In Progress !",
+                        type: "warning"
+                    }).then((value) => {
+                        let isPatient = $('#isPatient').val();
+                        console.log(isPatient);
+                        if (isPatient === "true")
+                            window.location = "patientDashboard.jsp";
+                        else
+                            window.location = "donarDashboard.jsp";
                     });
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 $('#sign-btn').show();
                 $('#loader').hide();
-                if (data.trim() === 'warning') {
-                    swal({
-                        title: "Please wait",
-                        text: "Please wait for previous Request !",
-                        type: "warning"
-                    }).then((value) => {
-                        let isPatient = $('#isPatient').val();
-
-                        console.log(isPatient);
-                        if (isPatient === "true")
-                            window.location = "patientDashboard.jsp";
-                        else
-                            window.location = "donarDashboard.jsp";
-
-                    });
-                } else {
-                    swal({
-                        title: "Error Occurred1!",
-                        text: "Please try again later.",
-                        type: "error"
-                    });
-
-                }
+                swal({
+                    title: "Error Occurred1!",
+                    text: "Please try again later.",
+                    type: "error"
+                });
             },
             processData: false,
             contentType: false

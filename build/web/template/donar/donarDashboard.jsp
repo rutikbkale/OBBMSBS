@@ -158,7 +158,7 @@
                     out.println(" </div>");
                 } else {
                     try {
-                        String query = "SELECT status, approval_date, rejection_reason FROM blood_donation_list_tb WHERE donar_id = ? ORDER BY approval_date LIMIT 1";
+                        String query = "SELECT status, approval_date, rejection_reason FROM blood_donation_list_tb WHERE donar_id = ? ORDER BY id desc LIMIT 1";
                         String status = "";
                         Date approvalDate;
                         String rejectionReason;
@@ -219,6 +219,21 @@
                                 out.println("<div>");
                                 out.println("<p>You can donate your blood 3 times in a year.</p>");
                                 out.println("<p class='text-primary'>Eat healthy and stay strong !</p>");
+                                out.println("</div>");
+                                out.println("</div>");
+                                out.println("</div>");
+                                out.println("</div>");
+                                out.println(" </div>");
+                            } else {
+                                out.println("<div class='row mt-5'>");
+                                out.println("<div class='col-6 offset-3'>");
+                                out.println("<div class='card bg-light'>");
+                                out.println("<div class='card-body text-center '>");
+                                out.println("<div class='my-3 fs-4 text-warning'>");
+                                out.println("Your Donation For Blood In Progress !");
+                                out.println("</div>");
+                                out.println("<div>");
+                                out.println("<p class='text-primary'>Please wait for approval . </p>");
                                 out.println("</div>");
                                 out.println("</div>");
                                 out.println("</div>");

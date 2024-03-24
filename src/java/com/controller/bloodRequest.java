@@ -42,6 +42,11 @@ public class bloodRequest extends HttpServlet {
                 }
             } else {
                 patient_id = Integer.parseInt(request.getParameter("donar_id"));
+                r = PreviousReqProvider.isHavingPendingReq1(patient_id);
+                if (r > 0) {
+                    out.print(s);
+                    return;
+                }
             }
 
             BloodRequest prequest = new BloodRequest(pName, age, reason, bloodgroup, unit, patient_id);

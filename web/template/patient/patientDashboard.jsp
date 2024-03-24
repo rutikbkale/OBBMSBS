@@ -116,7 +116,7 @@
                     out.println(" </div>");
                 } else {
                     try {
-                        String query = "SELECT status, approval_date, rejection_reason FROM blood_request_list_tb WHERE patient_id = ? ORDER BY approval_date LIMIT 1";
+                        String query = "SELECT status, approval_date, rejection_reason FROM blood_request_list_tb WHERE patient_id = ? ORDER BY id desc LIMIT 1";
                         String status = "";
                         Date approvalDate;
                         String rejectionReason;
@@ -160,7 +160,7 @@
                                 out.println("</div>");
                                 out.println("<div>");
                                 out.println("<p>Sorry Try next time. </p>");
-                                out.println("<p>Reason : " + rejectionReason + "</p>");
+                                out.println("<p class='text-danger'>Reason : " + rejectionReason + "</p>");
                                 out.println("</div>");
                                 out.println("</div>");
                                 out.println("</div>");
@@ -176,6 +176,21 @@
                                 out.println("</div>");
                                 out.println("<div>");
                                 out.println("<p class='text-primary'>Thank you for using our website. </p>");
+                                out.println("</div>");
+                                out.println("</div>");
+                                out.println("</div>");
+                                out.println("</div>");
+                                out.println(" </div>");
+                            } else {
+                                out.println("<div class='row mt-5'>");
+                                out.println("<div class='col-6 offset-3'>");
+                                out.println("<div class='card bg-light'>");
+                                out.println("<div class='card-body text-center '>");
+                                out.println("<div class='my-3 fs-4 text-warning'>");
+                                out.println("Your Request For Blood In Progress !");
+                                out.println("</div>");
+                                out.println("<div>");
+                                out.println("<p class='text-primary'>Please wait for approval . </p>");
                                 out.println("</div>");
                                 out.println("</div>");
                                 out.println("</div>");
