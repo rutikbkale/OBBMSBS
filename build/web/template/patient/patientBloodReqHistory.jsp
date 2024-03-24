@@ -41,9 +41,11 @@
                                 out.println("<td class='text-center'>" + set.getInt("unit") + "</td>");
                                 out.println("<td class='text-center'>" + set.getDate("reqdate") + "</td>");
                                 if (set.getString("status").equals("Approved")) {
-                                    out.println("<td class='text-center'><span class='badge bg-success fs-5'>Approved</span></td>");
+                                    out.println("<td class='text-center'><span class='badge bg-primary fs-5'>Approved</span></td>");
                                 } else if (set.getString("status").equals("Rejected")) {
                                     out.println("<td class='text-center'><span class='badge bg-danger fs-5'>Rejected</span></td>");
+                                } else if (set.getString("status").equals("Withdrawal")) {
+                                    out.println("<td class='text-center'><span class='badge bg-success fs-5'>Withdrawal</span></td>");
                                 } else {
                                     out.println("<td class='text-center'><span class='badge bg-warning fs-5'>Pending</span></td>");
                                 }

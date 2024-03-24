@@ -4,8 +4,10 @@ import com.dao.PatientDao;
 import com.dao.BloodRequestDao;
 import com.entities.BloodRequest;
 import com.helper.DBClass;
+import com.helper.PreviousReqProvider;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -29,8 +31,15 @@ public class bloodRequest extends HttpServlet {
             int unit = Integer.parseInt(request.getParameter("unit"));
             boolean isPatient = Boolean.parseBoolean(request.getParameter("isPatient"));
             int patient_id = 0;
+            int r = 0;
+            String s = "warning";
             if (isPatient) {
                 patient_id = Integer.parseInt(request.getParameter("patient_id"));
+                r = PreviousReqProvider.isHavingPendingReq(patient_id);
+                if (r > 0) {
+                    out.print(s);
+                    return;
+                }
             } else {
                 patient_id = Integer.parseInt(request.getParameter("donar_id"));
             }
@@ -45,11 +54,14 @@ public class bloodRequest extends HttpServlet {
             }
 
             if (dao.insertBloodReq(prequest)) {
-                out.print("done");
+                s = "done";
+                out.print(s);
             } else {
-                out.print("Error");
+                out.print(s);
             }
         } catch (InterruptedException ex) {
+            Logger.getLogger(bloodRequest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
             Logger.getLogger(bloodRequest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -26,14 +26,14 @@ public class patientBloodStockUpdater extends HttpServlet {
             int r = BloodStockUpdater.updateStock1(bloodgroup, unit);
             if (r > 0) {
                 Connection con = DBClass.getConnection();
-                String query = "update blood_donation_list_tb set status = ? where id = ?";
+                String query = "update blood_request_list_tb set status = ? where id = ?";
                 PreparedStatement psmt = con.prepareStatement(query);
                 psmt.setString(1, "Withdrawal");
                 psmt.setInt(2, id);
                 psmt.executeUpdate();
                 response.sendRedirect("template/admin/adminDashboard.jsp");
-            }else{
-                
+            } else {
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(patientBloodStockUpdater.class.getName()).log(Level.SEVERE, null, ex);

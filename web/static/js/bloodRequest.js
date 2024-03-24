@@ -15,9 +15,28 @@ $(document).ready(function () {
                 if (data.trim() === 'done') {
                     swal({
                         title: "Request sent Successfully!",
-                        icon: "success"
+                        type: "success"
                     }).then((value) => {
-//                        let isPatient = document.querySelector('#isPatient').value;
+                        let isPatient = $('#isPatient').val();
+
+                        console.log(isPatient);
+                        if (isPatient === "true")
+                            window.location = "patientDashboard.jsp";
+                        else
+                            window.location = "donarDashboard.jsp";
+
+                    });
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('#sign-btn').show();
+                $('#loader').hide();
+                if (data.trim() === 'warning') {
+                    swal({
+                        title: "Please wait",
+                        text: "Please wait for previous Request !",
+                        type: "warning"
+                    }).then((value) => {
                         let isPatient = $('#isPatient').val();
 
                         console.log(isPatient);
@@ -29,21 +48,12 @@ $(document).ready(function () {
                     });
                 } else {
                     swal({
-                        title: "Error Occurred!",
+                        title: "Error Occurred1!",
                         text: "Please try again later.",
-                        icon: "error"
+                        type: "error"
                     });
 
                 }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                $('#sign-btn').show();
-                $('#loader').hide();
-                swal({
-                    title: "Error Occurred!",
-                    text: "Please try again later.",
-                    icon: "error"
-                });
             },
             processData: false,
             contentType: false
