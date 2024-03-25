@@ -19,7 +19,7 @@ public class patientSignup extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             // fetching information from patient
-            Thread.sleep(3000);
+            Thread.sleep(2000);
             String fName = request.getParameter("fName");
             String lName = request.getParameter("lName");
             String address = request.getParameter("address");

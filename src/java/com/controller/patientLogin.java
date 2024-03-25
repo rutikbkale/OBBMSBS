@@ -21,7 +21,7 @@ public class patientLogin extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
             String mobno = request.getParameter("mobno");
             String password = request.getParameter("password");
 

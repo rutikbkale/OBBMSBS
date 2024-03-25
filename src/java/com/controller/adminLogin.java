@@ -21,7 +21,7 @@ public class adminLogin extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
             String username = request.getParameter("username");
             String password = request.getParameter("password");
 

@@ -33,18 +33,22 @@
                         if (set.next()) {
                             do {
                                 int id = set.getInt("id");
+                                int unit = set.getInt("unit");
+                                String bloodgroup = set.getString("bloodgroup");
                     %>
                     <tr>
                         <td class='text-center'><%= id%></td>
                         <td class='text-center'><%= set.getString("name")%></td>
                         <td class='text-center'><%= set.getInt("age")%></td>
                         <td class='text-center'><%= set.getString("reason")%></td>
-                        <td class='text-center'><%= set.getString("bloodgroup")%></td>
-                        <td class='text-center'><%= set.getInt("unit")%></td>
+                        <td class='text-center'><%= bloodgroup%></td>
+                        <td class='text-center'><%= unit%></td>
                         <td class='text-center'><%= set.getDate("reqdate")%></td>
                         <td class='d-flex justify-content-evenly'>
                             <form id='approvalForm' action='../../bloodRequestStatus' method='post'>
                                 <input type='hidden' name='id' value='<%= id%>'>
+                                <input type='hidden' name='bloodgroup' value='<%= bloodgroup%>'>
+                                <input type='hidden' name='unit' value='<%= unit%>'>
                                 <input type='hidden' name='status' value='Approved'>
                                 <button type='submit' class='btn btn-success badge-pill'>Approve</button>
                             </form>
@@ -64,6 +68,7 @@
                 </tbody>
             </table>
         </div>
+        <!--<script src="../../static/js/bloodStockChecker.js"></script>-->
         <script src="../../static/js/rejectionRequest.js"></script>
     </body>
 </html>

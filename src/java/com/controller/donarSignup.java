@@ -18,7 +18,7 @@ public class donarSignup extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
             // fetching information from donar
             String fName = request.getParameter("fName");
             String lName = request.getParameter("lName");

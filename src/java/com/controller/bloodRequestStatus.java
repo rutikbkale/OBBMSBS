@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.helper.DBClass;
+import com.helper.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,35 +18,50 @@ public class bloodRequestStatus extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+
             int id = Integer.parseInt(request.getParameter("id"));
+            int unit = Integer.parseInt(request.getParameter("unit"));
+            String bloodgroup = request.getParameter("bloodgroup");
             String status = request.getParameter("status");
             String reason = request.getParameter("rejectionReason");
+
+            int r = BloodStockUpdater.updateStock1(bloodgroup, unit);
             Connection con = DBClass.getConnection();
             PreparedStatement pstmt = null;
             String query = null;
             LocalDate currentDate = LocalDate.now();
             Date cDate = Date.valueOf(currentDate);
             if (status.equals("Approved")) {
-                query = "UPDATE blood_request_list_tb SET status = ?, approval_date = ? WHERE id = ?";
-                pstmt = con.prepareStatement(query);
-                pstmt.setString(1, status);
-                pstmt.setDate(2, cDate);
-                pstmt.setInt(3, id);
-            } 
-            else {
+                if (r > 0) {
+                    query = "UPDATE blood_request_list_tb SET status = ?, approval_date = ? WHERE id = ?";
+                    pstmt = con.prepareStatement(query);
+                    pstmt.setString(1, status);
+                    pstmt.setDate(2, cDate);
+                    pstmt.setInt(3, id);
+                    pstmt.executeUpdate();
+                } else {
+                    query = "UPDATE blood_request_list_tb SET status = ?, rejection_reason = ? WHERE id = ?";
+                    pstmt = con.prepareStatement(query);
+                    pstmt.setString(1, "Rejected");
+                    pstmt.setString(2, "Blood Stock Not Available.");
+                    pstmt.setInt(3, id);
+                    pstmt.executeUpdate();
+                }
+            } else {
                 query = "UPDATE blood_request_list_tb SET status = ?, rejection_reason = ? WHERE id = ?";
                 pstmt = con.prepareStatement(query);
                 pstmt.setString(1, status);
                 pstmt.setString(2, reason);
                 pstmt.setInt(3, id);
+                pstmt.executeUpdate();
             }
-            pstmt.executeUpdate();
             pstmt.close();
             con.close();
-            response.sendRedirect("template/admin/adminBloodReq.jsp");
+            response.sendRedirect("template/admin/adminDashboard.jsp");
         } catch (SQLException ex) {
             Logger.getLogger(bloodRequestStatus.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
