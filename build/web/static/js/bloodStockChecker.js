@@ -9,11 +9,19 @@ $(document).ready(function () {
             success: function (data, textStatus, jqXHR) {
                 console.log(data)
 
-                if (data.trim() == 'done') {
+                if (data.trim() == 'reject') {
                     swal({
                         title: "Invalid Stock ! ",
-                        text: "Requested stock not available at this time .",
+                        text: "Requested type of blood not available at this time .",
                         type: "error",
+                    }).then((value) => {
+                        window.location = "adminDashboard.jsp";
+                    });
+                }
+                else if (data.trim() == 'success') {
+                    swal({
+                        title: "Request Approved !",
+                        type: "success",
                     }).then((value) => {
                         window.location = "adminDashboard.jsp";
                     });

@@ -68,7 +68,7 @@
                 </tbody>
             </table>
         </div>
-        <!--<script src="../../static/js/bloodStockChecker.js"></script>-->
+        <script src="../../static/js/bloodStockChecker.js"></script>
         <script src="../../static/js/rejectionRequest.js"></script>
     </body>
 </html>

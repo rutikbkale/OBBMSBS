@@ -17,15 +17,15 @@ $(document).ready(function () {
                 if (data.trim() == 'done') {
                     swal({
                         title: "Stock added Successfully ! ",
-                        icon: "success",
+                        type: "success",
                     }).then((value) => {
                         window.location = "adminBloodStock.jsp";
                     });
                 } else {
                     swal({
-                        title: "Login Failed ! ",
+                        title: "Stock Not updated ! ",
                         text: "Please try again later.",
-                        icon: "error"
+                        type: "error"
                     });
                     $('#exampleInputPassword1').val("");
                 }

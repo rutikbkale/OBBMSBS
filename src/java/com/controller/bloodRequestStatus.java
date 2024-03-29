@@ -11,7 +11,9 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.annotation.MultipartConfig;
 
+@MultipartConfig
 public class bloodRequestStatus extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -39,6 +41,8 @@ public class bloodRequestStatus extends HttpServlet {
                     pstmt.setDate(2, cDate);
                     pstmt.setInt(3, id);
                     pstmt.executeUpdate();
+                    out.println("success");
+//                    response.sendRedirect("template/admin/adminDashboard.jsp");
                 } else {
                     query = "UPDATE blood_request_list_tb SET status = ?, rejection_reason = ? WHERE id = ?";
                     pstmt = con.prepareStatement(query);
@@ -46,6 +50,10 @@ public class bloodRequestStatus extends HttpServlet {
                     pstmt.setString(2, "Blood Stock Not Available.");
                     pstmt.setInt(3, id);
                     pstmt.executeUpdate();
+                    out.println("reject");
+//                    out.println("alert('Blood Stock Not Available.')");
+//                    out.println("</script>");
+//                    response.sendRedirect("template/admin/adminDashboard.jsp");
                 }
             } else {
                 query = "UPDATE blood_request_list_tb SET status = ?, rejection_reason = ? WHERE id = ?";
@@ -54,14 +62,14 @@ public class bloodRequestStatus extends HttpServlet {
                 pstmt.setString(2, reason);
                 pstmt.setInt(3, id);
                 pstmt.executeUpdate();
+                response.sendRedirect("template/admin/adminDashboard.jsp");
             }
             pstmt.close();
             con.close();
-            response.sendRedirect("template/admin/adminDashboard.jsp");
         } catch (SQLException ex) {
             Logger.getLogger(bloodRequestStatus.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
