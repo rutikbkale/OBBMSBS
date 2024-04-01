@@ -17,7 +17,7 @@ public class patientSignup extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try(PrintWriter out = response.getWriter()) {
             // fetching information from patient
             Thread.sleep(2000);
             String fName = request.getParameter("fName");
@@ -35,8 +35,10 @@ public class patientSignup extends HttpServlet {
             PatientDao dao = new PatientDao(DBClass.getConnection());
 
             // inserting patient information
-            if (dao.insertPatient(patient)) {
+            if (dao.insertPatient(patient) == 1) {
                 out.print("done");
+            } else if (dao.insertPatient(patient) == -1) {
+                out.print("duplicate");
             } else {
                 out.print("Error.");
             }

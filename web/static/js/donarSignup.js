@@ -46,7 +46,7 @@ $(document).ready(function () {
         }
         return true;
     }
-    
+
     //Showing error massage
     function showError(errorMessage) {
         swal({
@@ -81,6 +81,14 @@ $(document).ready(function () {
                         swal({
                             title: "Successfully Registered!",
                             icon: "success"
+                        }).then((value) => {
+                            window.location = "donarLogin.jsp";
+                        });
+                    } else if (data.trim() === 'duplicate') {
+                        swal({
+                            title: "Allready Registered !",
+                            text: "Please login.",
+                            icon: "warning",
                         }).then((value) => {
                             window.location = "donarLogin.jsp";
                         });

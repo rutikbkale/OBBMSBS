@@ -35,8 +35,10 @@ public class donarSignup extends HttpServlet {
             DonarDao dao = new DonarDao(DBClass.getConnection());
 
             // inserting patient information
-            if (dao.insertDonar(donar)) {
+            if (dao.insertDonar(donar) == 1) {
                 out.print("done");
+            } else if (dao.insertDonar(donar) == -1) {
+                out.print("duplicate");
             } else {
                 out.print("Error");
             }

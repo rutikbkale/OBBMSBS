@@ -45,9 +45,9 @@ public class DonarDao {
     }
 
     // inserting donar information into the database
-    public boolean insertDonar(Donar donar) {
+    public int insertDonar(Donar donar) {
 
-        boolean flag = false;
+        int flag = 0;
         try {
             // creating query to inserting donar
             String query = "insert into donar_info_tb(fName, lName, address, dob, bloodgroup, mobno, password) values(?, ?, ?, ?, ?, ?,?)";
@@ -63,11 +63,14 @@ public class DonarDao {
 
             // executing statement
             if (psmt.executeUpdate() > 0) {
-                flag = true;
+                flag = 1;
             }
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            if (e.getSQLState().equals("23000")) {
+                System.out.println("Mobile number already registered. Please login.");
+                flag = -1;
+            }
         }
         return flag;
 

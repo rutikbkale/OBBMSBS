@@ -61,7 +61,7 @@
                                         <span class="fa fa-refresh fa-spin fa-3x" style="color: red"></span>
                                     </div>
                                     <div class="col-12 text-center my-3">
-                                        <button type="submit" class="btn btn-danger btn-lg " id="sign-btn"> Register </button>
+                                        <button type="submit" class="btn btn-danger btn-lg fw-semibold " id="sign-btn"> Register </button>
                                     </div>
                                 </form>
                                 <div class="text-center mb-0" id="login-btn">
