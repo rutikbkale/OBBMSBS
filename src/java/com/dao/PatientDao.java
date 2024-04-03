@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.entities.Patient;
+import com.helper.IdProvider;
 import java.sql.*;
 
 public class PatientDao {
@@ -70,11 +71,29 @@ public class PatientDao {
         } catch (SQLException e) {
             if (e.getSQLState().equals("23000")) {
                 System.out.println("Mobile number already registered. Please login.");
-                flag=-1;
+                flag = -1;
             }
         }
         return flag;
 
+    }
+
+    // inserting patient information into the database
+    public int updatePatient(Patient patient) {
+        try (PreparedStatement psmt = con.prepareStatement("UPDATE patient_info_tb SET fName=?, lName=?, address=?, bloodgroup=? WHERE id=?")) {
+            psmt.setString(1, patient.getfName());
+            psmt.setString(2, patient.getlName());
+            psmt.setString(3, patient.getAddress());
+            psmt.setString(4, patient.getBloodgroup());
+            psmt.setInt(5, IdProvider.getPatientId(patient));
+
+            int rowsUpdated = psmt.executeUpdate();
+            return 1;
+        } catch (SQLException e) {
+            // Log or handle the exception appropriately
+            e.printStackTrace();
+            return 0;
+        }
     }
 
 }

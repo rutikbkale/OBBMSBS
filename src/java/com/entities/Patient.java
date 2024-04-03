@@ -26,6 +26,13 @@ public class Patient {
         this.password = password;
     }
 
+    public Patient(String fName, String lName, String address, String bloodgroup) {
+        this.fName = fName;
+        this.lName = lName;
+        this.address = address;
+        this.bloodgroup = bloodgroup;
+    }
+
     public int getId() {
         return id;
     }
