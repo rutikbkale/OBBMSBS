@@ -14,9 +14,6 @@
                     <li class="nav-item ms-5">
                         <a class="nav-link fs-5 me-5" style="color: white;" data-bs-toggle="modal" data-bs-target="#profileModal" href="#?"><i class="fas fa-user-circle"></i> Profile</a>
                     </li>
-                    <!--                    <li class="nav-item ms-5">
-                                            <a class="nav-link fs-5 me-5" style="color: white;" onclick="logout('donarLogin')" href="#"><i class="fas fa-sign-out-alt"></i>&nbsp; Logout</a>
-                                        </li>-->
                 </ul>
             </div>
         </nav>
@@ -54,6 +51,7 @@
                             </tbody>
                         </table>
                         <div class="d-flex justify-content-evenly">
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fas fa-solid fa-user-pen"></i> Edit</button>
                             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#passwordModal"><i class="fas fa-solid fa-key"></i> Change Password</button>
                             <button type="button" class="btn btn-danger" onclick="logout('donarLogin')"><i class="fas fa-sign-out-alt"></i> Log out</button>
                         </div>
@@ -61,6 +59,65 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog ">
+                <div class="modal-content">
+                    <div class="modal-header bg-red">
+                        <h1 class="modal-title fs-5 text-light text-center" id="exampleModalLabel"><i class="fas fa-solid fa-user-pen fs-5"></i> Edit Details </h1>
+                        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="../../editProfile" method="post" id="editProfile">
+                            <input type="hidden" name="id" value="<%= IdProvider.getDonarId(donar)%>">
+                            <input type="hidden" name="userType" id="userType" value="donar">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>First Name : </th>
+                                        <td>
+                                            <input type="text" class="form-control" id="fName" name="fName" value="<%=donar.getfName()%>">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Last Name : </th>
+                                        <td>
+                                            <input type="text" class="form-control" id="lName" name="lName" value="<%=donar.getlName()%>">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Address : </th>
+                                        <td>
+                                            <input type="text" class="form-control" id="address" name="address" value="<%=donar.getAddress()%>">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Blood Group : </th>
+                                        <td>
+                                            <select name="bloodgroup" class="form-select form-control" id="bloodgroup">
+                                                <option selected="selected">Choose option</option>
+                                                <option>O+</option>
+                                                <option>O-</option>
+                                                <option>A+</option>
+                                                <option>A-</option>
+                                                <option>B+</option>
+                                                <option>B-</option>
+                                                <option>AB+</option>
+                                                <option>AB-</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="text-center">
+                                <input type="submit" class="btn btn-outline-danger" value="save" data-bs-toggle="modal" data-bs-target="#editModal">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog ">
                 <div class="modal-content">

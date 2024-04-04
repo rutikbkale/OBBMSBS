@@ -78,22 +78,20 @@ public class PatientDao {
 
     }
 
-    // inserting patient information into the database
-    public int updatePatient(Patient patient) {
+    // updating patient information into the database
+    public int updatePatient(Patient patient, int id) {
         try (PreparedStatement psmt = con.prepareStatement("UPDATE patient_info_tb SET fName=?, lName=?, address=?, bloodgroup=? WHERE id=?")) {
             psmt.setString(1, patient.getfName());
             psmt.setString(2, patient.getlName());
             psmt.setString(3, patient.getAddress());
             psmt.setString(4, patient.getBloodgroup());
-            psmt.setInt(5, IdProvider.getPatientId(patient));
+            psmt.setInt(5, id);
 
             int rowsUpdated = psmt.executeUpdate();
-            return 1;
+            return rowsUpdated;
         } catch (SQLException e) {
-            // Log or handle the exception appropriately
             e.printStackTrace();
             return 0;
         }
     }
-
 }

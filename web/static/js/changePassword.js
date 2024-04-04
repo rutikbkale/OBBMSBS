@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    
+    //For changing the password
     $('#changePassword').on('submit', function (event) {
         event.preventDefault();
         let form = new FormData(this);
@@ -55,6 +57,8 @@ $(document).ready(function () {
 
         });
     });
+    
+    // For editing the profile
     $('#editProfile').on('submit', function (event) {
         event.preventDefault();
         let form = new FormData(this);

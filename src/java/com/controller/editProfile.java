@@ -1,7 +1,7 @@
 package com.controller;
 
-import com.dao.PatientDao;
-import com.entities.Patient;
+import com.dao.*;
+import com.entities.*;
 import com.helper.DBClass;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -28,52 +28,36 @@ public class editProfile extends HttpServlet {
             String address = request.getParameter("address");
             String bloodgroup = request.getParameter("bloodgroup");
             String userType = request.getParameter("userType");
-
-            String query = "";
             int r = 0;
             Connection con = DBClass.getConnection();
             PreparedStatement psmt = null;
             Patient patient = null;
+            Donar donar = null;
             HttpSession session = request.getSession();
-            PatientDao dao = new PatientDao(DBClass.getConnection());
+            PatientDao dao = new PatientDao(con);
+            DonarDao dao1 = new DonarDao(con);
 
             if (userType.equals("patient")) {
-//                query = "update patient_info_tb set fName = ?, lName = ?, address = ?, bloodgroup = ? where id = ?";
-//                psmt = con.prepareStatement(query);
-//                psmt.setString(1, fName);
-//                psmt.setString(2, lName);
-//                psmt.setString(3, address);
-//                psmt.setString(4, bloodgroup);
-//                psmt.setInt(5, id);
-//                r = psmt.executeUpdate();
-                patient = (Patient) session.getAttribute("cPatient");
-                patient = new Patient(fName, lName, address, bloodgroup);
-                out.print(1);
-                r = dao.updatePatient(patient);
-                out.print(2);
-                if (r > 0) {
+                patient = (Patient) session.getAttribute("currentPatient");
+                patient = new Patient(fName, lName, address, patient.getDate(), bloodgroup, patient.getMobno(), patient.getPassword());
+                r = dao.updatePatient(patient, id);
+                if (r == 1) {
                     out.println("done");
-//                    session.setAttribute("currentPatient", patient);
+                    session.setAttribute("currentPatient", patient);
                 } else {
                     out.println("error");
                 }
             } else {
-                query = "update donar_info_tb set fName = ?, lName = ?, address = ?, bloodgroup = ? where id = ?";
-                psmt = con.prepareStatement(query);
-                psmt.setString(1, fName);
-                psmt.setString(2, lName);
-                psmt.setString(3, address);
-                psmt.setString(4, bloodgroup);
-                psmt.setInt(5, id);
-                r = psmt.executeUpdate();
-                if (r > 0) {
+                donar = (Donar) session.getAttribute("currentDonar");
+                donar = new Donar(fName, lName, address, donar.getDate(), bloodgroup, donar.getMobno(), donar.getPassword());
+                r = dao1.updateDonar(donar, id);
+                if (r == 1) {
                     out.println("done");
+                    session.setAttribute("currentDonar", donar);
                 } else {
                     out.println("error");
                 }
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(editProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

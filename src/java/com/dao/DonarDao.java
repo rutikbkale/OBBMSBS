@@ -76,4 +76,21 @@ public class DonarDao {
 
     }
 
+    // updating donar information into the database
+    public int updateDonar(Donar donar, int id) {
+        try (PreparedStatement psmt = con.prepareStatement("UPDATE donar_info_tb SET fName=?, lName=?, address=?, bloodgroup=? WHERE id=?")) {
+            psmt.setString(1, donar.getfName());
+            psmt.setString(2, donar.getlName());
+            psmt.setString(3, donar.getAddress());
+            psmt.setString(4, donar.getBloodgroup());
+            psmt.setInt(5, id);
+
+            int rowsUpdated = psmt.executeUpdate();
+            return rowsUpdated;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
 }

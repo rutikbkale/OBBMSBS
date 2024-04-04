@@ -26,7 +26,7 @@ $(document).ready(function () {
                 } else {
                     swal({
                         title: "Login Failed",
-                        text: "Please try again later.",
+                        text: "Please enter valid mobile no and password ! ",
                         icon: "error"
                     });
                     $('#exampleInputPassword1').val("");
