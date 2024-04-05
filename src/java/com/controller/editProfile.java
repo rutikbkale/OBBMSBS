@@ -39,6 +39,9 @@ public class editProfile extends HttpServlet {
 
             if (userType.equals("patient")) {
                 patient = (Patient) session.getAttribute("currentPatient");
+                if (bloodgroup.equals("Choose option")) {
+                    bloodgroup = patient.getBloodgroup();
+                }
                 patient = new Patient(fName, lName, address, patient.getDate(), bloodgroup, patient.getMobno(), patient.getPassword());
                 r = dao.updatePatient(patient, id);
                 if (r == 1) {
@@ -49,6 +52,9 @@ public class editProfile extends HttpServlet {
                 }
             } else {
                 donar = (Donar) session.getAttribute("currentDonar");
+                if (bloodgroup.equals("Choose option")) {
+                    bloodgroup = donar.getBloodgroup();
+                }
                 donar = new Donar(fName, lName, address, donar.getDate(), bloodgroup, donar.getMobno(), donar.getPassword());
                 r = dao1.updateDonar(donar, id);
                 if (r == 1) {

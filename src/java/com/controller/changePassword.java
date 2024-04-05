@@ -1,5 +1,7 @@
 package com.controller;
 
+import com.entities.Donar;
+import com.entities.Patient;
 import com.helper.DBClass;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,6 +13,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @MultipartConfig
 public class changePassword extends HttpServlet {
@@ -19,6 +22,7 @@ public class changePassword extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            HttpSession session = request.getSession();
             int id = Integer.parseInt(request.getParameter("id"));
             String oldPassword = request.getParameter("oldPassword");
             String dbPassword = request.getParameter("dbPassword");
@@ -33,6 +37,7 @@ public class changePassword extends HttpServlet {
                 out.println("mismatch");
             } else {
                 if (userType.equals("patient")) {
+                    Patient patient = (Patient) session.getAttribute("currentPatient");
                     query = "update patient_info_tb set password = ? where id = ?";
                     psmt = con.prepareStatement(query);
                     psmt.setString(1, newPassword);
@@ -40,10 +45,13 @@ public class changePassword extends HttpServlet {
                     r = psmt.executeUpdate();
                     if (r > 0) {
                         out.println("done");
+                        patient = new Patient(patient.getfName(), patient.getlName(), patient.getAddress(), patient.getDate(), patient.getBloodgroup(), patient.getMobno(), newPassword);
+                        session.setAttribute("currentPatient", patient);
                     } else {
                         out.println("error");
                     }
                 } else {
+                    Donar donar = (Donar) session.getAttribute("currentDonar");
                     query = "update donar_info_tb set password = ? where id = ?";
                     psmt = con.prepareStatement(query);
                     psmt.setString(1, newPassword);
@@ -51,6 +59,8 @@ public class changePassword extends HttpServlet {
                     r = psmt.executeUpdate();
                     if (r > 0) {
                         out.println("done");
+                        donar = new Donar(donar.getfName(), donar.getlName(), donar.getAddress(), donar.getDate(), donar.getBloodgroup(), donar.getMobno(), newPassword);
+                        session.setAttribute("currentDonar", donar);
                     } else {
                         out.println("error");
                     }
