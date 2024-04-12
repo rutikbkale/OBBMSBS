@@ -121,7 +121,7 @@
                                 </div>
                             </div>
                             <div class="position-relative" style="top: 10px; right: 30px;">
-                                <h4><%=CountProvider.getCount("blood_donation_list_tb", "id")%></h4>
+                                <h4><%=CountProvider.getCond1Count("blood_donation_list_tb", "id", "Pending")%></h4>
                             </div>
                         </div>
                     </div>

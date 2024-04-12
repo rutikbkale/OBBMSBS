@@ -30,7 +30,7 @@ public class donarBloodStockUpdater extends HttpServlet {
                 psmt.setInt(2, id);
                 psmt.executeUpdate();
             }
-            response.sendRedirect("template/admin/adminDashboard.jsp");
+            response.sendRedirect("template/admin/adminDonationReqHistory.jsp");
         } catch (SQLException ex) {
             Logger.getLogger(donarBloodStockUpdater.class.getName()).log(Level.SEVERE, null, ex);
         }

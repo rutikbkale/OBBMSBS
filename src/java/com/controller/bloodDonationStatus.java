@@ -41,7 +41,7 @@ public class bloodDonationStatus extends HttpServlet {
                 pstmt.setInt(3, id);
             }
             pstmt.executeUpdate();
-            response.sendRedirect("template/admin/adminDashboard.jsp");
+            response.sendRedirect("template/admin/adminWaitingDonationReq.jsp");
         } catch (SQLException ex) {
             Logger.getLogger(bloodDonationStatus.class.getName()).log(Level.SEVERE, null, ex);
         }
