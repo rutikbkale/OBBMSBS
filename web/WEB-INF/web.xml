@@ -56,6 +56,10 @@
         <servlet-name>editProfile</servlet-name>
         <servlet-class>com.controller.editProfile</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReportGenerator</servlet-name>
+        <servlet-class>com.controller.ReportGenerator</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>patientSignup</servlet-name>
         <url-pattern>/patientSignup</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>editProfile</servlet-name>
         <url-pattern>/editProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportGenerator</servlet-name>
+        <url-pattern>/ReportGenerator</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

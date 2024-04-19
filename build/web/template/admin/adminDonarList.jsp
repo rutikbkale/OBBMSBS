@@ -5,6 +5,15 @@
 <html>
     <%@include file="adminBase.jsp" %>
     <body>
+        <div class="position-absolute" style="left:300px">
+            <form action="../../ReportGenerator">
+                <input type="hidden" name="fileName" value="donar_list">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-print"></i> Print
+                </button>
+            </form>
+        </div>
+
         <div class="container" style="margin-left: 250px; margin-top: 75px;">
             <H4 class="text-center" style="margin-top: 6rem;">DONOR DETAILS</H4><br>
             <table class="table table-hover table-bordered table-striped">
