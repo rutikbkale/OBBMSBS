@@ -115,13 +115,13 @@
                     <div class="card bg-light">
                         <div class="card-body d-flex justify-content-between mb-3">
                             <div class="blood">
-                                <i class="fas fa-users text-primary fs-4"></i>
+                                <i class="fas fa-users text-warning fs-4"></i>
                                 <div class="mt-5">
                                     Total Donation Requests
                                 </div>
                             </div>
                             <div class="position-relative" style="top: 10px; right: 30px;">
-                                <h4><%=CountProvider.getCond1Count("blood_donation_list_tb", "id", "Pending")%></h4>
+                                <h4><%=CountProvider.getCount("blood_donation_list_tb", "id")%></h4>
                             </div>
                         </div>
                     </div>
@@ -147,39 +147,49 @@
                     </div>
                 </div>
                 <div class="col-sm-3 mt-2">
-                    <div class="card bg-light">
-                        <div class="card-body d-flex justify-content-between mb-3">
-                            <div class="blood">
-                                <i class="fas fa-check-circle text-success fs-4"></i>
-                                <div class="mt-5">
-                                    Donated Successfully
+                    <a href="../../ReportGenerator?fileName=donar_donated" style="text-decoration: none; color: black;">
+                        <div class="card bg-light">
+                            <div class="card-body d-flex justify-content-between mb-3">
+                                <div class="blood">
+                                    <i class="fas fa-check-circle text-success fs-4"></i>
+                                    <div class="mt-5">
+                                        Donated Successfully
+                                    </div>
                                 </div>
-                            </div>    
-                            <div class="position-relative" style="top: 10px; right: 30px;">
-                                <h4>
-                                    <%
-                                        count2 = CountProvider.getCond1Count("blood_donation_list_tb", "id", "Donated");
-                                        out.println(count2);
-                                    %>
-                                </h4>
+                                <div class="position-relative" style="top: 10px; right: 30px;">
+                                    <h4>
+                                        <%
+                                            count2 = CountProvider.getCond1Count("blood_donation_list_tb", "id", "Donated");
+                                            out.println(count2);
+                                        %>
+                                    </h4>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
+
                 <div class="col-sm-3 mt-2">
-                    <div class="card bg-light">
-                        <div class="card-body d-flex justify-content-between mb-3">
-                            <div class="blood">
-                                <i class="fas fa-tint text-danger fs-4"></i>
-                                <div class="mt-5">
-                                    Total Blood Unit (in ml)
+                    <a href="../../ReportGenerator?fileName=donar_rejected" style="text-decoration: none; color: black;">
+                        <div class="card bg-light">
+                            <div class="card-body d-flex justify-content-between mb-3">
+                                <div class="blood">
+                                    <i class="fas fa-times-circle text-danger fs-4"></i>
+                                    <div class="mt-5">
+                                        Total Rejected Request
+                                    </div>
                                 </div>
+                                <div class="position-relative" style="top: 10px; right: 30px;">
+                                    <h4>
+                                        <%
+                                            count2 = CountProvider.getCond1Count("blood_donation_list_tb", "id", "Rejected");
+                                            out.println(count2);
+                                        %>
+                                    </h4>
+                                </div>                            
                             </div>
-                            <div class="position-relative" style="top: 10px; right: 30px;">
-                                <h4><%= BloodStock.getTotalUnit()%></h4>
-                            </div>                            
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
             <div class="row">
@@ -219,45 +229,48 @@
                     </div>
                 </div>
                 <div class="col-sm-3 mt-3">
-                    <div class="card bg-light">
-                        <div class="card-body d-flex justify-content-between mb-3">
-                            <div class="blood">
-                                <i class="fas fa-check-circle text-success fs-4"></i>
-                                <div class="mt-5">
-                                    Withdrawal Successfully
+                    <a href="../../ReportGenerator?fileName=blood_req_withdraw" style="text-decoration: none; color: black;">
+                        <div class="card bg-light">
+                            <div class="card-body d-flex justify-content-between mb-3">
+                                <div class="blood">
+                                    <i class="fas fa-check-circle text-success fs-4"></i>
+                                    <div class="mt-5">
+                                        Withdrawal Successfully
+                                    </div>
+                                </div>    
+                                <div class="position-relative" style="top: 10px; right: 30px;">
+                                    <h4>
+                                        <%
+                                            count2 = CountProvider.getCond1Count("blood_request_list_tb", "id", "withdrawal");
+                                            out.println(count2);
+                                        %> 
+                                    </h4>
                                 </div>
-                            </div>    
-                            <div class="position-relative" style="top: 10px; right: 30px;">
-                                <h4>
-                                    <%
-                                        count2 = CountProvider.getCond1Count("blood_request_list_tb", "id", "withdrawal");
-                                        out.println(count2);
-                                    %> 
-                                </h4>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-sm-3 mt-3">
-                    <div class="card bg-light">
-                        <div class="card-body d-flex justify-content-between mb-3">
-                            <div class="blood">
-                                <i class="fas fa-times-circle text-danger fs-4"></i>
-                                <div class="mt-5">
-                                    Total Rejected Request
+                    <a href="../../ReportGenerator?fileName=blood_req_reject" style="text-decoration: none; color: black;">
+                        <div class="card bg-light">
+                            <div class="card-body d-flex justify-content-between mb-3">
+                                <div class="blood">
+                                    <i class="fas fa-times-circle text-danger fs-4"></i>
+                                    <div class="mt-5">
+                                        Total Rejected Request
+                                    </div>
                                 </div>
+                                <div class="position-relative" style="top: 10px; right: 30px;">
+                                    <h4>
+                                        <%
+                                            count2 = CountProvider.getCond1Count("blood_request_list_tb", "id", "Rejected");
+                                            out.println(count2);
+                                        %>
+                                    </h4>
+                                </div>                            
                             </div>
-                            <div class="position-relative" style="top: 10px; right: 30px;">
-                                <h4>
-                                    <%
-                                        count2 = CountProvider.getCond1Count("blood_request_list_tb", "id", "Rejected");
-                                        int count1 = CountProvider.getCond1Count("blood_donation_list_tb", "id", "Rejected");
-                                        out.println(count2 + count1);
-                                    %>
-                                </h4>
-                            </div>                            
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>

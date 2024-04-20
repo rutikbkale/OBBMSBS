@@ -4,7 +4,6 @@ import com.helper.DBClass;
 import java.sql.*;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -21,23 +20,23 @@ import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 public class ReportGenerator extends HttpServlet {
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Connection conn = null;
         OutputStream outStream = null;
         String fileName = request.getParameter("fileName");
-        
+
         try {
             response.setContentType("application/pdf");
-            
+
             conn = DBClass.getConnection();
             JasperDesign jasperDesign = JRXmlLoader.load(getServletContext().getRealPath("/WEB-INF/") + "/" + fileName + ".jrxml");
             JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
             Map<String, Object> parameters = new HashMap<>();
-            
+
             byte[] byteStream = JasperRunManager.runReportToPdf(jasperReport, parameters, conn);
-            
+
             response.setContentLength(byteStream.length);
             outStream = response.getOutputStream();
             outStream.write(byteStream, 0, byteStream.length);
