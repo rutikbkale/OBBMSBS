@@ -5,8 +5,8 @@
         <group>
             <file>file:/C:/Users/Admin/Desktop/Project/OBBMS/OBBMSBS/web/template/admin/adminDonationReqHistory.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/Project/OBBMS/OBBMSBS/web/template/admin/adminBloodReqHistory.jsp</file>
-            <file>file:/C:/Users/Admin/Desktop/Project/OBBMS/OBBMSBS/web/template/admin/adminDashboard.jsp</file>
-            <file>file:/C:/Users/Admin/Desktop/Project/OBBMS/OBBMSBS/src/java/com/controller/ReportGenerator.java</file>
+            <file>file:/C:/Users/Admin/Desktop/Project/OBBMS/OBBMSBS/src/java/com/controller/bloodRequestStatus.java</file>
+            <file>file:/C:/Users/Admin/Desktop/Project/OBBMS/OBBMSBS/web/template/admin/adminBloodReq.jsp</file>
         </group>
     </open-files>
 </project-private>

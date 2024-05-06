@@ -34,7 +34,7 @@
                     <%
                         Connection con = DBClass.getConnection();
                         Statement smt = con.createStatement();
-                        String query = "select id, name, bloodgroup, unit, age, disease,  reqdate, status from blood_donation_list_tb where status='Donated' or status='Rejected'";
+                        String query = "select id, name, bloodgroup, unit, age, disease,  reqdate, status from blood_donation_list_tb";
                         ResultSet set = smt.executeQuery(query);
 
                         if (set.next()) {
@@ -49,6 +49,8 @@
                                 out.println("<td class='text-center'>" + set.getDate("reqdate") + "</td>");
                                 if (set.getString("status").equals("Donated")) {
                                     out.println("<td class='text-center'><span class='badge bg-success fs-5'>Donated</span></td>");
+                                } else if (set.getString("status").equals("Approved")) {
+                                    out.println("<td class='text-center'><span class='badge bg-primary fs-5'>Approved</span></td>");
                                 } else {
                                     out.println("<td class='text-center'><span class='badge bg-danger fs-5'>Rejected</span></td>");
                                 }
